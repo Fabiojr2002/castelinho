@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academia Castelinho | Natação & Fitness no Parque do Carmo - SP</title>
+  <meta name="description"
+    content="Academia Castelinho em Parque do Carmo e Cidade Líder, SP. Piscinas cobertas e aquecidas, natação do bebê ao adulto, hidroginástica, musculação e aulas coletivas. Agende sua aula experimental!">
+  <meta name="keywords"
+    content="academia castelinho, natação parque do carmo, natação infantil sp, musculação cidade líder, hidroginástica parque do carmo, piscina aquecida sp">
+
+  <!-- Open Graph / Meta Compartilhamento -->
+  <meta property="og:title" content="Academia Castelinho | Natação & Fitness">
+  <meta property="og:description"
+    content="Mais que treino, um estilo de vida para toda a família no Parque do Carmo / Cidade Líder.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon / Ícone Oficial -->
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Google Fonts: Space Grotesk (Títulos) & Inter (Corpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Folha de Estilos Principal -->
+  <link rel="stylesheet" href="style.css?v=4">
+
+  <!-- CDNs Mandatórias -->
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+  <!-- Efeitos de Fundo: Malha Radial / Ambient Mesh Gradients -->
+  <div class="ambient-mesh" aria-hidden="true">
+    <div class="mesh-orb orb-primary"></div>
+    <div class="mesh-orb orb-secondary"></div>
+    <div class="mesh-orb orb-cyan"></div>
+    <div class="mesh-grid-overlay"></div>
+  </div>
+
+  <!-- HEADER PRINCIPAL (Glassmorphic & Sticky) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="#inicio" class="logo-link" aria-label="Academia Castelinho - Página Inicial">
+        <div class="logo-mark">
+          <img src="logo.png" alt="Academia Castelinho" class="logo-img">
+        </div>
+        <div class="logo-text">
+          <span class="logo-brand">CASTELINHO</span>
+          <span class="logo-sub">NATAÇÃO & FITNESS</span>
+        </div>
+      </a>
+
+      <!-- Menu de Navegação Desktop -->
+      <nav class="main-nav" id="main-nav" aria-label="Navegação Principal">
+        <ul class="nav-list">
+          <li><a href="#inicio" class="nav-link active">Início</a></li>
+          <li><a href="#modalidades" class="nav-link">Modalidades</a></li>
+          <li><a href="#grade" class="nav-link">Grade & Horários</a></li>
+          <li><a href="#estrutura" class="nav-link">Estrutura</a></li>
+          <li><a href="#localizacao" class="nav-link">Localização</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botão CTA no Header: WhatsApp Fale Conosco -->
+      <div class="header-actions">
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20aulas%20na%20Academia%20Castelinho."
+          target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp" id="header-cta-btn"
+          aria-label="Fale Conosco pelo WhatsApp - Atendimento 24h">
+          <img src="whats.png" alt="WhatsApp" class="whatsapp-btn-img" width="30" height="30">
+          <div class="whatsapp-btn-text">
+            <span class="whatsapp-btn-title">Fale conosco</span>
+            <span class="whatsapp-btn-subtitle"><span class="pulse-status-dot"></span>atendimento 24h</span>
+          </div>
+        </a>
+
+        <!-- Botão Mobile Hamburguer -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir Menu de Navegação" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Gaveta Mobile -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <nav class="mobile-nav">
+        <a href="#inicio" class="mobile-nav-link">Início</a>
+        <a href="#modalidades" class="mobile-nav-link">Modalidades</a>
+        <a href="#grade" class="mobile-nav-link">Grade & Horários</a>
+        <a href="#estrutura" class="mobile-nav-link">Estrutura</a>
+        <a href="#localizacao" class="mobile-nav-link">Localização</a>
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20aulas%20na%20Academia%20Castelinho."
+          target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp w-full mt-4"
+          style="justify-content: center;">
+          <img src="whats.png" alt="WhatsApp" class="whatsapp-btn-img" width="30" height="30">
+          <div class="whatsapp-btn-text">
+            <span class="whatsapp-btn-title">Fale conosco</span>
+            <span class="whatsapp-btn-subtitle"><span class="pulse-status-dot"></span>atendimento 24h</span>
+          </div>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section" id="inicio">
+      <!-- Background Video Cinematográfico Full HD -->
+      <div class="hero-video-wrapper" aria-hidden="true">
+        <video id="hero-video" class="hero-video" autoplay muted loop playsinline preload="auto">
+          <source src="hero.mp4" type="video/mp4">
+          Seu navegador não suporta vídeos HTML5.
+        </video>
+        <!-- Camadas de Proteção Visual e Contraste Premium -->
+        <div class="hero-video-overlay"></div>
+        <div class="hero-video-gradient"></div>
+        <div class="hero-video-vignette"></div>
+      </div>
+
+      <!-- Controles Elegantes de Áudio/Pausa do Vídeo Background -->
+      <div class="hero-media-controls" aria-label="Controles do Vídeo de Fundo">
+        <button type="button" class="media-btn" id="hero-video-play-toggle"
+          aria-label="Pausar ou reproduzir vídeo de fundo" title="Pausar / Reproduzir">
+          <i data-lucide="pause" id="hero-play-icon"></i>
+        </button>
+        <button type="button" class="media-btn" id="hero-video-mute-toggle"
+          aria-label="Ativar ou desativar áudio do vídeo" title="Ativar / Desativar Som">
+          <i data-lucide="volume-x" id="hero-mute-icon"></i>
+        </button>
+      </div>
+
+      <div class="container hero-container">
+        <div class="hero-content">
+          <!-- Tag de Destaque -->
+          <div class="badge-pill hero-badge">
+            <span class="pulse-indicator"></span>
+            <span class="badge-text">Academia Castelinho • Matrículas Abertas</span>
+          </div>
+
+          <!-- Título Principal com Revelação -->
+          <h1 class="hero-title">
+            <span class="title-row"><span class="title-word">Mais</span> <span class="title-word">que</span> <span
+                class="title-word gradient-text">treino,</span></span>
+            <span class="title-row"><span class="title-word">um</span> <span class="title-word">estilo</span> <span
+                class="title-word">de</span> <span class="title-word">vida</span></span>
+            <span class="title-row"><span class="title-word">para</span> <span
+                class="title-word highlight-cyan">toda</span> <span class="title-word">a</span> <span
+                class="title-word">família.</span></span>
+          </h1>
+
+
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-glow open-modal-btn" data-modal="modal-schedule" id="hero-schedule-btn">
+              <i data-lucide="sparkles"></i>
+              <span>Agendar Aula Experimental</span>
+            </button>
+            <a href="#modalidades" class="btn btn-secondary" id="hero-explore-btn">
+              <span>Conhecer Modalidades</span>
+              <i data-lucide="arrow-down-right"></i>
+            </a>
+          </div>
+
+          <!-- Mini Provas Sociais / Métricas -->
+          <div class="hero-stats-strip">
+            <div class="stat-mini">
+              <div class="stat-number">+45 Anos</div>
+              <div class="stat-label">de Tradição na Região</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-mini">
+              <div class="stat-number">32°C</div>
+              <div class="stat-label">Água Aquecida & Tratada</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-mini">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Profissionais CREF</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual Hero: Floating Glass Cards / Showcase Dinâmico -->
+        <div class="hero-visual">
+          <div class="hero-artboard">
+            <!-- Aura Central Aquática -->
+            <div class="pool-glow-core"></div>
+
+            <!-- Card Central Principal -->
+            <div class="hero-main-card spotlight-card">
+              <div class="card-inner">
+                <div class="water-waves-bg"></div>
+                <div class="main-card-header">
+                  <div class="badge-tag aquatics-tag">
+                    <i data-lucide="waves"></i>
+                    <span>Piscina Aquática Coberta</span>
+                  </div>
+                  <span class="status-live">
+                    <span class="live-dot"></span> Ativo Hoje
+                  </span>
+                </div>
+
+                <div class="main-card-body">
+                  <div class="pool-temp-display">
+                    <div class="temp-val">32<span class="temp-unit">°C</span></div>
+                    <div class="temp-info">
+                      <strong>Temperatura Climatizada</strong>
+                      <span>Conforto absoluto em qualquer estação</span>
+                    </div>
+                  </div>
+
+                  <div class="pool-spec-list">
+                    <div class="spec-item">
+                      <i data-lucide="shield-check"></i>
+                      <span>Tratamento Ozonizado & Clorado Rigoroso</span>
+                    </div>
+                    <div class="spec-item">
+                      <i data-lucide="life-buoy"></i>
+                      <span>Raias Demarcadas e Área Infantil</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="main-card-footer">
+                  <div class="avatars-group">
+                    <span class="avatar-circle">🏊‍♂️</span>
+                    <span class="avatar-circle">👶</span>
+                    <span class="avatar-circle">💪</span>
+                  </div>
+                  <span class="avatars-text">+2.500 alunos desenvolvidos com saúde</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Badge 1: Bebês & Infantil -->
+            <div class="floating-badge badge-top-right">
+              <div class="badge-icon-box cyan">
+                <i data-lucide="baby"></i>
+              </div>
+              <div class="badge-info">
+                <strong>Natação Infantil</strong>
+                <span>Metodologia lúdica & segura</span>
+              </div>
+            </div>
+
+            <!-- Floating Badge 2: Musculação Completa -->
+            <div class="floating-badge badge-bottom-left">
+              <div class="badge-icon-box orange">
+                <i data-lucide="dumbbell"></i>
+              </div>
+              <div class="badge-info">
+                <strong>Musculação & Força</strong>
+                <span>Treino guiado por instrutores</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SEÇÃO DE MODALIDADES (Banner Unificado de Alto Impacto) -->
+    <section class="section modalities-section" id="modalidades">
+      <div class="container">
+        <!-- Banner Único Envolvendo Toda a Seção de Modalidades -->
+        <div class="modalities-hero-banner spotlight-card" data-tilt>
+          <div class="modalities-banner-bg" aria-hidden="true"></div>
+          <div class="modalities-banner-overlay" aria-hidden="true"></div>
+
+          <!-- Topo do Banner: Texto Heroico + Imagem do Atleta -->
+          <div class="modalities-banner-top">
+            <div class="modalities-banner-content">
+              <span class="modality-kicker">MODALIDADES</span>
+              <h2 class="modality-hero-headline">
+                TREINE DIFERENTE.<br>
+                EVOLUA SEMPRE.
+              </h2>
+              <p class="modality-hero-desc">
+                Treinamento de alto rendimento com musculação biomecânica, natação em piscinas aquecidas e
+                acompanhamento exclusivo de professores para potencializar sua força, saúde e performance diária.
+              </p>
+            </div>
+          </div>
+
+          <!-- Título Centralizado com Neon Glow -->
+          <div class="modalities-divider-title">
+            <h3 class="glow-title">MODALIDADES CASTELINHO</h3>
+          </div>
+
+          <!-- Grade de 3 Colunas com Fundo 100% Transparente (Sem Caixas/Bordas) -->
+          <div class="modalities-columns-grid">
+            <!-- Coluna 1: Musculação -->
+            <article class="modality-column-card" data-modality="musculacao">
+              <div class="column-neon-icon">
+                <i data-lucide="dumbbell"></i>
+              </div>
+              <h4 class="column-title">MUSCULAÇÃO</h4>
+              <p class="column-desc">
+                Salão completo com maquinário biomecânico moderno, área de pesos livres e fichas individualizadas com
+                supervisão contínua de professores CREF.
+              </p>
+              <ul class="column-features-list">
+                <li><i data-lucide="check"></i> Hipertrofia, emagrecimento e postura</li>
+                <li><i data-lucide="check"></i> Acompanhamento profissional no salão</li>
+                <li><i data-lucide="check"></i> Fichas atualizadas periodicamente</li>
+              </ul>
+            </article>
+
+            <!-- Coluna 2: Natação -->
+            <article class="modality-column-card" data-modality="natacao">
+              <div class="column-neon-icon">
+                <i data-lucide="waves"></i>
+              </div>
+              <h4 class="column-title">NATAÇÃO</h4>
+              <p class="column-desc">
+                Duas piscinas cobertas e aquecidas com controle rigoroso de qualidade. Do aprendizado infantil lúdico à
+                natação adulto e hidroginástica.
+              </p>
+              <ul class="column-features-list">
+                <li><i data-lucide="check"></i> Bebês (a partir de 6m), Infantil e Adulto</li>
+                <li><i data-lucide="check"></i> Água tratada e aquecida a 32°C</li>
+                <li><i data-lucide="check"></i> Hidroginástica de baixo impacto</li>
+              </ul>
+            </article>
+
+            <!-- Coluna 3: Aulas Coletivas & Ritmos -->
+            <article class="modality-column-card" data-modality="coletivas">
+              <div class="column-neon-icon">
+                <i data-lucide="flame"></i>
+              </div>
+              <h4 class="column-title">AULAS COLETIVAS</h4>
+              <p class="column-desc">
+                Aulas dinâmicas e contagiantes com ginástica funcional, ritmos musicais e circuitos aeróbicos para
+                queimar
+                calorias em um clima vibrante.
+              </p>
+              <ul class="column-features-list">
+                <li><i data-lucide="check"></i> Ginástica funcional e circuitos</li>
+                <li><i data-lucide="check"></i> Ritmos animados para todos os níveis</li>
+                <li><i data-lucide="check"></i> Queima calórica e condicionamento</li>
+              </ul>
+            </article>
+          </div>
+
+          <!-- Botão START TRAINING Centralizado em Último Lugar -->
+          <div class="modalities-bottom-cta">
+            <button class="btn btn-pill-cyan open-modal-btn" data-modal="modal-schedule" data-preselect="Musculação"
+              id="modalities-start-btn">
+              <span>Começar a treinar</span>
+              <i data-lucide="arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. GRADE DE HORÁRIOS & AULAS (Tabs Interativas em JS Puro) -->
+    <section class="section schedule-section" id="grade">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="badge-pill">
+            <i data-lucide="clock"></i>
+            <span>Programação Semanal</span>
+          </div>
+          <h2 class="section-title">Grade de Horários & Aulas</h2>
+          <p class="section-description">
+            Encontre a turma perfeita para o seu dia a dia. Horários flexíveis pela manhã, tarde e noite para harmonizar
+            com a sua rotina.
+          </p>
+
+          <!-- Seletor de Abas -->
+          <div class="tabs-control-wrapper">
+            <div class="tabs-container" role="tablist" aria-label="Selecione o dia da semana">
+              <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-seg-sex"
+                id="tab-btn-seg-sex" data-tab="seg-sex">
+                <i data-lucide="calendar-days"></i>
+                <span>Segunda a Sexta</span>
+              </button>
+              <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-sabado" id="tab-btn-sabado"
+                data-tab="sabado">
+                <i data-lucide="sun"></i>
+                <span>Sábado</span>
+              </button>
+              <div class="tab-indicator" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conteúdo da Aba 1: Segunda a Sexta -->
+        <div class="tab-panel active" id="tab-seg-sex" role="tabpanel" aria-labelledby="tab-btn-seg-sex">
+          <div class="schedule-periods-grid">
+            <!-- Período: Manhã -->
+            <div class="period-card spotlight-card">
+              <div class="period-header">
+                <div class="period-title-group">
+                  <div class="period-icon morning">
+                    <i data-lucide="sunrise"></i>
+                  </div>
+                  <div>
+                    <h3 class="period-name">Manhã</h3>
+                    <span class="period-time">06:00 às 12:00</span>
+                  </div>
+                </div>
+              </div>
+              <ul class="period-classes-list">
+                <li class="class-item">
+                  <span class="class-badge tag-gym">Musculação</span>
+                  <div class="class-info">
+                    <strong>Treino Livre & Acompanhamento</strong>
+                    <span>Salão aberto a partir das 06:00</span>
+                  </div>
+                  <span class="class-hours">06h - 12h</span>
+                </li>
+                <li class="class-item">
+                  <span class="class-badge tag-water">Natação</span>
+                  <div class="class-info">
+                    <strong>Adulto & Aperfeiçoamento</strong>
+                    <span>Turmas divididas por níveis técnicos</span>
+                  </div>
+                  <span class="class-hours">06:30 / 07:30 / 08:30</span>
+                </li>
+                <li class="class-item">
+                  <span class="class-badge tag-hydro">Hidroginástica</span>
+                  <div class="class-info">
+                    <strong>Condicionamento Leve & Moderado</strong>
+                    <span>Piscina aquecida a 32°C</span>
+                  </div>
+                  <span class="class-hours">08:00 / 09:00</span>
+                </li>
+                <li class="class-item">
+                  <span class="class-badge tag-water">Natação</span>
+                  <div class="class-info">
+                    <strong>Bebês & Infantil (Iniciação)</strong>
+                    <span>Metodologia lúdica com prof. especializados</span>
+                  </div>
+                  <span class="class-hours">09:30 / 10:30</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Período: Tarde -->
+            <div class="period-card spotlight-card">
+              <div class="period-header">
+                <div class="period-title-group">
+                  <div class="period-icon afternoon">
+                    <i data-lucide="sun-medium"></i>
+                  </div>
+                  <div>
+                    <h3 class="period-name">Tarde</h3>
+                    <span class="period-time">14:00 às 18:00</span>
+                  </div>
+                </div>
+              </div>
+              <ul class="period-classes-list">
+                <li class="class-item">
+                  <span class="class-badge tag-gym">Musculação</span>
+                  <div class="class-info">
+                    <strong>Horário Tranquilo & Supervisão</strong>
+                    <span>Espaço livre e sem filas de aparelhos</span>
+                  </div>
+                  <span class="class-hours">14h - 18h</span>
+                </li>
+                <li class="class-item">
+                  <span class="class-badge tag-water">Natação</span>
+                  <div class="class-info">
+                    <strong>Infantil (Todas as Fases / Raia)</strong>
+                    <span>Adaptação, respiração e propulsão</span>
+                  </div>
+                  <span class="class-hours">14:30 / 15:30 / 16:30</span>
+                </li>
+                <li class="class-item">
+                  <span class="class-badge tag-hydro">Hidroginástica</span>
+                  <div class="class-info">
+                    <strong>Resistência Muscular e Alongamento</strong>
+                    <span>Música contagiante e energia positiva</span>
+                  </div>
+                  <span class="class-hours">15:00 / 16:00</span>
+                </li>
+                <li class="class-item">
+                  <span class="class-badge tag-group">Funcional</span>
+                  <div class="class-info">
+                    <strong>Circuito Metabólico Juvenil/Adulto</strong>
+                    <span>Coordenação motora e queima ativa</span>
+                  </div>
+                  <span class="class-hours">17:15</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Período: Noite -->
+            <div class="period-card spotlight-card">
+              <div class="period-header">
+                <div class="period-title-group">
+                  <div class="period-icon evening">
+                    <i data-lucide="moon"></i>
+                  </div>
+                  <div>
+                    <h3 class="period-name">Noite</h3>
+                    <span class="period-time">18:00 às 22:00</span>
+                  </div>
+                </div>
+              </div>
+              <ul class="period-classes-list">
+                <li class="class-item">
+                  <span class="class-badge tag-gym">Musculação</span>
+                  <div class="class-info">
+                    <strong>Treinamento de Força & Hipertrofia</strong>
+                    <span>Foco total em performance e saúde</span>
+                  </div>
+                  <span class="class-hours">18h - 22h</span>
+                </li>
+                <li class="class-item">
+                  <span class="class-badge tag-water">Natação</span>
+                  <div class="class-info">
+                    <strong>Adulto & Treino Cardiovascular</strong>
+                    <span>Treino intenso para quem trabalha o dia todo</span>
+                  </div>
+                  <span class="class-hours">18:30 / 19:30 / 20:30</span>
+                </li>
+                <li class="class-item">
+                  <span class="class-badge tag-hydro">Hidroginástica</span>
+                  <div class="class-info">
+                    <strong>Descompressão Noturna & Postura</strong>
+                    <span>Alívio de dores nas costas e cansaço</span>
+                  </div>
+                  <span class="class-hours">19:15 / 20:15</span>
+                </li>
+                <li class="class-item">
+                  <span class="class-badge tag-group">Ritmos</span>
+                  <div class="class-info">
+                    <strong>Aulas Coletivas & Dança Fitness</strong>
+                    <span>Muita música, alegria e queima de calorias</span>
+                  </div>
+                  <span class="class-hours">20:00</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conteúdo da Aba 2: Sábado -->
+        <div class="tab-panel" id="tab-sabado" role="tabpanel" aria-labelledby="tab-btn-sabado">
+          <div class="schedule-periods-grid saturday-grid">
+            <div class="period-card spotlight-card">
+              <div class="period-header">
+                <div class="period-title-group">
+                  <div class="period-icon weekend">
+                    <i data-lucide="sparkle"></i>
+                  </div>
+                  <div>
+                    <h3 class="period-name">Sábado Manhã & Início de Tarde</h3>
+                    <span class="period-time">08:00 às 14:00</span>
+                  </div>
+                </div>
+              </div>
+              <ul class="period-classes-list">
+                <li class="class-item">
+                  <span class="class-badge tag-gym">Musculação</span>
+                  <div class="class-info">
+                    <strong>Treino de Final de Semana</strong>
+                    <span>Horário contínuo para manter a consistência</span>
+                  </div>
+                  <span class="class-hours">08:00 - 14:00</span>
+                </li>
+                <li class="class-item">
+                  <span class="class-badge tag-water">Natação</span>
+                  <div class="class-info">
+                    <strong>Bebês, Pais & Filhos (Especial)</strong>
+                    <span>Integração familiar em água quentinha</span>
+                  </div>
+                  <span class="class-hours">08:30 / 09:30</span>
+                </li>
+                <li class="class-item">
+                  <span class="class-badge tag-water">Natação</span>
+                  <div class="class-info">
+                    <strong>Infantil & Natação Livre Adulto</strong>
+                    <span>Aulas práticas e raias reservadas</span>
+                  </div>
+                  <span class="class-hours">10:15 / 11:15</span>
+                </li>
+                <li class="class-item">
+                  <span class="class-badge tag-hydro">Hidroginástica</span>
+                  <div class="class-info">
+                    <strong>Hidro Especial do Sábado</strong>
+                    <span>Energia alta para começar o fim de semana</span>
+                  </div>
+                  <span class="class-hours">09:00</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Card Informativo do Final de Semana -->
+            <div class="schedule-info-card spotlight-card">
+              <div class="info-content">
+                <div class="info-icon">
+                  <i data-lucide="calendar-heart"></i>
+                </div>
+                <h3>Sábado em Família na Castelinho</h3>
+                <p>
+                  Aos sábados, nosso ambiente se transforma em um ponto de encontro saudável para famílias. Venha
+                  acompanhar a evolução do seu filho na piscina aquecida ou aproveite para treinar musculação em um
+                  clima tranquilo.
+                </p>
+                <div class="action-wrap">
+                  <button class="btn btn-primary open-modal-btn" data-modal="modal-schedule">
+                    <i data-lucide="message-circle"></i>
+                    <span>Consultar Vagas para Sábado</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="schedule-footnote text-center">
+          <p>
+            <i data-lucide="info"></i>
+            <span>Horários sujeitos a disponibilidade de vagas por turma. Fale com nossa recepção para confirmar seu
+              horário ideal!</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. DIFERENCIAIS & ESTRUTURA (Visual Excellence) -->
+    <section class="section structure-section" id="estrutura">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="badge-pill">
+            <i data-lucide="award"></i>
+            <span>Infraestrutura Completa</span>
+          </div>
+          <h2 class="section-title">Construída para o seu bem-estar diário</h2>
+          <p class="section-description">
+            Cada detalhe da Academia Castelinho foi planejado para oferecer segurança biológica, higiene irrepreensível
+            e a atmosfera acolhedora que sua família merece.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Diferencial 1 -->
+          <div class="feature-card spotlight-card">
+            <div class="feature-icon-box cyan">
+              <i data-lucide="thermometer-sun"></i>
+            </div>
+            <h3 class="feature-title">Piscina Coberta & Aquecida (32°C)</h3>
+            <p class="feature-desc">
+              Água mantida na temperatura ideal durante todo o ano, protegida de intempéries, vento e frio. Perfeito
+              para bebês, crianças e idosos.
+            </p>
+            <div class="feature-badge">Climatização Constante</div>
+          </div>
+
+          <!-- Diferencial 2 -->
+          <div class="feature-card spotlight-card">
+            <div class="feature-icon-box blue">
+              <i data-lucide="sparkles"></i>
+            </div>
+            <h3 class="feature-title">Tratamento e Controle Rigoroso de Água</h3>
+            <p class="feature-desc">
+              Monitoramento automatizado dos níveis de pH e cloro, garantindo água cristalina, sem odores fortes e
+              segura para peles sensíveis.
+            </p>
+            <div class="feature-badge">Água Cristalina & Pura</div>
+          </div>
+
+          <!-- Diferencial 3 -->
+          <div class="feature-card spotlight-card">
+            <div class="feature-icon-box purple">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <h3 class="feature-title">Metodologia Exclusiva & Segura</h3>
+            <p class="feature-desc">
+              Passo a passo pedagógico testado há mais de 15 anos. As crianças aprendem brincando, ganhando autonomia e
+              respeito pela água com carinho.
+            </p>
+            <div class="feature-badge">Pedagogia Afetiva</div>
+          </div>
+
+          <!-- Diferencial 4 -->
+          <div class="feature-card spotlight-card">
+            <div class="feature-icon-box orange">
+              <i data-lucide="bath"></i>
+            </div>
+            <h3 class="feature-title">Vestiários Amplos & Acessíveis</h3>
+            <p class="feature-desc">
+              Estrutura equipada com chuveiros aquecidos de alta vazão, trocadores para bebês, acessibilidade completa e
+              sanitização contínua.
+            </p>
+            <div class="feature-badge">Higiene & Conforto</div>
+          </div>
+
+          <!-- Diferencial 5 -->
+          <div class="feature-card spotlight-card">
+            <div class="feature-icon-box emerald">
+              <i data-lucide="user-check"></i>
+            </div>
+            <h3 class="feature-title">Professores e Estagiários Credenciados</h3>
+            <p class="feature-desc">
+              Equipe técnica formada por profissionais de Educação Física registrados no CREF, com especialização em
+              salvamento aquático e biomecânica.
+            </p>
+            <div class="feature-badge">Corpo Técnico CREF</div>
+          </div>
+
+          <!-- Diferencial 6 -->
+          <div class="feature-card spotlight-card">
+            <div class="feature-icon-box rose">
+              <i data-lucide="heart-handshake"></i>
+            </div>
+            <h3 class="feature-title">Ambiente Familiar & Acolhedor</h3>
+            <p class="feature-desc">
+              Aqui você e sua família não são apenas um número. Conhecemos nossos alunos pelo nome e cultivamos um
+              ambiente saudável de amizade e motivação.
+            </p>
+            <div class="feature-badge">Comunidade Viva</div>
+          </div>
+        </div>
+
+        <!-- Banner de Conversão Rápida -->
+        <div class="conversion-banner spotlight-card">
+          <div class="banner-glow"></div>
+          <div class="banner-content">
+            <div class="banner-text">
+              <h3>Venha conhecer pessoalmente a nossa estrutura!</h3>
+              <p>Traga seus filhos para um tour e faça uma aula experimental gratuita para sentir a temperatura da água
+                e a energia do nosso time.</p>
+            </div>
+            <div class="banner-button">
+              <button class="btn btn-primary btn-glow open-modal-btn" data-modal="modal-schedule">
+                <i data-lucide="calendar-plus"></i>
+                <span>Agendar Minha Visita</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. LOCALIZAÇÃO & CONTATO (Mapa Estilizado & Rotas) -->
+    <section class="section location-section" id="localizacao">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="badge-pill">
+            <i data-lucide="map-pin"></i>
+            <span>Localização Privilegiada</span>
+          </div>
+          <h2 class="section-title">Fácil acesso no Parque do Carmo e Cidade Líder</h2>
+          <p class="section-description">
+            Rua tranquila, bem localizada e de fácil estacionamento na Zona Leste de São Paulo.
+          </p>
+        </div>
+
+        <div class="location-grid">
+          <!-- Coluna 1: Informações e Contato -->
+          <div class="location-card spotlight-card">
+            <div class="loc-header">
+              <div class="loc-icon">
+                <i data-lucide="navigation"></i>
+              </div>
+              <div>
+                <h3 class="loc-title">Academia Castelinho</h3>
+                <span class="loc-subtitle">Natação & Fitness</span>
+              </div>
+            </div>
+
+            <div class="loc-details-list">
+              <!-- Endereço -->
+              <div class="loc-item">
+                <div class="loc-item-icon">
+                  <i data-lucide="map-pin"></i>
+                </div>
+                <div class="loc-item-content">
+                  <strong>Endereço Completo:</strong>
+                  <p>R. Dr. Paulo de Queiroz, 137<br>Parque do Carmo / Cidade Líder, São Paulo - SP<br>CEP: 08270-170
+                  </p>
+                </div>
+              </div>
+
+              <!-- Horário de Funcionamento -->
+              <div class="loc-item">
+                <div class="loc-item-icon">
+                  <i data-lucide="clock"></i>
+                </div>
+                <div class="loc-item-content">
+                  <strong>Horário de Funcionamento:</strong>
+                  <p>Segunda a Sexta: 06:00 às 22:00<br>Sábado: 08:00 às 14:00<br>Domingo e Feriados: Fechado</p>
+                </div>
+              </div>
+
+              <!-- Contato Rápido -->
+              <div class="loc-item">
+                <div class="loc-item-icon">
+                  <i data-lucide="phone"></i>
+                </div>
+                <div class="loc-item-content">
+                  <strong>Canais de Atendimento:</strong>
+                  <p>WhatsApp: Atendimento rápido para matrículas e dúvidas</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botões de Rotas (Google Maps / Waze) -->
+            <div class="directions-actions">
+              <a href="https://maps.google.com/?q=R.+Dr.+Paulo+de+Queiroz,+137+-+Parque+do+Carmo,+S%C3%A3o+Paulo+-+SP,+08270-170"
+                target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <i data-lucide="map"></i>
+                <span>Abrir no Google Maps</span>
+              </a>
+              <a href="https://www.waze.com/ul?q=Rua+Doutor+Paulo+de+Queiroz+137+Sao+Paulo" target="_blank"
+                rel="noopener noreferrer" class="btn btn-secondary">
+                <i data-lucide="compass"></i>
+                <span>Traçar no Waze</span>
+              </a>
+            </div>
+
+            <!-- Redes Sociais Oficiais -->
+            <div class="social-channels">
+              <span class="social-title">Siga a Castelinho nas Redes:</span>
+              <div class="social-links-row">
+                <a href="https://instagram.com/castelinhoacad" target="_blank" rel="noopener noreferrer"
+                  class="social-btn instagram" aria-label="Siga nosso Instagram @castelinhoacad">
+                  <i data-lucide="instagram"></i>
+                  <span>@castelinhoacad</span>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn facebook"
+                  aria-label="Acesse nosso Facebook Oficial">
+                  <i data-lucide="facebook"></i>
+                  <span>Facebook Oficial</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coluna 2: Embed Interativo / Mapa Estilizado -->
+          <div class="map-card spotlight-card">
+            <div class="map-frame-wrapper">
+              <iframe title="Mapa de Localização da Academia Castelinho"
+                src="https://maps.google.com/maps?q=R.+Dr.+Paulo+de+Queiroz,+137+-+Parque+do+Carmo,+S%C3%A3o+Paulo+-+SP&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+              <div class="map-overlay-badge">
+                <i data-lucide="map-pin" class="pin-icon"></i>
+                <div>
+                  <strong>Academia Castelinho</strong>
+                  <span>R. Dr. Paulo de Queiroz, 137</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER MODERNO INSTITUCIONAL -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <div class="logo-link">
+            <div class="logo-mark">
+              <img src="logo.png" alt="Academia Castelinho" class="logo-img">
+            </div>
+            <div class="logo-text">
+              <span class="logo-brand">CASTELINHO</span>
+              <span class="logo-sub">NATAÇÃO & FITNESS</span>
+            </div>
+          </div>
+          <p class="footer-about">
+            A tradição do Parque do Carmo em natação especializada, musculação e qualidade de vida para todas as
+            gerações da sua família.
+          </p>
+          <div class="footer-status-pill">
+            <span class="pulse-dot"></span>
+            <span>Atendimento aberto hoje</span>
+          </div>
+        </div>
+
+        <div class="footer-nav-col">
+          <h4 class="footer-heading">Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#modalidades">Modalidades</a></li>
+            <li><a href="#grade">Grade & Horários</a></li>
+            <li><a href="#estrutura">Estrutura & Piscinas</a></li>
+            <li><a href="#localizacao">Como Chegar</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-modalities-col">
+          <h4 class="footer-heading">Modalidades</h4>
+          <ul class="footer-links">
+            <li><a href="#modalidades">Natação Bebês & Infantil</a></li>
+            <li><a href="#modalidades">Natação Adulto</a></li>
+            <li><a href="#modalidades">Hidroginástica 32°C</a></li>
+            <li><a href="#modalidades">Musculação & Hipertrofia</a></li>
+            <li><a href="#modalidades">Ginástica & Ritmos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact-col">
+          <h4 class="footer-heading">Atendimento</h4>
+          <p class="footer-address">
+            R. Dr. Paulo de Queiroz, 137<br>
+            Parque do Carmo / Cidade Líder<br>
+            São Paulo - SP • CEP 08270-170
+          </p>
+          <div class="footer-cta-box">
+            <button class="btn btn-primary btn-sm open-modal-btn w-full" data-modal="modal-schedule">
+              <i data-lucide="calendar"></i>
+              <span>Agendar Aula Grátis</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          <p>© <span id="current-year">2025</span> Academia Castelinho (Natação & Fitness). Todos os direitos
+            reservados.</p>
+        </div>
+        <div class="footer-credits">
+          <span>Saúde, Família e Bem-Estar em São Paulo</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL ACESSÍVEL (<dialog>) PARA AGENDAMENTO DE AULA EXPERIMENTAL -->
+  <dialog id="modal-schedule" class="glass-dialog">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <div class="dialog-title-group">
+          <div class="badge-icon-box cyan">
+            <i data-lucide="sparkles"></i>
+          </div>
+          <div>
+            <h3 class="dialog-title">Agendar Aula Experimental</h3>
+            <p class="dialog-subtitle">Preencha seus dados para receber o horário ideal via WhatsApp.</p>
+          </div>
+        </div>
+        <button class="close-dialog-btn" id="close-modal-btn" aria-label="Fechar Modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <form id="schedule-form" class="schedule-form">
+        <div class="form-group">
+          <label for="form-name">Seu Nome Completo:</label>
+          <div class="input-wrapper">
+            <i data-lucide="user" class="input-icon"></i>
+            <input type="text" id="form-name" placeholder="Ex: Patrícia Silva" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="form-modality">Modalidade de Interesse:</label>
+          <div class="input-wrapper">
+            <i data-lucide="activity" class="input-icon"></i>
+            <select id="form-modality" required>
+              <option value="Natação Infantil/Bebês">Natação Infantil ou Bebês</option>
+              <option value="Natação Adulto">Natação Adulto</option>
+              <option value="Hidroginástica">Hidroginástica</option>
+              <option value="Musculação">Musculação & Treino de Força</option>
+              <option value="Aulas Coletivas">Aulas Coletivas / Ritmos</option>
+              <option value="Quero Conhecer Todas">Quero conhecer a grade completa</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="form-period">Turno de Preferência:</label>
+          <div class="input-wrapper">
+            <i data-lucide="clock" class="input-icon"></i>
+            <select id="form-period" required>
+              <option value="Manhã (06h às 12h)">Manhã (06h às 12h)</option>
+              <option value="Tarde (14h às 18h)">Tarde (14h às 18h)</option>
+              <option value="Noite (18h às 22h)">Noite (18h às 22h)</option>
+              <option value="Sábado (08h às 14h)">Sábado (08h às 14h)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="form-notes">Observações ou Idade do Aluno (Opcional):</label>
+          <div class="input-wrapper">
+            <i data-lucide="message-square" class="input-icon"></i>
+            <input type="text" id="form-notes" placeholder="Ex: Bebê de 10 meses / Iniciante em natação">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-glow w-full" id="form-submit-btn">
+            <i data-lucide="send"></i>
+            <span>Confirmar e Abrir no WhatsApp</span>
+          </button>
+        </div>
+
+        <p class="form-disclaimer">
+          <i data-lucide="shield-check"></i> Seus dados são confidenciais e direcionados diretamente para a nossa
+          recepção oficial.
+        </p>
+      </form>
+    </div>
+  </dialog>
+
+
+
+  <!-- Script Principal -->
+  <script src="main.js?v=2"></script>
+</body>
+
+</html>

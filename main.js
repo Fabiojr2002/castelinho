@@ -272,17 +272,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Grade de Horários
-    gsap.from('.period-card', {
+    gsap.from('#tab-seg-sex .period-card', {
       scrollTrigger: {
         trigger: '#grade',
-        start: 'top 75%',
+        start: 'top 80%',
         toggleActions: 'play none none none'
       },
-      y: 40,
+      y: 25,
       opacity: 0,
-      stagger: 0.15,
-      duration: 0.8,
-      ease: 'power3.out'
+      stagger: 0.08,
+      duration: 0.6,
+      ease: 'power2.out',
+      clearProps: 'all'
     });
 
     // Diferenciais & Estrutura

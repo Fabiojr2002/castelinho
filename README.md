@@ -7,7 +7,8 @@ Landing Page institucional de alto padrão desenvolvida com **HTML5 semântico**
 ## 📍 Informações do Negócio
 
 * **Empresa:** Academia Castelinho (Natação & Fitness)
-* **Localização:** R. Dr. Paulo de Queiroz, 137 - Parque do Carmo / Cidade Líder, São Paulo - SP, CEP: 08270-170
+* **Localização:** Av. Maria Cursi, 306 - Cidade São Mateus, São Paulo - SP, CEP: 03962-000
+* **Telefone Fixo:** (11) 3569-5312
 * **Modalidades:**
   * Natação (Bebês a partir de 6 meses, Infantil, Adulto e Treinamento)
   * Hidroginástica em piscina aquecida a 32°C

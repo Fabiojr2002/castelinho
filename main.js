@@ -286,6 +286,21 @@ document.addEventListener('DOMContentLoaded', () => {
       clearProps: 'all'
     });
 
+    // Planos & Preços
+    gsap.from('.pricing-card', {
+      scrollTrigger: {
+        trigger: '#planos',
+        start: 'top 78%',
+        toggleActions: 'play none none none'
+      },
+      y: 35,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 0.75,
+      ease: 'power3.out',
+      clearProps: 'transform'
+    });
+
     // Diferenciais & Estrutura
     gsap.from('.feature-card', {
       scrollTrigger: {
@@ -394,6 +409,42 @@ document.addEventListener('DOMContentLoaded', () => {
           ScrollTrigger.refresh();
         }
       }
+    });
+  });
+
+  // 7.1 SELETOR DE PLANOS (MENSAL VS ANUAL COM DESCONTO)
+  const billingBtns = document.querySelectorAll('.pricing-billing-btn');
+  const priceValues = document.querySelectorAll('.pricing-value-amount');
+  const pricePeriods = document.querySelectorAll('.pricing-period-label');
+  const priceSavings = document.querySelectorAll('.pricing-savings-note');
+
+  billingBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cycle = btn.getAttribute('data-cycle');
+      billingBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      priceValues.forEach((el) => {
+        const val = el.getAttribute(`data-${cycle}`);
+        if (val) {
+          el.style.transform = 'scale(0.85)';
+          el.style.opacity = '0.35';
+          setTimeout(() => {
+            el.textContent = val;
+            el.style.transform = 'scale(1)';
+            el.style.opacity = '1';
+          }, 140);
+        }
+      });
+
+      pricePeriods.forEach((el) => {
+        el.textContent = cycle === 'annual' ? '/mês no plano anual' : '/mês no plano mensal';
+      });
+
+      priceSavings.forEach((el) => {
+        el.style.opacity = cycle === 'annual' ? '1' : '0';
+        el.style.visibility = cycle === 'annual' ? 'visible' : 'hidden';
+      });
     });
   });
 

@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendar Aula Experimental Gratuita | Academia Castelinho São Mateus</title>
+  <meta name="description"
+    content="Reserve seu dia e horário para fazer uma aula experimental gratuita na Academia Castelinho em São Mateus, SP. Piscinas aquecidas e estrutura completa.">
+  <meta name="keywords"
+    content="aula experimental natação, aula gratis academia são mateus, natação bebe agendamento, hidroginástica gratis, musculação aula experimental">
+
+  <!-- Open Graph / Redes Sociais -->
+  <meta property="og:title" content="Agendar Aula Experimental Gratuita | Academia Castelinho">
+  <meta property="og:description"
+    content="Escolha o melhor dia e horário para sua aula experimental gratuita com professores credenciados.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Folhas de Estilo -->
+  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="agendar.css?v=2">
+
+  <!-- CDNs Mandatórias -->
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+  <!-- Efeitos de Fundo: Malha Radial / Ambient Mesh Gradients -->
+  <div class="ambient-mesh" aria-hidden="true">
+    <div class="mesh-orb orb-primary"></div>
+    <div class="mesh-orb orb-secondary"></div>
+    <div class="mesh-orb orb-cyan"></div>
+    <div class="mesh-grid-overlay"></div>
+  </div>
+
+  <!-- HEADER PRINCIPAL (Glassmorphic) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="index.html" class="logo-link" aria-label="Academia Castelinho - Voltar ao Início">
+        <div class="logo-mark">
+          <img src="logo.png" alt="Academia Castelinho" class="logo-img">
+        </div>
+        <div class="logo-text">
+          <span class="logo-brand">CASTELINHO</span>
+          <span class="logo-sub">NATAÇÃO & FITNESS</span>
+        </div>
+      </a>
+
+      <!-- Menu de Navegação -->
+      <nav class="main-nav" aria-label="Navegação Principal">
+        <ul class="nav-list">
+          <li><a href="index.html#inicio" class="nav-link">Início</a></li>
+          <li><a href="index.html#modalidades" class="nav-link">Modalidades</a></li>
+          <li><a href="index.html#grade" class="nav-link">Grade & Horários</a></li>
+          <li><a href="index.html#planos" class="nav-link">Planos</a></li>
+          <li><a href="index.html#localizacao" class="nav-link">Localização</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botão CTA no Header -->
+      <div class="header-actions">
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20a%20aula%20experimental%20na%20Academia%20Castelinho."
+          target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp" id="header-cta-btn"
+          aria-label="Fale Conosco pelo WhatsApp">
+          <img src="whats.png" alt="WhatsApp" class="whatsapp-btn-img" width="30" height="30">
+          <div class="whatsapp-btn-text">
+            <span class="whatsapp-btn-title">Fale conosco</span>
+            <span class="whatsapp-btn-subtitle"><span class="pulse-status-dot"></span>atendimento 24h</span>
+          </div>
+        </a>
+
+        <!-- Botão Mobile Hamburguer -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir Menu de Navegação" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Gaveta Mobile -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <nav class="mobile-nav">
+        <a href="index.html#inicio" class="mobile-nav-link">Início</a>
+        <a href="index.html#modalidades" class="mobile-nav-link">Modalidades</a>
+        <a href="index.html#grade" class="mobile-nav-link">Grade & Horários</a>
+        <a href="index.html#planos" class="mobile-nav-link">Planos</a>
+        <a href="index.html#localizacao" class="mobile-nav-link">Localização</a>
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20a%20aula%20experimental."
+          target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp w-full mt-4"
+          style="justify-content: center;">
+          <img src="whats.png" alt="WhatsApp" class="whatsapp-btn-img" width="30" height="30">
+          <div class="whatsapp-btn-text">
+            <span class="whatsapp-btn-title">Fale conosco</span>
+            <span class="whatsapp-btn-subtitle"><span class="pulse-status-dot"></span>atendimento 24h</span>
+          </div>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- 1. HERO SECTION DO AGENDAMENTO -->
+    <section class="booking-hero">
+      <div class="container booking-hero-content">
+        <div class="booking-badge">
+          <i data-lucide="sparkles"></i>
+          <span>100% Gratuita & Sem Compromisso</span>
+        </div>
+
+        <h1 class="booking-title">
+          Escolha o Dia e Horário da Sua <span class="gradient-text">Aula Experimental</span>
+        </h1>
+
+        <p class="booking-subtitle">
+          Viva a experiência completa da Academia Castelinho: água aquecida a 32°C, ambiente familiar, professores
+          dedicados e vestiários equipados em São Mateus.
+        </p>
+
+        <!-- Selos de Confiança -->
+        <div class="trust-badges-strip">
+          <div class="trust-badge-item">
+            <i data-lucide="waves"></i>
+            <span>Piscinas Cobertas e Aquecidas</span>
+          </div>
+          <div class="trust-badge-item">
+            <i data-lucide="award"></i>
+            <span>Instrutores Credenciados CREF</span>
+          </div>
+          <div class="trust-badge-item">
+            <i data-lucide="shower-head"></i>
+            <span>Vestiários com Duchas Quentes</span>
+          </div>
+          <div class="trust-badge-item">
+            <i data-lucide="shield-check"></i>
+            <span>Zero Taxa de Adesão Antecipada</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. WORKFLOW INTERATIVO DE AGENDAMENTO (GRID PRINCIPAL) -->
+    <section class="booking-section">
+      <div class="booking-container">
+        <div class="booking-main-grid">
+
+          <!-- COLUNA ESQUERDA: O AGENDADOR EM PASSOS -->
+          <div class="booking-stepper-card">
+            
+            <!-- Barra de Progresso / Indicador dos Passos -->
+            <div class="steps-progress-bar">
+              <button type="button" class="step-indicator active" data-step="1">
+                <span class="step-number">1</span>
+                <div class="step-info">
+                  <span class="step-tag">Passo 1</span>
+                  <span class="step-label">Modalidade</span>
+                </div>
+              </button>
+
+              <button type="button" class="step-indicator" data-step="2">
+                <span class="step-number">2</span>
+                <div class="step-info">
+                  <span class="step-tag">Passo 2</span>
+                  <span class="step-label">Escolha a Data</span>
+                </div>
+              </button>
+
+              <button type="button" class="step-indicator" data-step="3">
+                <span class="step-number">3</span>
+                <div class="step-info">
+                  <span class="step-tag">Passo 3</span>
+                  <span class="step-label">Horário</span>
+                </div>
+              </button>
+
+              <button type="button" class="step-indicator" data-step="4">
+                <span class="step-number">4</span>
+                <div class="step-info">
+                  <span class="step-tag">Passo 4</span>
+                  <span class="step-label">Seus Dados</span>
+                </div>
+              </button>
+            </div>
+
+            <!-- PASSO 1: MODALIDADE -->
+            <div class="step-section active" data-step-section="1">
+              <div class="step-header">
+                <h2 class="step-title">
+                  <i data-lucide="layers"></i> Qual modalidade você gostaria de experimentar?
+                </h2>
+                <p class="step-desc">Selecione uma das opções abaixo. Você terá acompanhamento exclusivo de um professor durante toda a aula.</p>
+              </div>
+
+              <div class="modalities-select-grid">
+                <!-- Card 1: Natação Adulto -->
+                <div class="modality-select-card selected" data-modality="natacao-adulto">
+                  <div class="check-selection-dot"></div>
+                  <div class="modality-card-top">
+                    <div class="modality-icon-wrap">
+                      <i data-lucide="waves"></i>
+                    </div>
+                    <span class="modality-badge-age">A partir de 13 anos</span>
+                  </div>
+                  <div>
+                    <h3 class="modality-name">Natação Adulto</h3>
+                    <p class="modality-desc">Aprendizado do zero ao avançado, perda de medo da água e condicionamento cardiovascular em piscina aquecida.</p>
+                  </div>
+                  <div class="modality-footer-tags">
+                    <span class="modality-tag-mini">Semiolímpica</span>
+                    <span class="modality-tag-mini">Água a 32°C</span>
+                    <span class="modality-tag-mini">50 min</span>
+                  </div>
+                </div>
+
+                <!-- Card 2: Natação Infantil -->
+                <div class="modality-select-card" data-modality="natacao-infantil">
+                  <div class="check-selection-dot"></div>
+                  <div class="modality-card-top">
+                    <div class="modality-icon-wrap">
+                      <i data-lucide="smile"></i>
+                    </div>
+                    <span class="modality-badge-age">3 a 12 anos</span>
+                  </div>
+                  <div>
+                    <h3 class="modality-name">Natação Infantil</h3>
+                    <p class="modality-desc">Metodologia pedagógica lúdica com foco em segurança aquática, respiração, coordenação e desenvolvimento motor.</p>
+                  </div>
+                  <div class="modality-footer-tags">
+                    <span class="modality-tag-mini">Professores na água</span>
+                    <span class="modality-tag-mini">Ambiente Seguro</span>
+                  </div>
+                </div>
+
+                <!-- Card 3: Natação Bebês -->
+                <div class="modality-select-card" data-modality="natacao-bebe">
+                  <div class="check-selection-dot"></div>
+                  <div class="modality-card-top">
+                    <div class="modality-icon-wrap">
+                      <i data-lucide="baby"></i>
+                    </div>
+                    <span class="modality-badge-age">6 meses a 3 anos</span>
+                  </div>
+                  <div>
+                    <h3 class="modality-name">Natação para Bebês</h3>
+                    <p class="modality-desc">Estímulo sensorial e fortalecimento do vínculo com a mãe ou pai dentro de piscina tratada e agradavelmente aquecida.</p>
+                  </div>
+                  <div class="modality-footer-tags">
+                    <span class="modality-tag-mini">Com Acompanhante</span>
+                    <span class="modality-tag-mini">Tratamento Ozonizado</span>
+                  </div>
+                </div>
+
+                <!-- Card 4: Hidroginástica -->
+                <div class="modality-select-card" data-modality="hidroginastica">
+                  <div class="check-selection-dot"></div>
+                  <div class="modality-card-top">
+                    <div class="modality-icon-wrap">
+                      <i data-lucide="activity"></i>
+                    </div>
+                    <span class="modality-badge-age">Todas as idades</span>
+                  </div>
+                  <div>
+                    <h3 class="modality-name">Hidroginástica</h3>
+                    <p class="modality-desc">Exercícios dinâmicos de baixo impacto articular, ideais para queima calórica, flexibilidade e fortalecimento corporal.</p>
+                  </div>
+                  <div class="modality-footer-tags">
+                    <span class="modality-tag-mini">Zero Impacto</span>
+                    <span class="modality-tag-mini">Turmas Animadas</span>
+                  </div>
+                </div>
+
+                <!-- Card 5: Musculação -->
+                <div class="modality-select-card" data-modality="musculacao">
+                  <div class="check-selection-dot"></div>
+                  <div class="modality-card-top">
+                    <div class="modality-icon-wrap">
+                      <i data-lucide="dumbbell"></i>
+                    </div>
+                    <span class="modality-badge-age">Treino de Força</span>
+                  </div>
+                  <div>
+                    <h3 class="modality-name">Musculação & Fitness</h3>
+                    <p class="modality-desc">Aparelhagem completa de peso livre e máquinas ergonômicas, com ficha inicial orientada e instrutores de plantão no salão.</p>
+                  </div>
+                  <div class="modality-footer-tags">
+                    <span class="modality-tag-mini">Salão Completo</span>
+                    <span class="modality-tag-mini">Ficha Personalizada</span>
+                  </div>
+                </div>
+
+                <!-- Card 6: Aulas Coletivas & Ritmos -->
+                <div class="modality-select-card" data-modality="coletivas-ritmos">
+                  <div class="check-selection-dot"></div>
+                  <div class="modality-card-top">
+                    <div class="modality-icon-wrap">
+                      <i data-lucide="flame"></i>
+                    </div>
+                    <span class="modality-badge-age">Ritmos & Ginástica</span>
+                  </div>
+                  <div>
+                    <h3 class="modality-name">Aulas Coletivas & Ritmos</h3>
+                    <p class="modality-desc">Zumba, ginástica funcional e circuitos para queimar calorias de maneira alegre e cheia de energia contagiante.</p>
+                  </div>
+                  <div class="modality-footer-tags">
+                    <span class="modality-tag-mini">Música & Energia</span>
+                    <span class="modality-tag-mini">Cardio Intenso</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-nav-actions" style="justify-content: flex-end;">
+                <button type="button" class="btn btn-primary btn-glow" id="btn-next-step1">
+                  <span>Continuar para a Data</span>
+                  <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- PASSO 2: DATA & CALENDÁRIO -->
+            <div class="step-section" data-step-section="2">
+              <div class="step-header">
+                <h2 class="step-title">
+                  <i data-lucide="calendar"></i> Escolha o dia da sua visita
+                </h2>
+                <p class="step-desc">Selecione uma data no calendário abaixo (segunda a sábado). O agendamento é imediato.</p>
+              </div>
+
+              <!-- Atalhos Rápidos -->
+              <div class="quick-dates-label">Atalhos rápidos para agendamento:</div>
+              <div class="quick-dates-list">
+                <button type="button" class="quick-date-pill" data-quick-date="today">Hoje</button>
+                <button type="button" class="quick-date-pill active" data-quick-date="tomorrow">Amanhã</button>
+                <button type="button" class="quick-date-pill" data-quick-date="next-monday">Próxima Segunda-feira</button>
+                <button type="button" class="quick-date-pill" data-quick-date="next-saturday">Próximo Sábado</button>
+              </div>
+
+              <!-- Calendário Dinâmico em Vanilla JS -->
+              <div class="calendar-wrapper">
+                <div class="calendar-header-nav">
+                  <h3 class="cal-month-title" id="cal-month-title">Outubro de 2026</h3>
+                  <div class="cal-nav-buttons">
+                    <button type="button" class="cal-nav-btn" id="cal-prev-btn" aria-label="Mês Anterior">
+                      <i data-lucide="chevron-left"></i>
+                    </button>
+                    <button type="button" class="cal-nav-btn" id="cal-next-btn" aria-label="Próximo Mês">
+                      <i data-lucide="chevron-right"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="cal-weekdays">
+                  <div>Dom</div>
+                  <div>Seg</div>
+                  <div>Ter</div>
+                  <div>Qua</div>
+                  <div>Qui</div>
+                  <div>Sex</div>
+                  <div>Sáb</div>
+                </div>
+
+                <div class="cal-days-grid" id="cal-days-grid">
+                  <!-- Gerado dinamicamente pelo JavaScript -->
+                </div>
+              </div>
+
+              <div class="step-nav-actions">
+                <button type="button" class="btn btn-step-prev" id="btn-prev-step2">
+                  <i data-lucide="arrow-left"></i>
+                  <span>Voltar</span>
+                </button>
+                <button type="button" class="btn btn-primary btn-glow" id="btn-next-step2">
+                  <span>Continuar para o Horário</span>
+                  <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- PASSO 3: HORÁRIOS & TURNOS -->
+            <div class="step-section" data-step-section="3">
+              <div class="step-header">
+                <h2 class="step-title">
+                  <i data-lucide="clock"></i> Escolha o melhor horário para você
+                </h2>
+                <p class="step-desc">Selecione o turno de sua preferência para filtrar os horários disponíveis com professores dedicados.</p>
+              </div>
+
+              <!-- Filtro de Turnos -->
+              <div class="shift-filter-tabs">
+                <button type="button" class="shift-tab-btn active" data-shift="all">
+                  <i data-lucide="grid"></i> Todos
+                </button>
+                <button type="button" class="shift-tab-btn" data-shift="morning">
+                  <i data-lucide="sun"></i> Manhã (06h - 12h)
+                </button>
+                <button type="button" class="shift-tab-btn" data-shift="afternoon">
+                  <i data-lucide="sunset"></i> Tarde (14h - 18h)
+                </button>
+                <button type="button" class="shift-tab-btn" data-shift="evening">
+                  <i data-lucide="moon"></i> Noite (18h - 22h)
+                </button>
+              </div>
+
+              <!-- Grid de Horários -->
+              <div class="time-slots-grid" id="time-slots-grid">
+                <!-- 07:00 -->
+                <div class="time-slot-card" data-time="07:00" data-shift="morning">
+                  <div class="slot-time">07:00</div>
+                  <div class="slot-details">
+                    <span>Manhã</span>
+                    <span class="slot-status-badge">Vagas Abertas</span>
+                  </div>
+                </div>
+
+                <!-- 08:30 (Padrão Selecionado) -->
+                <div class="time-slot-card selected" data-time="08:30" data-shift="morning">
+                  <div class="slot-time">08:30</div>
+                  <div class="slot-details">
+                    <span>Manhã</span>
+                    <span class="slot-status-badge">Turma Leve</span>
+                  </div>
+                </div>
+
+                <!-- 10:00 -->
+                <div class="time-slot-card" data-time="10:00" data-shift="morning">
+                  <div class="slot-time">10:00</div>
+                  <div class="slot-details">
+                    <span>Manhã</span>
+                    <span class="slot-status-badge">Piscina Livre</span>
+                  </div>
+                </div>
+
+                <!-- 15:00 -->
+                <div class="time-slot-card" data-time="15:00" data-shift="afternoon">
+                  <div class="slot-time">15:00</div>
+                  <div class="slot-details">
+                    <span>Tarde</span>
+                    <span class="slot-status-badge">Vagas Abertas</span>
+                  </div>
+                </div>
+
+                <!-- 16:30 -->
+                <div class="time-slot-card" data-time="16:30" data-shift="afternoon">
+                  <div class="slot-time">16:30</div>
+                  <div class="slot-details">
+                    <span>Tarde</span>
+                    <span class="slot-status-badge hot">Infantil / Bebê</span>
+                  </div>
+                </div>
+
+                <!-- 18:00 -->
+                <div class="time-slot-card" data-time="18:00" data-shift="evening">
+                  <div class="slot-time">18:00</div>
+                  <div class="slot-details">
+                    <span>Noite</span>
+                    <span class="slot-status-badge hot">Alta Procura 🔥</span>
+                  </div>
+                </div>
+
+                <!-- 19:15 -->
+                <div class="time-slot-card" data-time="19:15" data-shift="evening">
+                  <div class="slot-time">19:15</div>
+                  <div class="slot-details">
+                    <span>Noite</span>
+                    <span class="slot-status-badge">Turma Noturna</span>
+                  </div>
+                </div>
+
+                <!-- 20:15 -->
+                <div class="time-slot-card" data-time="20:15" data-shift="evening">
+                  <div class="slot-time">20:15</div>
+                  <div class="slot-details">
+                    <span>Noite</span>
+                    <span class="slot-status-badge">Última Turma</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-nav-actions">
+                <button type="button" class="btn btn-step-prev" id="btn-prev-step3">
+                  <i data-lucide="arrow-left"></i>
+                  <span>Voltar</span>
+                </button>
+                <button type="button" class="btn btn-primary btn-glow" id="btn-next-step3">
+                  <span>Continuar para Meus Dados</span>
+                  <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- PASSO 4: FORMULÁRIO DE DADOS & CONFIRMAÇÃO -->
+            <div class="step-section" data-step-section="4">
+              <div class="step-header">
+                <h2 class="step-title">
+                  <i data-lucide="user-check"></i> Quem irá participar da aula experimental?
+                </h2>
+                <p class="step-desc">Seus dados são protegidos e enviados diretamente à recepção oficial da Castelinho para reservar sua vaga.</p>
+              </div>
+
+              <div class="form-step-fields">
+                <div class="form-row-dual">
+                  <div class="form-group-booking">
+                    <label for="booking-name" class="form-label-booking">
+                      <i data-lucide="user"></i> Nome Completo do Aluno(a):
+                    </label>
+                    <div class="input-booking-wrap">
+                      <i data-lucide="user" class="input-booking-icon"></i>
+                      <input type="text" id="booking-name" class="input-booking-field" placeholder="Ex: Patrícia de Souza" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group-booking">
+                    <label for="booking-phone" class="form-label-booking">
+                      <i data-lucide="phone"></i> WhatsApp com DDD:
+                    </label>
+                    <div class="input-booking-wrap">
+                      <i data-lucide="phone" class="input-booking-icon"></i>
+                      <input type="tel" id="booking-phone" class="input-booking-field" placeholder="(11) 99999-9999" maxlength="15" required>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row-dual">
+                  <div class="form-group-booking">
+                    <label for="booking-level" class="form-label-booking">
+                      <i data-lucide="gauge"></i> Nível de Experiência do Aluno:
+                    </label>
+                    <div class="input-booking-wrap">
+                      <i data-lucide="gauge" class="input-booking-icon"></i>
+                      <select id="booking-level" class="input-booking-field">
+                        <option value="Iniciante (Nunca pratiquei ou tenho receio)">Iniciante (Nunca pratiquei / Primeiro contato)</option>
+                        <option value="Básico (Já pratiquei um pouco no passado)">Básico (Já pratiquei um pouco no passado)</option>
+                        <option value="Intermediário (Tenho boa desenvoltura)">Intermediário (Tenho boa desenvoltura)</option>
+                        <option value="Avançado (Busco treino e técnica)">Avançado (Busco treino e técnica)</option>
+                        <option value="Bebê / Criança Pequena">Bebê / Criança Pequena</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group-booking">
+                    <label for="booking-notes" class="form-label-booking">
+                      <i data-lucide="message-square"></i> Observações / Idade (Opcional):
+                    </label>
+                    <div class="input-booking-wrap">
+                      <i data-lucide="message-square" class="input-booking-icon"></i>
+                      <input type="text" id="booking-notes" class="input-booking-field" placeholder="Ex: Idade: 7 anos / Quero perder o medo da água">
+                    </div>
+                  </div>
+                </div>
+
+                <label class="checkbox-custom-wrap">
+                  <input type="checkbox" id="booking-reminder" checked>
+                  <span>Desejo receber a confirmação e lembrete gratuito da minha aula via WhatsApp 1 dia antes.</span>
+                </label>
+              </div>
+
+              <div class="step-nav-actions">
+                <button type="button" class="btn btn-step-prev" id="btn-prev-step4">
+                  <i data-lucide="arrow-left"></i>
+                  <span>Voltar</span>
+                </button>
+                <button type="button" class="btn btn-primary btn-glow" id="btn-submit-booking">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Confirmar Agendamento Gratuito</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- COLUNA DIREITA: TICKET / VOUCHER EM TEMPO REAL -->
+          <aside class="booking-summary-sidebar">
+            <div class="booking-ticket-card">
+              <div class="ticket-header">
+                <div class="ticket-brand">
+                  <img src="logo.png" alt="Castelinho" class="ticket-logo">
+                  <span class="ticket-brand-text">CASTELINHO PASS</span>
+                </div>
+                <span class="ticket-badge-free">CORTESIA 100% GRÁTIS</span>
+              </div>
+
+              <h3 class="ticket-title">Voucher de Aula Experimental</h3>
+
+              <div class="ticket-details-list">
+                <!-- Modalidade -->
+                <div class="ticket-detail-item">
+                  <div class="ticket-detail-icon">
+                    <i data-lucide="waves" id="ticket-icon"></i>
+                  </div>
+                  <div class="ticket-detail-info">
+                    <span class="ticket-detail-label">Modalidade Escolhida:</span>
+                    <strong class="ticket-detail-value" id="ticket-modality">Natação Adulto</strong>
+                  </div>
+                </div>
+
+                <!-- Data -->
+                <div class="ticket-detail-item">
+                  <div class="ticket-detail-icon">
+                    <i data-lucide="calendar"></i>
+                  </div>
+                  <div class="ticket-detail-info">
+                    <span class="ticket-detail-label">Data da Aula:</span>
+                    <strong class="ticket-detail-value" id="ticket-date">Amanhã</strong>
+                  </div>
+                </div>
+
+                <!-- Horário -->
+                <div class="ticket-detail-item">
+                  <div class="ticket-detail-icon">
+                    <i data-lucide="clock"></i>
+                  </div>
+                  <div class="ticket-detail-info">
+                    <span class="ticket-detail-label">Horário de Início:</span>
+                    <strong class="ticket-detail-value" id="ticket-time">08:30h (Duração: ~50min)</strong>
+                  </div>
+                </div>
+
+                <!-- Localização -->
+                <div class="ticket-detail-item">
+                  <div class="ticket-detail-icon">
+                    <i data-lucide="map-pin"></i>
+                  </div>
+                  <div class="ticket-detail-info">
+                    <span class="ticket-detail-label">Unidade / Local:</span>
+                    <strong class="ticket-detail-value">Av. Maria Cursi, 745 - São Mateus, SP</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Caixa de Valor Cortesia -->
+              <div class="ticket-pricing-box">
+                <span class="pricing-label">Investimento na Aula:</span>
+                <div class="pricing-values">
+                  <span class="pricing-old">R$ 60,00</span>
+                  <span class="pricing-free">R$ 0,00</span>
+                </div>
+              </div>
+
+              <!-- O que Levar (Dinâmico) -->
+              <div class="ticket-pack-checklist">
+                <div class="pack-checklist-title">
+                  <i data-lucide="briefcase"></i> O que trazer no dia da sua aula:
+                </div>
+                <ul class="pack-checklist-items" id="ticket-pack-list">
+                  <li><i data-lucide="check-circle-2"></i> <span>Touca de natação</span></li>
+                  <li><i data-lucide="check-circle-2"></i> <span>Traje de banho (sunga/maiô)</span></li>
+                  <li><i data-lucide="check-circle-2"></i> <span>Óculos de natação</span></li>
+                  <li><i data-lucide="check-circle-2"></i> <span>Toalha de banho</span></li>
+                </ul>
+              </div>
+
+              <!-- Botão CTA no Ticket -->
+              <button type="button" class="btn btn-primary btn-glow w-full" id="btn-ticket-cta">
+                <i data-lucide="sparkles"></i>
+                <span>Garantir Minha Vaga Grátis</span>
+              </button>
+
+              <div class="ticket-guarantee">
+                <i data-lucide="shield-check"></i>
+                <span>Cancelamento ou reagendamento livre a qualquer momento.</span>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. COMO FUNCIONA A SUA AULA EXPERIMENTAL -->
+    <section class="how-it-works-section">
+      <div class="container">
+        <div class="text-center">
+          <div class="badge-pill">
+            <span class="pulse-indicator"></span>
+            <span class="badge-text">Passo a Passo Simples</span>
+          </div>
+          <h2>Como Funciona a Sua Visita na Castelinho?</h2>
+          <p class="section-subtitle text-center" style="max-width: 650px; margin: 10px auto 0;">
+            Queremos que você e sua família se sintam em casa desde o primeiro instante.
+          </p>
+        </div>
+
+        <div class="how-steps-grid">
+          <!-- Passo 1 -->
+          <div class="how-step-card">
+            <span class="how-step-number">01</span>
+            <div class="how-step-icon">
+              <i data-lucide="check-square"></i>
+            </div>
+            <h3 class="how-step-title">Agendamento Online</h3>
+            <p class="how-step-desc">
+              Você escolhe a modalidade, data e horário ideais aqui nesta página. Sua vaga fica reservada de imediato na recepção.
+            </p>
+          </div>
+
+          <!-- Passo 2 -->
+          <div class="how-step-card">
+            <span class="how-step-number">02</span>
+            <div class="how-step-icon">
+              <i data-lucide="user-check"></i>
+            </div>
+            <h3 class="how-step-title">Recepção & Tour</h3>
+            <p class="how-step-desc">
+              No dia agendado, chegue cerca de 15 minutos antes. Nossa equipe apresentará os vestiários, piscinas e estrutura.
+            </p>
+          </div>
+
+          <!-- Passo 3 -->
+          <div class="how-step-card">
+            <span class="how-step-number">03</span>
+            <div class="how-step-icon">
+              <i data-lucide="heart-pulse"></i>
+            </div>
+            <h3 class="how-step-title">Aula Guiada com Professor</h3>
+            <p class="how-step-desc">
+              Você faz a aula prática no seu próprio ritmo, com atenção individualizada e orientações de um professor especialista.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PERGUNTAS FREQUENTES (FAQ) -->
+    <section class="booking-faq-section">
+      <div class="container">
+        <div class="text-center">
+          <div class="badge-pill">
+            <i data-lucide="help-circle"></i>
+            <span class="badge-text">Tire Suas Dúvidas</span>
+          </div>
+          <h2>Perguntas Frequentes sobre a Aula Experimental</h2>
+        </div>
+
+        <div class="faq-accordion-list">
+          <!-- Pergunta 1 -->
+          <div class="faq-accordion-item active">
+            <button type="button" class="faq-question-btn">
+              <span>A aula experimental é realmente 100% gratuita?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-content">
+                <strong>Sim, totalmente gratuita!</strong> Você não paga absolutamente nada pela sua primeira aula experimental e não é obrigado a fechar nenhum plano no dia. Queremos que você conheça a metodologia e a nossa piscina na prática antes de decidir.
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 2 -->
+          <div class="faq-accordion-item">
+            <button type="button" class="faq-question-btn">
+              <span>Preciso levar atestado médico no primeiro dia?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-content">
+                Para a <strong>aula experimental</strong>, você preenche um breve questionário de prontidão física (PAR-Q) na recepção. Caso decida se matricular oficialmente após a aula, será solicitada a apresentação do atestado médico para início regular das atividades.
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 3 -->
+          <div class="faq-accordion-item">
+            <button type="button" class="faq-question-btn">
+              <span>Como funciona para natação de bebês e crianças pequenas?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-content">
+                Na natação para bebês (de 6 meses a 3 anos), um dos responsáveis (mãe ou pai) entra na piscina junto com o bebê para criar segurança afetiva. A partir dos 3 ou 4 anos, a criança entra com nossos professores especializados.
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 4 -->
+          <div class="faq-accordion-item">
+            <button type="button" class="faq-question-btn">
+              <span>Posso reagendar caso surja algum imprevisto?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-content">
+                Com certeza! Basta enviar uma mensagem rápida no nosso WhatsApp avisando que não poderá comparecer no dia marcado, e transferimos sua aula experimental para uma data conveniente sem qualquer custo.
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 5 -->
+          <div class="faq-accordion-item">
+            <button type="button" class="faq-question-btn">
+              <span>A piscina é aquecida mesmo em dias frios ou chuvosos?</span>
+              <i data-lucide="chevron-down"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <div class="faq-answer-content">
+                Sim! Nossas piscinas são 100% cobertas e climatizadas com aquecimento constante mantido entre 31°C e 32°C todos os dias do ano, garantindo conforto térmico absoluto independentemente do clima lá fora.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DIALOG DE SUCESSO (NATIVE HTML5 DIALOG) -->
+  <dialog class="dialog-success" id="dialog-booking-success">
+    <div class="success-icon-animated">
+      <i data-lucide="check"></i>
+    </div>
+
+    <h2 class="success-title">Vaga Pré-Reservada!</h2>
+    <div class="success-code-pill" id="modal-booking-code">CAST-EXP-8492</div>
+
+    <p class="success-desc">
+      Parabéns, <strong id="modal-client-name">Aluno</strong>! Seu agendamento para a aula experimental gratuita foi registrado com sucesso.
+    </p>
+
+    <div class="success-summary-box">
+      <div class="success-row">
+        <span>Modalidade:</span>
+        <span id="modal-modality">Natação Adulto</span>
+      </div>
+      <div class="success-row">
+        <span>Data & Horário:</span>
+        <span id="modal-datetime">Terça-feira às 08:30h</span>
+      </div>
+      <div class="success-row">
+        <span>Endereço:</span>
+        <span>Av. Maria Cursi, 745 - São Mateus, SP</span>
+      </div>
+      <div class="success-row">
+        <span>Custo da Aula:</span>
+        <span style="color: var(--cyan-glow);">GRÁTIS (Cortesia Castelinho)</span>
+      </div>
+    </div>
+
+    <div class="success-modal-actions">
+      <!-- Botão Enviar no WhatsApp Oficial -->
+      <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-glow w-full" id="btn-whatsapp-confirm" style="background: #25d366; color: #ffffff; border-color: #20ba5a;">
+        <i data-lucide="send"></i>
+        <span>Confirmar Presença no WhatsApp Oficial</span>
+      </a>
+
+      <!-- Botão Adicionar ao Calendário -->
+      <button type="button" class="btn btn-secondary w-full" id="btn-download-ics">
+        <i data-lucide="calendar-plus"></i>
+        <span>Adicionar Lembrete ao Meu Calendário (.ics)</span>
+      </button>
+
+      <!-- Fechar -->
+      <button type="button" class="btn btn-step-prev w-full" id="btn-close-modal">
+        <span>Concluir e Voltar</span>
+      </button>
+    </div>
+  </dialog>
+
+  <!-- FOOTER PRINCIPAL -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-col brand-col">
+          <div class="footer-logo">
+            <img src="logo.png" alt="Academia Castelinho" class="logo-img">
+            <div class="logo-text">
+              <span class="logo-brand">CASTELINHO</span>
+              <span class="logo-sub">NATAÇÃO & FITNESS</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Tradição, saúde e qualidade de vida para toda a família em Cidade São Mateus, São Paulo. Piscinas cobertas e aquecidas o ano inteiro.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#inicio">Página Inicial</a></li>
+            <li><a href="index.html#modalidades">Modalidades</a></li>
+            <li><a href="index.html#grade">Grade de Aulas</a></li>
+            <li><a href="index.html#planos">Planos & Valores</a></li>
+            <li><a href="index.html#localizacao">Como Chegar</a></li>
+            <li><a href="painel.html" style="color: var(--cyan-glow); font-weight: 600;"><i data-lucide="shield-check" style="width: 14px; height: 14px; display: inline-block; vertical-align: -2px; margin-right: 4px;"></i>Área da Recepção</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Horário de Funcionamento</h4>
+          <ul class="footer-hours">
+            <li><span>Segunda a Sexta:</span> <strong>06:00 às 22:00</strong></li>
+            <li><span>Sábados:</span> <strong>08:00 às 14:00</strong></li>
+            <li><span>Domingos e Feriados:</span> <strong>Fechado</strong></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Atendimento & Endereço</h4>
+          <div class="footer-contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Av. Maria Cursi, 745 - Cidade São Mateus, São Paulo - SP</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="phone"></i>
+            <span>(11) 2919-0000 / (11) 99999-9999</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Academia Castelinho - Natação & Fitness. Todos os direitos reservados.</p>
+        <p class="footer-note">Ambiente seguro com piscinas climatizadas e professores registrados no CREF.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script da Página de Agendamento -->
+  <script src="agendar.js?v=3"></script>
+</body>
+
+</html>

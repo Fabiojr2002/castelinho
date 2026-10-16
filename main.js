@@ -455,7 +455,101 @@ document.addEventListener('DOMContentLoaded', () => {
   const scheduleForm = document.getElementById('schedule-form');
   const modalitySelect = document.getElementById('form-modality');
 
-  // Abre Modal
+  // Modal de Escolha: Atendimento Online vs WhatsApp Matrícula
+  const modalChoice = document.getElementById('modal-start-choice');
+  const closeChoiceModalBtn = document.getElementById('close-choice-modal-btn');
+
+  const openChoiceModal = (preselect = null) => {
+    if (!modalChoice) return;
+
+    // Atualiza links e textos dinamicamente de acordo com o plano/modalidade selecionado
+    const scheduleLink = modalChoice.querySelector('.card-schedule-option');
+    const waLink = modalChoice.querySelector('.card-whatsapp-option');
+    const subtitle = modalChoice.querySelector('.dialog-subtitle');
+
+    if (preselect) {
+      const planName = preselect.trim();
+      let modParam = 'musculacao';
+      const lower = planName.toLowerCase();
+      if (lower.includes('nata') || lower.includes('aquát')) modParam = 'natacao-adulto';
+      else if (lower.includes('combo')) modParam = 'musculacao';
+      else if (lower.includes('famí') || lower.includes('fami') || lower.includes('bebê')) modParam = 'natacao-infantil';
+      else if (lower.includes('hidro')) modParam = 'hidroginastica';
+      else if (lower.includes('funcional') || lower.includes('ritmo')) modParam = 'coletivas-ritmos';
+
+      if (scheduleLink) {
+        scheduleLink.href = `agendar.html?modalidade=${modParam}`;
+      }
+
+      if (waLink) {
+        const text = `Olá! Vim pelo site da Academia Castelinho e quero iniciar minha matrícula no plano ${planName}!`;
+        waLink.href = `https://wa.me/5511999999999?text=${encodeURIComponent(text)}`;
+      }
+
+      if (subtitle) {
+        subtitle.textContent = `Interessado no Plano ${planName}? Selecione uma das opções abaixo para darmos início:`;
+      }
+    } else {
+      if (scheduleLink) {
+        scheduleLink.href = 'agendar.html';
+      }
+      if (waLink) {
+        const text = 'Olá! Vim pelo site da Academia Castelinho e quero iniciar minha matrícula!';
+        waLink.href = `https://wa.me/5511999999999?text=${encodeURIComponent(text)}`;
+      }
+      if (subtitle) {
+        subtitle.textContent = 'Selecione uma das opções abaixo para darmos início ao seu atendimento:';
+      }
+    }
+
+    if (typeof modalChoice.showModal === 'function') {
+      modalChoice.showModal();
+    } else {
+      modalChoice.setAttribute('open', '');
+    }
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+    if (lenis) lenis.stop();
+  };
+
+  const closeChoiceModal = () => {
+    if (!modalChoice) return;
+    if (typeof modalChoice.close === 'function') {
+      modalChoice.close();
+    } else {
+      modalChoice.removeAttribute('open');
+    }
+    if (lenis) lenis.start();
+  };
+
+  if (closeChoiceModalBtn) {
+    closeChoiceModalBtn.addEventListener('click', closeChoiceModal);
+  }
+
+  if (modalChoice) {
+    modalChoice.addEventListener('click', (e) => {
+      const rect = modalChoice.getBoundingClientRect();
+      const isInDialog = (
+        rect.top <= e.clientY &&
+        e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX &&
+        e.clientX <= rect.left + rect.width
+      );
+      if (!isInDialog) {
+        closeChoiceModal();
+      }
+    });
+
+    // Fecha ao clicar em uma das opções
+    modalChoice.querySelectorAll('.choice-action-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        closeChoiceModal();
+      });
+    });
+  }
+
+  // Abre Modal de Agendamento Tradicional
   const openModal = (preselectValue = null) => {
     if (!modalSchedule) return;
 
@@ -477,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (lenis) lenis.stop();
   };
 
-  // Fecha Modal
+  // Fecha Modal Tradicional
   const closeModal = () => {
     if (!modalSchedule) return;
 
@@ -491,9 +585,16 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   openModalButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      const targetModal = btn.getAttribute('data-modal');
       const preselect = btn.getAttribute('data-preselect');
-      openModal(preselect);
+
+      if (targetModal === 'modal-start-choice' || btn.id === 'modalities-start-btn') {
+        e.preventDefault();
+        openChoiceModal(preselect);
+      } else {
+        openModal(preselect);
+      }
     });
   });
 

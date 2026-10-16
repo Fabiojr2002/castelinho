@@ -27,7 +27,7 @@
     rel="stylesheet">
 
   <!-- Folha de Estilos Principal -->
-  <link rel="stylesheet" href="style.css?v=13">
+  <link rel="stylesheet" href="style.css?v=26">
 
   <!-- CDNs Mandatórias -->
   <!-- Lenis Smooth Scroll -->
@@ -73,12 +73,21 @@
         </ul>
       </nav>
 
-      <!-- Botão CTA no Header: WhatsApp Fale Conosco -->
-      <div class="header-actions">
+      <!-- Botões de Ação no Header: Aula Experimental + WhatsApp -->
+      <div class="header-actions" style="display: flex; align-items: center; gap: 24px;">
+        <!-- Botão Destaque: Agendar Aula Experimental (Azul Destacado #22d3ee) -->
+        <a href="agendar.html" class="btn-header-schedule" id="header-schedule-btn"
+          style="display: inline-flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; color: #22d3ee; font-weight: 700; white-space: nowrap; border: 1.5px solid rgba(34, 211, 238, 0.55); padding: 8px 18px; border-radius: 9999px; background: rgba(0, 188, 212, 0.12); box-shadow: 0 0 18px rgba(34, 211, 238, 0.25); text-decoration: none;">
+          <i data-lucide="sparkles" style="width: 16px; height: 16px; color: #22d3ee; display: inline-block; flex-shrink: 0;"></i>
+          <span style="color: #22d3ee; white-space: nowrap;">Aula Grátis</span>
+        </a>
+
+        <!-- Botão WhatsApp Fale Conosco (Afastado com margem extra) -->
         <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20aulas%20na%20Academia%20Castelinho."
           target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp" id="header-cta-btn"
+          style="margin-left: 10px;"
           aria-label="Fale Conosco pelo WhatsApp - Atendimento 24h">
-          <img src="whats.png" alt="WhatsApp" class="whatsapp-btn-img" width="30" height="30">
+          <img src="whats.png" alt="WhatsApp" class="whatsapp-btn-img" width="28" height="28">
           <div class="whatsapp-btn-text">
             <span class="whatsapp-btn-title">Fale conosco</span>
             <span class="whatsapp-btn-subtitle"><span class="pulse-status-dot"></span>atendimento 24h</span>
@@ -103,15 +112,22 @@
         <a href="#planos" class="mobile-nav-link">Planos</a>
         <a href="#estrutura" class="mobile-nav-link">Estrutura</a>
         <a href="#localizacao" class="mobile-nav-link">Localização</a>
-        <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20aulas%20na%20Academia%20Castelinho."
-          target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp w-full mt-4"
-          style="justify-content: center;">
-          <img src="whats.png" alt="WhatsApp" class="whatsapp-btn-img" width="30" height="30">
-          <div class="whatsapp-btn-text">
-            <span class="whatsapp-btn-title">Fale conosco</span>
-            <span class="whatsapp-btn-subtitle"><span class="pulse-status-dot"></span>atendimento 24h</span>
-          </div>
-        </a>
+        
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
+          <a href="agendar.html" class="btn btn-primary btn-glow w-full" style="justify-content: center; gap: 8px;">
+            <i data-lucide="sparkles"></i>
+            <span>Agendar Aula Grátis</span>
+          </a>
+          <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20aulas%20na%20Academia%20Castelinho."
+            target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp w-full"
+            style="justify-content: center;">
+            <img src="whats.png" alt="WhatsApp" class="whatsapp-btn-img" width="28" height="28">
+            <div class="whatsapp-btn-text">
+              <span class="whatsapp-btn-title">Fale conosco</span>
+              <span class="whatsapp-btn-subtitle"><span class="pulse-status-dot"></span>atendimento 24h</span>
+            </div>
+          </a>
+        </div>
       </nav>
     </div>
   </header>
@@ -164,10 +180,10 @@
 
 
           <div class="hero-actions">
-            <button class="btn btn-primary btn-glow open-modal-btn" data-modal="modal-schedule" id="hero-schedule-btn">
+            <a href="agendar.html" class="btn btn-primary btn-glow" id="hero-schedule-btn">
               <i data-lucide="sparkles"></i>
               <span>Agendar Aula Experimental</span>
-            </button>
+            </a>
             <a href="#modalidades" class="btn btn-secondary" id="hero-explore-btn">
               <span>Conhecer Modalidades</span>
               <i data-lucide="arrow-down-right"></i>
@@ -356,8 +372,8 @@
 
           <!-- Botão START TRAINING Centralizado em Último Lugar -->
           <div class="modalities-bottom-cta">
-            <button class="btn btn-pill-cyan open-modal-btn" data-modal="modal-schedule" data-preselect="Musculação"
-              id="modalities-start-btn">
+            <button class="btn btn-pill-cyan open-modal-btn" data-modal="modal-start-choice"
+              id="modalities-start-btn" aria-label="Abrir opções de atendimento">
               <span>Começar a treinar</span>
               <i data-lucide="arrow-right"></i>
             </button>
@@ -378,7 +394,7 @@
           <!-- PISTA 1 -->
           <div class="modalities-marquee-track">
             <!-- 1. Musculação Biomecânica -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Musculação" role="button" tabindex="0" aria-label="Musculação & Força">
+            <a href="agendar.html?modalidade=musculacao" class="modality-strip-card" aria-label="Agendar Aula Experimental de Musculação & Força">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Musculação Biomecânica na Academia Castelinho" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -394,10 +410,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 2. Natação Adulto -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Natação" role="button" tabindex="0" aria-label="Natação Adulto & Livre">
+            <a href="agendar.html?modalidade=natacao-adulto" class="modality-strip-card" aria-label="Agendar Aula Experimental de Natação Adulto & Raias">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1600965962102-9d260a71890d?auto=format&fit=crop&w=600&q=80" alt="Natação Adulto em piscina aquecida" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -413,10 +429,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 3. Natação Infantil -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Natação" role="button" tabindex="0" aria-label="Natação Infantil & Lúdica">
+            <a href="agendar.html?modalidade=natacao-infantil" class="modality-strip-card" aria-label="Agendar Aula Experimental de Natação Infantil">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?auto=format&fit=crop&w=600&q=80" alt="Natação Infantil lúdica e segura" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -432,10 +448,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 4. Hidroginástica -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Hidroginástica" role="button" tabindex="0" aria-label="Hidroginástica Aquecida">
+            <a href="agendar.html?modalidade=hidroginastica" class="modality-strip-card" aria-label="Agendar Aula Experimental de Hidroginástica Climatizada">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=600&q=80" alt="Hidroginástica em piscina aquecida" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -451,10 +467,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 5. Treino Funcional -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Aulas Coletivas" role="button" tabindex="0" aria-label="Circuito Funcional">
+            <a href="agendar.html?modalidade=coletivas-ritmos" class="modality-strip-card" aria-label="Agendar Aula Experimental de Circuito Funcional">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Treinamento funcional dinâmico" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -470,10 +486,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 6. Ritmos & Dança -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Aulas Coletivas" role="button" tabindex="0" aria-label="Ritmos & Aulas Coletivas">
+            <a href="agendar.html?modalidade=coletivas-ritmos" class="modality-strip-card" aria-label="Agendar Aula Experimental de Ritmos & Ginástica">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80" alt="Aulas de ritmos e ginástica coletiva" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -489,10 +505,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 7. Natação para Bebês -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Natação" role="button" tabindex="0" aria-label="Natação para Bebês">
+            <a href="agendar.html?modalidade=natacao-bebe" class="modality-strip-card" aria-label="Agendar Aula Experimental de Natação para Bebês">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=600&q=80" alt="Natação para bebês com acolhimento" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -508,10 +524,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 8. Pesos Livres & Força -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Musculação" role="button" tabindex="0" aria-label="Área de Pesos Livres">
+            <a href="agendar.html?modalidade=musculacao" class="modality-strip-card" aria-label="Agendar Aula Experimental de Pesos Livres e Musculação">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&q=80" alt="Área de pesos livres e halteres" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -527,13 +543,13 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
 
           <!-- PISTA 2 (CLONE PARA LOOP INFINITO PERFEITO) -->
           <div class="modalities-marquee-track" aria-hidden="true">
             <!-- 1. Musculação Biomecânica -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Musculação" role="button" tabindex="-1">
+            <a href="agendar.html?modalidade=musculacao" class="modality-strip-card" tabindex="-1">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -549,10 +565,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 2. Natação Adulto -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Natação" role="button" tabindex="-1">
+            <a href="agendar.html?modalidade=natacao-adulto" class="modality-strip-card" tabindex="-1">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1600965962102-9d260a71890d?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -568,10 +584,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 3. Natação Infantil -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Natação" role="button" tabindex="-1">
+            <a href="agendar.html?modalidade=natacao-infantil" class="modality-strip-card" tabindex="-1">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -587,10 +603,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 4. Hidroginástica -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Hidroginástica" role="button" tabindex="-1">
+            <a href="agendar.html?modalidade=hidroginastica" class="modality-strip-card" tabindex="-1">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -606,10 +622,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 5. Treino Funcional -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Aulas Coletivas" role="button" tabindex="-1">
+            <a href="agendar.html?modalidade=coletivas-ritmos" class="modality-strip-card" tabindex="-1">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -625,10 +641,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 6. Ritmos & Dança -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Aulas Coletivas" role="button" tabindex="-1">
+            <a href="agendar.html?modalidade=coletivas-ritmos" class="modality-strip-card" tabindex="-1">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -644,10 +660,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 7. Natação para Bebês -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Natação" role="button" tabindex="-1">
+            <a href="agendar.html?modalidade=natacao-bebe" class="modality-strip-card" tabindex="-1">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -663,10 +679,10 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- 8. Pesos Livres & Força -->
-            <div class="modality-strip-card open-modal-btn" data-modal="modal-schedule" data-preselect="Musculação" role="button" tabindex="-1">
+            <a href="agendar.html?modalidade=musculacao" class="modality-strip-card" tabindex="-1">
               <div class="strip-card-media">
                 <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy" class="strip-card-img">
                 <div class="strip-card-gradient"></div>
@@ -682,7 +698,7 @@
                   <span class="strip-card-action">Aula Experimental <i data-lucide="arrow-right"></i></span>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -1161,7 +1177,7 @@
             </ul>
 
             <div class="pricing-card-cta">
-              <button class="pricing-action-btn open-modal-btn" data-modal="modal-schedule" data-preselect="Musculação">
+              <button class="pricing-action-btn open-modal-btn" data-modal="modal-start-choice" data-preselect="Musculação" aria-label="Escolher Plano Musculação">
                 <span>Escolher Musculação</span>
                 <i data-lucide="arrow-right"></i>
               </button>
@@ -1215,7 +1231,7 @@
             </ul>
 
             <div class="pricing-card-cta">
-              <button class="pricing-action-btn open-modal-btn" data-modal="modal-schedule" data-preselect="Natação">
+              <button class="pricing-action-btn open-modal-btn" data-modal="modal-start-choice" data-preselect="Natação & Hidro" aria-label="Escolher Plano Natação & Hidro">
                 <span>Escolher Natação</span>
                 <i data-lucide="arrow-right"></i>
               </button>
@@ -1274,7 +1290,7 @@
             </ul>
 
             <div class="pricing-card-cta">
-              <button class="pricing-action-btn pricing-action-btn-featured open-modal-btn" data-modal="modal-schedule" data-preselect="Combo Total">
+              <button class="pricing-action-btn pricing-action-btn-featured open-modal-btn" data-modal="modal-start-choice" data-preselect="Combo Total VIP" aria-label="Garantir Plano Combo Total VIP">
                 <span>Garantir Combo Total</span>
                 <i data-lucide="arrow-right"></i>
               </button>
@@ -1324,7 +1340,7 @@
             </ul>
 
             <div class="pricing-card-cta">
-              <button class="pricing-action-btn open-modal-btn" data-modal="modal-schedule" data-preselect="Família">
+              <button class="pricing-action-btn open-modal-btn" data-modal="modal-start-choice" data-preselect="Plano Família" aria-label="Consultar Plano Família">
                 <span>Consultar Família</span>
                 <i data-lucide="arrow-right"></i>
               </button>
@@ -1521,10 +1537,10 @@
                 e a energia do nosso time.</p>
             </div>
             <div class="banner-button">
-              <button class="btn btn-primary btn-glow open-modal-btn" data-modal="modal-schedule">
+              <a href="agendar.html" class="btn btn-primary btn-glow" id="structure-visit-btn" aria-label="Agendar Minha Visita na Página de Atendimento">
                 <i data-lucide="calendar-plus"></i>
                 <span>Agendar Minha Visita</span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -1706,10 +1722,10 @@
             <a href="tel:+551135695312">(11) 3569-5312</a>
           </p>
           <div class="footer-cta-box">
-            <button class="btn btn-primary btn-sm open-modal-btn w-full" data-modal="modal-schedule">
+            <a href="agendar.html" class="btn btn-primary btn-sm w-full" aria-label="Agendar Aula Grátis na Página de Atendimento">
               <i data-lucide="calendar"></i>
               <span>Agendar Aula Grátis</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -1725,6 +1741,82 @@
       </div>
     </div>
   </footer>
+
+  <!-- MODAL DE ESCOLHA: PÁGINA DE ATENDIMENTO OU MATRÍCULA NO WHATSAPP -->
+  <dialog id="modal-start-choice" class="glass-dialog choice-dialog">
+    <div class="choice-dialog-content">
+      <div class="dialog-header">
+        <div class="dialog-title-group">
+          <div class="badge-icon-box cyan">
+            <i data-lucide="sparkles"></i>
+          </div>
+          <div>
+            <div class="choice-modal-pill" style="color: #22d3ee !important; font-weight: 800;">
+              <span class="pulse-status-dot"></span>
+              <span>ATENDIMENTO PERSONALIZADO</span>
+            </div>
+            <h3 class="dialog-title" style="margin-top: 2px; color: #ffffff !important; font-weight: 700;">Como você prefere começar?</h3>
+            <p class="dialog-subtitle" style="color: #cbd5e1 !important;">Selecione uma das opções abaixo para darmos início ao seu atendimento:</p>
+          </div>
+        </div>
+        <button class="close-dialog-btn" id="close-choice-modal-btn" aria-label="Fechar Modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div class="choice-cards-container">
+        <!-- OPÇÃO 1: AGENDAR AULA EXPERIMENTAL NA PÁGINA -->
+        <a href="agendar.html" class="choice-action-card card-schedule-option" style="background: #0d172e !important; border: 1.5px solid rgba(0, 188, 212, 0.4) !important;">
+          <div class="choice-card-top">
+            <div class="choice-icon-wrap cyan">
+              <i data-lucide="calendar-check-2" style="color: #22d3ee !important;"></i>
+            </div>
+            <span class="choice-badge-tag cyan" style="color: #22d3ee !important; background: rgba(0, 188, 212, 0.25) !important; border: 1px solid rgba(34, 211, 238, 0.8) !important; font-weight: 700;">100% Gratuita</span>
+          </div>
+          <div class="choice-card-body">
+            <h4 class="choice-card-title" style="color: #ffffff !important; font-weight: 700; font-size: 1.25rem;">Agendar Aula Experimental</h4>
+            <p class="choice-card-desc" style="color: #f1f5f9 !important; font-size: 0.92rem; line-height: 1.6;">
+              Escolha seu dia, turno e horário ideal em nossa plataforma online para conhecer nossa estrutura e piscinas aquecidas sem custo.
+            </p>
+          </div>
+          <div class="choice-card-footer">
+            <span class="choice-btn-action cyan" style="background: linear-gradient(135deg, #00bcd4, #0284c7) !important; color: #020813 !important; font-weight: 800; border-radius: 8px;">
+              <span style="color: #020813 !important;">Página de Atendimento</span>
+              <i data-lucide="arrow-right" style="color: #020813 !important;"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- OPÇÃO 2: INICIAR MATRÍCULA DIRETO NO WHATSAPP -->
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Academia%20Castelinho%20e%20quero%20iniciar%20minha%20matr%C3%ADcula!"
+          target="_blank" rel="noopener noreferrer" class="choice-action-card card-whatsapp-option" style="background: #0d172e !important; border: 1.5px solid rgba(37, 211, 102, 0.4) !important;">
+          <div class="choice-card-top">
+            <div class="choice-icon-wrap green">
+              <img src="whats.png" alt="WhatsApp" class="choice-wa-icon" width="28" height="28">
+            </div>
+            <span class="choice-badge-tag green" style="color: #4ade80 !important; background: rgba(37, 211, 102, 0.25) !important; border: 1px solid rgba(74, 222, 128, 0.8) !important; font-weight: 700;">Atendimento 24h</span>
+          </div>
+          <div class="choice-card-body">
+            <h4 class="choice-card-title" style="color: #ffffff !important; font-weight: 700; font-size: 1.25rem;">Iniciar Minha Matrícula</h4>
+            <p class="choice-card-desc" style="color: #f1f5f9 !important; font-size: 0.92rem; line-height: 1.6;">
+              Converse direto com a recepção no WhatsApp para tirar dúvidas de planos e garantir sua matrícula imediata com condições especiais.
+            </p>
+          </div>
+          <div class="choice-card-footer">
+            <span class="choice-btn-action green" style="background: linear-gradient(135deg, #25d366, #16a34a) !important; color: #ffffff !important; font-weight: 800; border-radius: 8px;">
+              <span style="color: #ffffff !important;">Iniciar no WhatsApp</span>
+              <i data-lucide="arrow-up-right" style="color: #ffffff !important;"></i>
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <div class="choice-dialog-footer" style="color: #cbd5e1 !important; font-size: 0.82rem;">
+        <i data-lucide="shield-check" style="color: #22d3ee !important;"></i>
+        <span style="color: #cbd5e1 !important;">Sem compromisso. Atendimento rápido e direto com a equipe oficial da Academia Castelinho.</span>
+      </div>
+    </div>
+  </dialog>
 
   <!-- MODAL ACESSÍVEL (<dialog>) PARA AGENDAMENTO DE AULA EXPERIMENTAL -->
   <dialog id="modal-schedule" class="glass-dialog">
@@ -1809,7 +1901,7 @@
 
 
   <!-- Script Principal -->
-  <script src="main.js?v=3"></script>
+  <script src="main.js?v=5"></script>
 </body>
 
 </html>

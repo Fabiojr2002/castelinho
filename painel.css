@@ -1,0 +1,985 @@
+/* ==========================================================================
+   ACADEMIA CASTELINHO - PAINEL DA RECEPÇÃO & GESTÃO DE AULAS
+   Design System & Staff Dashboard Stylesheet
+   ========================================================================== */
+
+/* 1. LAYOUT PRINCIPAL DO PAINEL */
+.dashboard-body {
+  background-color: var(--bg-darkest);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-header {
+  height: 72px;
+  background: rgba(7, 11, 22, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.dashboard-header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.dashboard-brand-img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.dashboard-brand-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-brand-title {
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-contrast);
+  letter-spacing: 0.03em;
+}
+
+.dashboard-brand-sub {
+  font-size: 0.72rem;
+  color: var(--cyan-glow);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.dashboard-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.system-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  font-size: 0.8rem;
+  color: var(--emerald-safe);
+  font-weight: 600;
+}
+
+.system-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--emerald-safe);
+  box-shadow: 0 0 10px var(--emerald-safe);
+  animation: pulseLight 1.8s infinite ease-in-out;
+}
+
+/* 2. CONTEÚDO PRINCIPAL DO PAINEL */
+.dashboard-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 28px 24px 60px;
+  flex: 1;
+}
+
+/* 3. CARDS DE MÉTRICAS (KPIs) */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-hover);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.metric-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--card-accent, var(--cyan-primary));
+}
+
+.metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.metric-label {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.metric-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-accent, var(--cyan-primary));
+}
+
+.metric-icon-box i {
+  width: 18px;
+  height: 18px;
+}
+
+.metric-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.metric-value {
+  font-family: var(--font-title);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--text-contrast);
+  line-height: 1;
+}
+
+.metric-trend {
+  font-size: 0.76rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.metric-trend.up {
+  color: var(--emerald-safe);
+}
+
+.metric-trend.neutral {
+  color: var(--text-muted);
+}
+
+/* 4. BARRA DE CONTROLE & FERRAMENTAS (TOOLBAR) */
+.dashboard-toolbar {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  margin-bottom: 24px;
+  backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.toolbar-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Modos de visualização (Tabs) */
+.view-mode-tabs {
+  display: flex;
+  background: rgba(10, 16, 30, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+  gap: 4px;
+}
+
+.view-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.view-tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.view-tab-btn.active {
+  background: rgba(0, 188, 212, 0.2);
+  color: var(--cyan-glow);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.view-tab-btn i {
+  width: 16px;
+  height: 16px;
+}
+
+/* Navegação por Data */
+.date-navigator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10, 16, 30, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+}
+
+.date-nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.date-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+.date-nav-btn i {
+  width: 16px;
+  height: 16px;
+}
+
+.date-current-picker {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.date-current-picker:focus {
+  outline: none;
+}
+
+.btn-today-shortcut {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: rgba(0, 188, 212, 0.12);
+  border: 1px solid rgba(0, 188, 212, 0.3);
+  color: var(--cyan-glow);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-today-shortcut:hover {
+  background: var(--cyan-primary);
+  color: #030a16;
+}
+
+/* Ações da Toolbar (Novo Agendamento, Exportar) */
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Linha de Filtros Secundários */
+.toolbar-filters-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.search-input-wrap {
+  flex: 1;
+  min-width: 240px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-wrap i {
+  position: absolute;
+  left: 14px;
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.search-input-field {
+  width: 100%;
+  padding: 9px 14px 9px 38px;
+  background: rgba(10, 16, 30, 0.9);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  transition: var(--transition-smooth);
+}
+
+.search-input-field:focus {
+  outline: none;
+  border-color: var(--cyan-primary);
+  box-shadow: 0 0 14px rgba(0, 188, 212, 0.25);
+}
+
+.filter-select {
+  padding: 9px 14px;
+  background: rgba(10, 16, 30, 0.9);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--cyan-primary);
+}
+
+/* 5. VISÃO 1: AGENDA DIÁRIA (TIMELINE POR TURNOS) */
+.daily-view-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.shift-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  backdrop-filter: blur(16px);
+}
+
+.shift-title-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.shift-title-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.shift-title-box i {
+  width: 20px;
+  height: 20px;
+  color: var(--cyan-glow);
+}
+
+.shift-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-contrast);
+}
+
+.shift-counter-badge {
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 188, 212, 0.12);
+  color: var(--cyan-glow);
+  border: 1px solid rgba(0, 188, 212, 0.3);
+}
+
+/* Grade de Cards de Agendamento */
+.bookings-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.booking-item-card {
+  background: rgba(10, 16, 30, 0.75);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  transition: var(--transition-smooth);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.booking-item-card:hover {
+  border-color: var(--border-hover);
+  background: rgba(14, 22, 42, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.booking-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.booking-time-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cyan-glow);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.booking-time-badge i {
+  width: 16px;
+  height: 16px;
+}
+
+/* Status Badges - Totalmente protegidos contra quebra de linha ou corte */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.status-pill .status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.status-pill.confirmed {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: var(--emerald-safe);
+}
+.status-pill.confirmed .status-dot {
+  background: var(--emerald-safe);
+  box-shadow: 0 0 6px var(--emerald-safe);
+}
+
+.status-pill.pending {
+  background: rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  color: var(--orange-energy);
+}
+.status-pill.pending .status-dot {
+  background: var(--orange-energy);
+  box-shadow: 0 0 6px var(--orange-energy);
+}
+
+.status-pill.completed {
+  background: rgba(99, 102, 241, 0.18);
+  border: 1px solid rgba(129, 140, 248, 0.5);
+  color: #a5b4fc;
+}
+.status-pill.completed .status-dot {
+  background: #818cf8;
+  box-shadow: 0 0 6px #818cf8;
+}
+
+.status-pill.cancelled {
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.4);
+  color: var(--rose-warm);
+}
+.status-pill.cancelled .status-dot {
+  background: var(--rose-warm);
+  box-shadow: 0 0 6px var(--rose-warm);
+}
+
+/* Informações do Aluno */
+.booking-student-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.student-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-contrast);
+}
+
+.student-modality-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--cyan-primary);
+  font-weight: 600;
+}
+
+.student-modality-badge i {
+  width: 14px;
+  height: 14px;
+}
+
+.student-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.student-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.student-meta-item i {
+  width: 13px;
+  height: 13px;
+  color: var(--text-muted);
+}
+
+/* Ações Rápidas no Card */
+.booking-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 8px;
+}
+
+.btn-card-action {
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+}
+
+.btn-card-action i {
+  width: 14px;
+  height: 14px;
+}
+
+.btn-action-whatsapp {
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  color: #25d366;
+}
+
+.btn-action-whatsapp:hover {
+  background: #25d366;
+  color: #ffffff;
+}
+
+.btn-action-checkin {
+  background: rgba(0, 188, 212, 0.12);
+  border: 1px solid rgba(0, 188, 212, 0.3);
+  color: var(--cyan-glow);
+}
+
+.btn-action-checkin:hover {
+  background: var(--cyan-primary);
+  color: #030a16;
+}
+
+.btn-action-more {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 6px 8px;
+}
+
+.btn-action-more:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+/* Empty State */
+.empty-shift-notice {
+  padding: 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* 6. VISÃO 2: CALENDÁRIO MENSAL (MONTH VIEW) */
+.month-view-container {
+  display: none;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  backdrop-filter: blur(16px);
+}
+
+.month-view-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.month-view-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-contrast);
+}
+
+.month-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.month-cal-header {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  padding-bottom: 8px;
+}
+
+.month-day-cell {
+  min-height: 110px;
+  background: rgba(10, 16, 30, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--transition-smooth);
+}
+
+.month-day-cell:hover:not(.disabled) {
+  border-color: var(--cyan-primary);
+  background: rgba(14, 22, 42, 0.85);
+  transform: translateY(-2px);
+}
+
+.month-day-cell.selected {
+  border-color: var(--cyan-glow);
+  box-shadow: 0 0 16px rgba(0, 188, 212, 0.35);
+  background: rgba(0, 188, 212, 0.08);
+}
+
+.month-day-cell.today {
+  border-color: var(--cyan-primary);
+}
+
+.month-day-cell.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.month-day-number {
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.month-day-cell.today .month-day-number {
+  color: var(--cyan-glow);
+}
+
+.month-day-badge-count {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: rgba(0, 188, 212, 0.15);
+  color: var(--cyan-glow);
+  text-align: center;
+}
+
+.month-day-badge-count.hot {
+  background: rgba(249, 115, 22, 0.2);
+  color: var(--orange-energy);
+}
+
+/* 7. VISÃO 3: TABELA DETALHADA (LIST VIEW) */
+.list-view-container {
+  display: none;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  backdrop-filter: blur(16px);
+  overflow-x: auto;
+}
+
+.staff-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.staff-table th {
+  padding: 14px 16px;
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.staff-table td {
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+}
+
+.staff-table th:nth-child(6),
+.staff-table td:nth-child(6) {
+  white-space: nowrap;
+  min-width: 155px;
+}
+
+.staff-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.table-student-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-student-name {
+  font-weight: 700;
+  color: var(--text-contrast);
+}
+
+.table-student-code {
+  font-size: 0.74rem;
+  color: var(--cyan-glow);
+  font-family: var(--font-title);
+}
+
+/* 8. MODAL DE NOVO AGENDAMENTO MANUAL & EDIÇÃO */
+.dialog-staff {
+  border: 1px solid rgba(0, 188, 212, 0.4);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, #091222 0%, #050811 100%);
+  padding: 32px;
+  max-width: 620px;
+  width: 92%;
+  margin: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(0, 188, 212, 0.25);
+  color: var(--text-primary);
+  backdrop-filter: blur(25px);
+}
+
+.dialog-staff::backdrop {
+  background: rgba(3, 7, 18, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.dialog-staff-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dialog-staff-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-contrast);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dialog-staff-title i {
+  color: var(--cyan-primary);
+}
+
+.dialog-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  transition: var(--transition-smooth);
+}
+
+.dialog-close-btn:hover {
+  color: var(--text-contrast);
+}
+
+.dialog-close-btn i {
+  width: 20px;
+  height: 20px;
+}
+
+.form-staff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.form-staff-full {
+  grid-column: 1 / -1;
+}
+
+.dialog-staff-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* 9. RESPONSIVIDADE DO PAINEL */
+@media (max-width: 1200px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header-container {
+    padding: 0 16px;
+  }
+
+  .system-status-indicator {
+    display: none;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar-top-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .view-mode-tabs {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .view-tab-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 8px;
+    font-size: 0.78rem;
+  }
+
+  .date-navigator {
+    justify-content: space-between;
+  }
+
+  .bookings-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-staff-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .month-calendar-grid {
+    gap: 4px;
+  }
+
+  .month-day-cell {
+    min-height: 80px;
+    padding: 6px;
+  }
+}

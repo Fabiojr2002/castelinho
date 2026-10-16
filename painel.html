@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel da Recepção & Instrutores | Academia Castelinho</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Folhas de Estilo -->
+  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="painel.css?v=3">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="dashboard-body">
+
+  <!-- HEADER DO PAINEL INTERNO -->
+  <header class="dashboard-header">
+    <div class="dashboard-header-container">
+      <a href="index.html" class="dashboard-brand" title="Voltar ao Site Principal">
+        <img src="logo.png" alt="Academia Castelinho" class="dashboard-brand-img">
+        <div class="dashboard-brand-info">
+          <span class="dashboard-brand-title">CASTELINHO RECEPÇÃO</span>
+          <span class="dashboard-brand-sub">Controle de Aulas Experimentais</span>
+        </div>
+      </a>
+
+      <div class="dashboard-header-actions">
+        <!-- Indicador de Status do Sistema -->
+        <div class="system-status-indicator">
+          <span class="system-status-dot"></span>
+          <span>Recepção Online & Sincronizada</span>
+        </div>
+
+        <!-- Atalho para Agendamento do Aluno -->
+        <a href="agendar.html" target="_blank" class="btn btn-secondary" style="padding: 8px 14px; font-size: 0.82rem;">
+          <i data-lucide="external-link"></i>
+          <span>Página do Aluno</span>
+        </a>
+
+        <!-- Atalho para Home -->
+        <a href="index.html" class="btn btn-secondary" style="padding: 8px 14px; font-size: 0.82rem;">
+          <i data-lucide="home"></i>
+          <span>Site Oficial</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL DO PAINEL -->
+  <main class="dashboard-main">
+
+    <!-- CABEÇALHO DO DASHBOARD & TITULAÇÃO -->
+    <div style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
+      <div>
+        <h1 style="font-size: 1.85rem; font-weight: 700; color: var(--text-contrast); margin-bottom: 6px;">
+          Agenda de Aulas Experimentais
+        </h1>
+        <p style="font-size: 0.92rem; color: var(--text-secondary);" id="selected-date-label">
+          Acompanhe os horários, presenças e contato com os alunos em tempo real.
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <button type="button" class="btn btn-primary btn-glow" id="btn-new-booking-modal" style="padding: 10px 18px; font-size: 0.88rem;">
+          <i data-lucide="plus-circle"></i>
+          <span>Novo Agendamento Manual</span>
+        </button>
+        <button type="button" class="btn btn-secondary" id="btn-export-csv" style="padding: 10px 16px; font-size: 0.88rem;" title="Baixar lista para Excel">
+          <i data-lucide="download"></i>
+          <span>Exportar (.CSV)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- CARDS DE KPIS / MÉTRICAS EM TEMPO REAL -->
+    <section class="metrics-grid" aria-label="Métricas Principais">
+      <!-- Métrica 1: Aulas Hoje -->
+      <div class="metric-card" style="--card-accent: var(--cyan-primary);">
+        <div class="metric-header">
+          <span class="metric-label">Aulas Experimentais Hoje</span>
+          <div class="metric-icon-box">
+            <i data-lucide="calendar-check"></i>
+          </div>
+        </div>
+        <div class="metric-value-row">
+          <span class="metric-value" id="metric-today-count">0</span>
+          <span class="metric-trend up">
+            <i data-lucide="trending-up"></i> na agenda de hoje
+          </span>
+        </div>
+      </div>
+
+      <!-- Métrica 2: Aulas no Mês -->
+      <div class="metric-card" style="--card-accent: var(--blue-athletic);">
+        <div class="metric-header">
+          <span class="metric-label">Total Agendado no Mês</span>
+          <div class="metric-icon-box">
+            <i data-lucide="calendar-range"></i>
+          </div>
+        </div>
+        <div class="metric-value-row">
+          <span class="metric-value" id="metric-month-count">0</span>
+          <span class="metric-trend neutral">mês atual</span>
+        </div>
+      </div>
+
+      <!-- Métrica 3: Taxa de Presença / Check-in -->
+      <div class="metric-card" style="--card-accent: var(--emerald-safe);">
+        <div class="metric-header">
+          <span class="metric-label">Taxa de Presença / Check-in</span>
+          <div class="metric-icon-box">
+            <i data-lucide="user-check"></i>
+          </div>
+        </div>
+        <div class="metric-value-row">
+          <span class="metric-value" id="metric-presence-rate">88%</span>
+          <span class="metric-trend up">
+            <i data-lucide="sparkles"></i> comparecimento
+          </span>
+        </div>
+      </div>
+
+      <!-- Métrica 4: Aguardando Contato / Pendentes -->
+      <div class="metric-card" style="--card-accent: var(--orange-energy);">
+        <div class="metric-header">
+          <span class="metric-label">Aguardando Confirmação</span>
+          <div class="metric-icon-box">
+            <i data-lucide="clock"></i>
+          </div>
+        </div>
+        <div class="metric-value-row">
+          <span class="metric-value" id="metric-pending-count">0</span>
+          <span class="metric-trend neutral">para contatar</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BARRA DE FERRAMENTAS & FILTROS (TOOLBAR) -->
+    <section class="dashboard-toolbar">
+      <div class="toolbar-top-row">
+        <!-- Alternador de Modos de Visualização -->
+        <div class="view-mode-tabs">
+          <button type="button" class="view-tab-btn active" id="tab-view-daily">
+            <i data-lucide="calendar-days"></i>
+            <span>Visão Diária (Turnos)</span>
+          </button>
+          <button type="button" class="view-tab-btn" id="tab-view-month">
+            <i data-lucide="calendar"></i>
+            <span>Visão Mensal</span>
+          </button>
+          <button type="button" class="view-tab-btn" id="tab-view-list">
+            <i data-lucide="list"></i>
+            <span>Lista Geral</span>
+          </button>
+        </div>
+
+        <!-- Seletor e Navegador de Data -->
+        <div class="date-navigator">
+          <button type="button" class="date-nav-btn" id="btn-prev-date" title="Dia ou Mês Anterior">
+            <i data-lucide="chevron-left"></i>
+          </button>
+          <input type="date" class="date-current-picker" id="date-current-picker">
+          <button type="button" class="date-nav-btn" id="btn-next-date" title="Próximo Dia ou Mês">
+            <i data-lucide="chevron-right"></i>
+          </button>
+          <button type="button" class="btn-today-shortcut" id="btn-today-shortcut">Hoje</button>
+        </div>
+      </div>
+
+      <!-- Linha Secundária de Filtros -->
+      <div class="toolbar-filters-row">
+        <!-- Campo de Busca em Tempo Real -->
+        <div class="search-input-wrap">
+          <i data-lucide="search"></i>
+          <input type="text" class="search-input-field" id="staff-search-input" placeholder="Buscar por aluno, telefone ou código...">
+        </div>
+
+        <!-- Filtro por Modalidade -->
+        <select class="filter-select" id="staff-filter-modality" aria-label="Filtrar por Modalidade">
+          <option value="all">Todas as Modalidades</option>
+          <option value="natacao-adulto">Natação Adulto</option>
+          <option value="natacao-infantil">Natação Infantil</option>
+          <option value="natacao-bebe">Natação Bebê</option>
+          <option value="hidroginastica">Hidroginástica</option>
+          <option value="musculacao">Musculação & Força</option>
+          <option value="coletivas-ritmos">Aulas Coletivas / Ritmos</option>
+        </select>
+
+        <!-- Filtro por Status -->
+        <select class="filter-select" id="staff-filter-status" aria-label="Filtrar por Status">
+          <option value="all">Todos os Status</option>
+          <option value="confirmed">Confirmados</option>
+          <option value="pending">Aguardando Confirmação</option>
+          <option value="completed">Check-in Realizado</option>
+          <option value="cancelled">Cancelados</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- VISÃO 1: DIÁRIA COM TURNOS (MANHÃ / TARDE / NOITE) -->
+    <div class="daily-view-container" id="container-daily-view">
+
+      <!-- Turno Manhã -->
+      <section class="shift-section">
+        <div class="shift-title-header">
+          <div class="shift-title-box">
+            <i data-lucide="sun"></i>
+            <h2 class="shift-name">Turno da Manhã (06h às 12h)</h2>
+          </div>
+          <span class="shift-counter-badge" id="morning-count">0 agendamentos</span>
+        </div>
+        <div class="bookings-card-grid" id="morning-bookings-list">
+          <!-- Preenchido via JavaScript -->
+        </div>
+      </section>
+
+      <!-- Turno Tarde -->
+      <section class="shift-section">
+        <div class="shift-title-header">
+          <div class="shift-title-box">
+            <i data-lucide="sunset"></i>
+            <h2 class="shift-name">Turno da Tarde (12h às 18h)</h2>
+          </div>
+          <span class="shift-counter-badge" id="afternoon-count">0 agendamentos</span>
+        </div>
+        <div class="bookings-card-grid" id="afternoon-bookings-list">
+          <!-- Preenchido via JavaScript -->
+        </div>
+      </section>
+
+      <!-- Turno Noite -->
+      <section class="shift-section">
+        <div class="shift-title-header">
+          <div class="shift-title-box">
+            <i data-lucide="moon"></i>
+            <h2 class="shift-name">Turno da Noite (18h às 22h)</h2>
+          </div>
+          <span class="shift-counter-badge" id="evening-count">0 agendamentos</span>
+        </div>
+        <div class="bookings-card-grid" id="evening-bookings-list">
+          <!-- Preenchido via JavaScript -->
+        </div>
+      </section>
+
+    </div>
+
+    <!-- VISÃO 2: CALENDÁRIO MENSAL (MONTH VIEW) -->
+    <div class="month-view-container" id="container-month-view">
+      <div class="month-view-header">
+        <h2 class="month-view-title" id="month-view-title">Outubro de 2026</h2>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">
+          <i data-lucide="info" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i>
+          Clique em qualquer dia para abrir a agenda detalhada
+        </span>
+      </div>
+
+      <div class="month-calendar-grid" id="month-calendar-grid">
+        <!-- Gerado via JavaScript -->
+      </div>
+    </div>
+
+    <!-- VISÃO 3: TABELA DETALHADA / LISTA GERAL -->
+    <div class="list-view-container" id="container-list-view">
+      <table class="staff-table">
+        <thead>
+          <tr>
+            <th>Aluno & Código</th>
+            <th>Modalidade</th>
+            <th>Data & Horário</th>
+            <th>Telefone / WhatsApp</th>
+            <th>Professor Atribuído</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="staff-table-body">
+          <!-- Preenchido via JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- MODAL PARA ADICIONAR NOVO AGENDAMENTO MANUAL (RECEPÇÃO) -->
+  <dialog class="dialog-staff" id="dialog-staff-booking">
+    <div class="dialog-staff-header">
+      <h2 class="dialog-staff-title">
+        <i data-lucide="plus-circle"></i>
+        <span>Novo Agendamento Manual</span>
+      </h2>
+      <button type="button" class="dialog-close-btn" id="btn-close-dialog" aria-label="Fechar Modal">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+
+    <form id="form-staff-booking">
+      <div class="form-staff-grid">
+        <div class="form-group-booking">
+          <label for="staff-add-name" class="form-label-booking">Nome do Aluno:</label>
+          <input type="text" id="staff-add-name" class="input-booking-field" placeholder="Ex: Lucas Ferreira" required>
+        </div>
+
+        <div class="form-group-booking">
+          <label for="staff-add-phone" class="form-label-booking">WhatsApp do Aluno:</label>
+          <input type="tel" id="staff-add-phone" class="input-booking-field" placeholder="(11) 98888-7777" required>
+        </div>
+
+        <div class="form-group-booking">
+          <label for="staff-add-modality" class="form-label-booking">Modalidade:</label>
+          <select id="staff-add-modality" class="input-booking-field" required>
+            <option value="natacao-adulto">Natação Adulto</option>
+            <option value="natacao-infantil">Natação Infantil (3 a 12 anos)</option>
+            <option value="natacao-bebe">Natação para Bebês (6m a 3 anos)</option>
+            <option value="hidroginastica">Hidroginástica</option>
+            <option value="musculacao">Musculação & Treino de Força</option>
+            <option value="coletivas-ritmos">Aulas Coletivas & Ritmos</option>
+          </select>
+        </div>
+
+        <div class="form-group-booking">
+          <label for="staff-add-instructor" class="form-label-booking">Professor / Instrutor:</label>
+          <input type="text" id="staff-add-instructor" class="input-booking-field" placeholder="Ex: Prof. Marcos / Profª Juliana">
+        </div>
+
+        <div class="form-group-booking">
+          <label for="staff-add-date" class="form-label-booking">Data da Aula:</label>
+          <input type="date" id="staff-add-date" class="input-booking-field" required>
+        </div>
+
+        <div class="form-group-booking">
+          <label for="staff-add-time" class="form-label-booking">Horário:</label>
+          <select id="staff-add-time" class="input-booking-field" required>
+            <option value="07:00">07:00</option>
+            <option value="08:30" selected>08:30</option>
+            <option value="10:00">10:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:30">16:30</option>
+            <option value="18:00">18:00</option>
+            <option value="19:15">19:15</option>
+            <option value="20:15">20:15</option>
+          </select>
+        </div>
+
+        <div class="form-group-booking form-staff-full">
+          <label for="staff-add-notes" class="form-label-booking">Observações / Restrições do Aluno:</label>
+          <input type="text" id="staff-add-notes" class="input-booking-field" placeholder="Ex: Nunca nadou, recomendação ortopédica...">
+        </div>
+      </div>
+
+      <div class="dialog-staff-actions">
+        <button type="button" class="btn btn-secondary" onclick="document.getElementById('dialog-staff-booking').close()">
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-primary btn-glow">
+          <i data-lucide="check"></i>
+          <span>Salvar Agendamento</span>
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Script do Painel -->
+  <script src="painel.js?v=3"></script>
+</body>
+
+</html>

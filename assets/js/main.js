@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ==========================================================================
  * ACADEMIA CASTELINHO - NATAÇÃO & FITNESS
  * Creative Motion & Interaction Engine (Vanilla ES6+)
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (waLink) {
         const text = `Olá! Vim pelo site da Academia Castelinho e quero iniciar minha matrícula no plano ${planName}!`;
-        waLink.href = `https://wa.me/5511999999999?text=${encodeURIComponent(text)}`;
+        waLink.href = `https://wa.me/5511996441498?text=${encodeURIComponent(text)}`;
       }
 
       if (subtitle) {
@@ -495,7 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (waLink) {
         const text = 'Olá! Vim pelo site da Academia Castelinho e quero iniciar minha matrícula!';
-        waLink.href = `https://wa.me/5511999999999?text=${encodeURIComponent(text)}`;
+        waLink.href = `https://wa.me/5511996441498?text=${encodeURIComponent(text)}`;
       }
       if (subtitle) {
         subtitle.textContent = 'Selecione uma das opções abaixo para darmos início ao seu atendimento:';
@@ -632,7 +632,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = `Olá, equipe Academia Castelinho! 👋%0A%0AGostaria de agendar uma *Aula Experimental gratuita*:%0A%0A👤 *Nome:* ${encodeURIComponent(name)}%0A🏊‍♂️ *Modalidade:* ${encodeURIComponent(modality)}%0A⏰ *Turno Preferido:* ${encodeURIComponent(period)}%0A📝 *Observações:* ${encodeURIComponent(notes)}%0A%0APoderiam me informar os dias e horários disponíveis? Obrigado!`;
 
       // Telefone oficial comercial (pode ser ajustado para o número específico da academia)
-      const whatsappNumber = '5511999999999';
+      const whatsappNumber = '5511996441498';
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
       // Abre WhatsApp

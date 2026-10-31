@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ==========================================================================
  * ACADEMIA CASTELINHO - SISTEMA DE AGENDAMENTO DE AULA EXPERIMENTAL
  * Creative Interaction & Booking Flow Engine (Vanilla ES6+)
@@ -637,7 +637,7 @@ _Olá equipe Castelinho! Agendei minha aula experimental pelo site oficial e gos
 
     const encodedMsg = encodeURIComponent(msg);
     // WhatsApp oficial da Academia Castelinho
-    btnOpenWhatsapp.href = `https://wa.me/5511999999999?text=${encodedMsg}`;
+    btnOpenWhatsapp.href = `https://wa.me/5511996441498?text=${encodedMsg}`;
   }
 
   // 14. GERADOR DE ARQUIVO .ICS (CALENDÁRIO / GOOGLE / APPLE)

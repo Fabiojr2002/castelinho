@@ -1,18 +1,4 @@
 {
-  "version": 2,
-  "name": "academia-castelinho",
-  "builds": [
-    {
-      "src": "**/*.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/assets/media/(.*)",

@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    ACADEMIA CASTELINHO - NATAÇÃO & FITNESS
    Design System & Modern Creative Stylesheet
    ========================================================================== */
@@ -1339,7 +1339,7 @@ h6 {
   right: 0;
   width: 60%;
   height: 480px;
-  background-image: url('modalidade-hero.jpg');
+  background-image: url('../media/modalidade-hero.jpg');
   background-size: cover;
   background-position: center right;
   z-index: 1;

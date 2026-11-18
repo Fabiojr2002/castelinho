@@ -922,18 +922,17 @@ h6 {
   position: relative;
   z-index: 10;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 36px;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
   max-width: 1360px;
-  margin: auto auto; /* Centralizado perfeitamente no espaço da tela */
+  margin: clamp(16px, 3.5vh, 46px) auto auto; /* Posicionado mais para cima */
   padding: 0 32px;
 }
 
 .hero-alvo-left {
-  flex: 1;
-  max-width: 680px;
+  max-width: 760px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -942,11 +941,11 @@ h6 {
 
 .hero-alvo-title {
   font-family: 'Anton', sans-serif;
-  font-size: clamp(38px, 4.6vw, 68px);
+  font-size: clamp(36px, 4.2vw, 64px);
   line-height: 0.94;
   letter-spacing: 0.01em;
   text-transform: uppercase;
-  margin: 0 0 16px 0;
+  margin: 0 0 14px 0;
   display: flex;
   flex-direction: column;
 }
@@ -966,12 +965,12 @@ h6 {
 
 .hero-alvo-sub {
   font-family: 'Inter Tight', 'Inter', sans-serif;
-  font-size: clamp(15px, 1.2vw, 18px);
+  font-size: clamp(14px, 1.15vw, 17px);
   font-weight: 400;
   color: #e2e8f0;
-  line-height: 1.48;
-  margin: 0 0 28px 0;
-  max-width: 520px;
+  line-height: 1.45;
+  margin: 0 0 24px 0;
+  max-width: 500px;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
 }
 
@@ -980,6 +979,7 @@ h6 {
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
+  margin-bottom: 28px;
 }
 
 .btn-alvo-primary {
@@ -1065,13 +1065,14 @@ h6 {
   color: #ffffff !important;
 }
 
-/* Coluna Direita: Cards Alvo02 */
-.hero-alvo-right {
+/* ========================================================
+   Cards Alvo02 Alinhados Lado a Lado Abaixo dos Botões
+   ======================================================== */
+.hero-alvo-cards {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 22px;
-  flex-shrink: 0;
+  align-items: stretch;
+  gap: 18px;
+  flex-wrap: wrap;
 }
 
 /* Card 1: Modalidades com Avatares */
@@ -1081,23 +1082,27 @@ h6 {
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-radius: 20px;
-  padding: 18px 22px;
+  padding: 16px 20px;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), 0 0 30px rgba(0, 188, 212, 0.08);
   width: 250px;
   box-sizing: border-box;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-alvo-modalities:hover {
   transform: translateY(-4px);
-  border-color: rgba(0, 188, 212, 0.35);
+  border-color: rgba(0, 188, 212, 0.45);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.65), 0 0 35px rgba(0, 188, 212, 0.2);
 }
 
 .card-alvo-top {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .alvo-stat-number {
@@ -1137,12 +1142,12 @@ h6 {
 }
 
 .alvo-avatar {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   border: 2.5px solid #08101c;
   object-fit: cover;
-  margin-left: -13px;
+  margin-left: -12px;
   flex-shrink: 0;
 }
 
@@ -1151,15 +1156,15 @@ h6 {
 }
 
 .alvo-avatar-action {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: #00bcd4;
   border: 2.5px solid #08101c;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: -13px;
+  margin-left: -12px;
   flex-shrink: 0;
   color: #030a16;
   transition: transform 0.25s ease, background-color 0.25s ease;
@@ -1167,8 +1172,8 @@ h6 {
 
 .alvo-avatar-action i,
 .alvo-avatar-action svg {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
   stroke-width: 2.8;
 }
 
@@ -1179,14 +1184,29 @@ h6 {
 
 /* Card 2: Rating com Selo Estrela */
 .card-alvo-rating {
+  background: rgba(8, 16, 28, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 20px;
+  padding: 16px 22px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), 0 0 30px rgba(0, 188, 212, 0.08);
+  box-sizing: border-box;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 15px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-alvo-rating:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 188, 212, 0.45);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.65), 0 0 35px rgba(0, 188, 212, 0.2);
 }
 
 .rating-badge-glow {
-  width: 58px;
-  height: 58px;
+  width: 54px;
+  height: 54px;
   flex-shrink: 0;
   filter: drop-shadow(0 0 16px rgba(0, 188, 212, 0.55));
   transition: transform 0.3s ease;
@@ -1215,20 +1235,20 @@ h6 {
 
 .rating-score-val {
   font-family: 'Anton', sans-serif;
-  font-size: 34px;
+  font-size: 32px;
   line-height: 1;
   color: #ffffff;
 }
 
 .rating-star-svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   display: block;
 }
 
 .rating-label-title {
   font-family: 'Inter', sans-serif;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 600;
   color: #ffffff;
   margin: 3px 0 0 0;
@@ -1384,12 +1404,8 @@ h6 {
     margin-top: 0;
   }
 
-  .hero-alvo-right {
-    align-items: flex-start;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  .hero-alvo-cards {
+    gap: 16px;
   }
 
   .hero-marque-divider {
@@ -1445,19 +1461,17 @@ h6 {
     height: 52px;
   }
 
-  .hero-alvo-right {
+  .hero-alvo-cards {
     flex-direction: column;
     align-items: stretch;
-    gap: 20px;
-  }
-
-  .card-alvo-modalities {
-    width: 100%;
-    max-width: 340px;
-  }
-
-  .card-alvo-rating {
     gap: 14px;
+    width: 100%;
+  }
+
+  .card-alvo-modalities,
+  .card-alvo-rating {
+    width: 100%;
+    max-width: 100%;
   }
 
   .hero-marque-divider {

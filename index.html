@@ -84,7 +84,7 @@
     rel="stylesheet">
 
   <!-- Folha de Estilos Principal -->
-  <link rel="stylesheet" href="assets/css/style.css?v=45">
+  <link rel="stylesheet" href="assets/css/style.css?v=46">
 
   <!-- CDNs Mandatórias -->
   <!-- Lenis Smooth Scroll -->
@@ -214,7 +214,7 @@
 
       <!-- Conteúdo Hero Estilo Alvo02 Adaptado às Cores da Castelinho -->
       <div class="container hero-alvo-container">
-        <!-- Coluna Esquerda: Textos de Alto Impacto e Botões -->
+        <!-- Bloco Esquerdo Unificado: Título, Subtítulo, Botões e Cards Lado a Lado -->
         <div class="hero-alvo-left">
           <div class="hero-alvo-heading">
             <h1 class="hero-alvo-title">
@@ -241,41 +241,41 @@
               <span>VER PLANOS</span>
             </a>
           </div>
-        </div>
 
-        <!-- Coluna Direita: Cards Alvo02 (Modalidades e Avaliações) -->
-        <div class="hero-alvo-right">
-          <!-- Card 1: Modalidades com Avatares Sobrepostos -->
-          <div class="card-alvo-modalities">
-            <div class="card-alvo-top">
-              <span class="alvo-stat-number">15+</span>
-              <div class="alvo-stat-text">
-                <span class="alvo-stat-title">Modalidades</span>
-                <span class="alvo-stat-desc">Para todos os objetivos</span>
+          <!-- Cards Alvo02 Alinhados Lado a Lado Abaixo dos Botões -->
+          <div class="hero-alvo-cards">
+            <!-- Card 1: Modalidades com Avatares Sobrepostos -->
+            <div class="card-alvo-modalities">
+              <div class="card-alvo-top">
+                <span class="alvo-stat-number">15+</span>
+                <div class="alvo-stat-text">
+                  <span class="alvo-stat-title">Modalidades</span>
+                  <span class="alvo-stat-desc">Para todos os objetivos</span>
+                </div>
+              </div>
+              <div class="card-alvo-avatars">
+                <img src="assets/media/avatar-1.webp" alt="Aluno Castelinho" class="alvo-avatar">
+                <img src="assets/media/avatar-2.webp" alt="Aluno Castelinho" class="alvo-avatar">
+                <img src="assets/media/avatar-3.webp" alt="Aluno Castelinho" class="alvo-avatar">
+                <div class="alvo-avatar-action" aria-hidden="true">
+                  <i data-lucide="arrow-up-right"></i>
+                </div>
               </div>
             </div>
-            <div class="card-alvo-avatars">
-              <img src="assets/media/avatar-1.webp" alt="Aluno Castelinho" class="alvo-avatar">
-              <img src="assets/media/avatar-2.webp" alt="Aluno Castelinho" class="alvo-avatar">
-              <img src="assets/media/avatar-3.webp" alt="Aluno Castelinho" class="alvo-avatar">
-              <div class="alvo-avatar-action" aria-hidden="true">
-                <i data-lucide="arrow-up-right"></i>
-              </div>
-            </div>
-          </div>
 
-          <!-- Card 2: Selo Circular Estrela + Nota dos Alunos -->
-          <div class="card-alvo-rating">
-            <div class="rating-badge-glow">
-              <img src="assets/media/hero-star-badge.svg" alt="Destaque de Avaliação" class="rating-badge-icon">
-            </div>
-            <div class="rating-text-block">
-              <div class="rating-score-row">
-                <span class="rating-score-val">4.8</span>
-                <img src="assets/media/star-icon.svg" alt="Estrela" class="rating-star-svg">
+            <!-- Card 2: Selo Circular Estrela + Nota dos Alunos -->
+            <div class="card-alvo-rating">
+              <div class="rating-badge-glow">
+                <img src="assets/media/hero-star-badge.svg" alt="Destaque de Avaliação" class="rating-badge-icon">
               </div>
-              <p class="rating-label-title">Avaliação dos alunos</p>
-              <p class="rating-label-sub">467 avaliações</p>
+              <div class="rating-text-block">
+                <div class="rating-score-row">
+                  <span class="rating-score-val">4.8</span>
+                  <img src="assets/media/star-icon.svg" alt="Estrela" class="rating-star-svg">
+                </div>
+                <p class="rating-label-title">Avaliação dos alunos</p>
+                <p class="rating-label-sub">467 avaliações</p>
+              </div>
             </div>
           </div>
         </div>

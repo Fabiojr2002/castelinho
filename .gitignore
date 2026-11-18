@@ -2,5 +2,9 @@
 Thumbs.db
 *.log
 node_modules/
+server.js
+*-backup.mp4
+*-original.mp4
+*-swimmer.mp4
 .vscode/
 .idea/

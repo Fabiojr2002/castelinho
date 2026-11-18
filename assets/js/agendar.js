@@ -665,7 +665,7 @@ CALSCALE:GREGORIAN
 BEGIN:VEVENT
 SUMMARY:Aula Experimental: ${bookingState.modality.name} - Academia Castelinho
 DESCRIPTION:Sua aula experimental gratuita na Academia Castelinho.\\nCódigo: ${bookingState.bookingCode}\\nModalidade: ${bookingState.modality.name}\\nO que levar: ${bookingState.modality.pack.join(', ')}
-LOCATION:Av. Maria Cursi, 745 - Cidade São Mateus, São Paulo - SP
+LOCATION:Av. Maria Cursi, 306 - Cidade São Mateus, São Paulo - SP, CEP: 03962-000
 DTSTART:${dtStart}
 DTEND:${dtEnd}
 STATUS:CONFIRMED

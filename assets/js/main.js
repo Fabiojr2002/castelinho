@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '-=0.6'
       )
       .from(
-        '.hero-badge',
+        '.hero-brand-badge',
         {
           scale: 0.85,
           opacity: 0,
@@ -188,17 +188,16 @@ document.addEventListener('DOMContentLoaded', () => {
         '<+=0.1'
       )
       .from(
-        '.title-word',
+        '.hero-ref-title',
         {
-          y: 40,
+          y: 30,
           opacity: 0,
-          stagger: 0.04,
           duration: 0.8
         },
         '-=0.3'
       )
       .from(
-        '.hero-subtitle',
+        '.hero-ref-desc',
         {
           y: 20,
           opacity: 0,
@@ -207,44 +206,22 @@ document.addEventListener('DOMContentLoaded', () => {
         '-=0.4'
       )
       .from(
-        '.hero-actions .btn',
+        '.hero-ref-action',
         {
           y: 20,
           opacity: 0,
-          stagger: 0.15,
           duration: 0.6
         },
         '-=0.4'
       )
       .from(
-        '.hero-stats-strip',
+        '.hero-ref-pills',
         {
           y: 25,
           opacity: 0,
           duration: 0.6
         },
         '-=0.3'
-      )
-      .from(
-        '.hero-main-card',
-        {
-          scale: 0.92,
-          opacity: 0,
-          duration: 1.0,
-          ease: 'back.out(1.4)'
-        },
-        '-=0.8'
-      )
-      .from(
-        '.floating-badge',
-        {
-          scale: 0.8,
-          opacity: 0,
-          stagger: 0.2,
-          duration: 0.8,
-          ease: 'back.out(1.6)'
-        },
-        '-=0.6'
       )
       .from(
         '.hero-media-controls',
@@ -653,6 +630,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!video) return;
 
+    // Seleção de vídeo por viewport: Original no Desktop, Nadadora no Mobile
+    const updateVideoSource = () => {
+      const isMobile = window.innerWidth <= 768;
+      const targetSrc = isMobile ? 'assets/media/hero-mobile.mp4' : 'assets/media/hero-desktop.mp4';
+      const sourceEl = document.getElementById('hero-video-source');
+      const currentSrc = video.currentSrc || (sourceEl ? sourceEl.getAttribute('src') : '');
+
+      if (!currentSrc || !currentSrc.includes(targetSrc)) {
+        if (sourceEl) sourceEl.setAttribute('src', targetSrc);
+        video.src = targetSrc;
+        video.load();
+        startPlay();
+      }
+    };
+
     // Garante reprodução automática suave e trata políticas de autoplay dos navegadores
     const startPlay = () => {
       const playPromise = video.play();
@@ -664,7 +656,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     };
-    startPlay();
+
+    updateVideoSource();
+    window.addEventListener('resize', () => {
+      clearTimeout(window.__videoResizeTimer);
+      window.__videoResizeTimer = setTimeout(updateVideoSource, 250);
+    });
 
     // Controle de Play / Pause
     if (playBtn) {

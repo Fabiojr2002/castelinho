@@ -1,0 +1,11 @@
+<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="36" cy="36" r="34" fill="#00bcd4" fill-opacity="0.18" stroke="#00bcd4" stroke-width="2.5"/>
+  <circle cx="36" cy="36" r="26" fill="url(#cyanGlow)" />
+  <path d="M36 21L39.7 29.5L49 30.4L42 36.6L44 45.7L36 41L28 45.7L30 36.6L23 30.4L32.3 29.5L36 21Z" fill="#07131F" stroke="#07131F" stroke-width="1" stroke-linejoin="round"/>
+  <defs>
+    <radialGradient id="cyanGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(36 36) scale(26)">
+      <stop stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#00bcd4"/>
+    </radialGradient>
+  </defs>
+</svg>

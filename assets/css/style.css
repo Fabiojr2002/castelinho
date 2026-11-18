@@ -815,19 +815,20 @@ h6 {
   min-height: 100%;
   transform: translate(-50%, -50%) translateZ(0);
   object-fit: cover;
-  object-position: center center;
+  object-position: center 20%;
   filter: contrast(1.06) saturate(1.08) brightness(0.85);
   will-change: transform;
 }
 
-/* Camada 1: Escurecimento inteligente lateral (preserva visibilidade do vídeo à direita e realça texto à esquerda) */
+/* Camada 1: Escurecimento lateral focado no lado esquerdo (estilo da referência) */
 .hero-video-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 75% 45%,
-      rgba(5, 8, 17, 0.32) 0%,
-      rgba(5, 8, 17, 0.72) 55%,
-      rgba(5, 8, 17, 0.94) 100%);
+  background: linear-gradient(90deg,
+      rgba(5, 8, 17, 0.95) 0%,
+      rgba(5, 8, 17, 0.85) 44%,
+      rgba(5, 8, 17, 0.25) 75%,
+      rgba(5, 8, 17, 0.45) 100%);
   z-index: 1;
 }
 
@@ -901,89 +902,552 @@ h6 {
   pointer-events: none;
 }
 
-.hero-container {
+/* ==========================================================================
+   01. HERO STYLE: EXATO ALVO02 ADAPTADO ÀS CORES CASTELINHO
+   ========================================================================== */
+.hero-section {
   position: relative;
-  z-index: 5;
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 50px;
+  min-height: 100vh;
+  display: flex;
   align-items: center;
+  padding: 130px 0 80px;
+  overflow: visible;
 }
 
-.hero-content {
+.hero-alvo-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-alvo-left {
+  flex: 1;
+  max-width: 720px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  text-align: left;
 }
 
-.hero-badge {
-  margin-bottom: 24px;
+.hero-alvo-title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(44px, 5.8vw, 84px);
+  line-height: 0.94;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.hero-title {
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-  font-weight: 700;
-  line-height: 1.12;
-  margin-bottom: 24px;
-  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.75);
+.alvo-title-white {
+  color: #ffffff;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95);
 }
 
-.title-row {
-  display: block;
-  overflow: hidden;
+.alvo-title-cyan {
+  color: #00bcd4;
+  background: linear-gradient(135deg, #22d3ee 0%, #00bcd4 55%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 28px rgba(34, 211, 238, 0.5));
 }
 
-.title-word {
-  display: inline-block;
+.hero-alvo-sub {
+  font-family: 'Inter Tight', 'Inter', sans-serif;
+  font-size: clamp(16px, 1.35vw, 19px);
+  font-weight: 400;
+  color: #e2e8f0;
+  line-height: 1.5;
+  margin: 0 0 34px 0;
+  max-width: 540px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
 }
 
-.hero-subtitle {
-  font-size: 1.12rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  max-width: 580px;
-  margin-bottom: 36px;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
-}
-
-.hero-actions {
+.hero-alvo-actions {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 48px;
 }
 
-/* Faixa de Estatísticas Rápidas do Hero */
-.hero-stats-strip {
+.btn-alvo-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 56px;
+  padding: 0 8px 0 28px;
+  background: linear-gradient(135deg, #00bcd4 0%, #0284c7 100%);
+  border-radius: 9999px;
+  text-decoration: none;
+  color: #ffffff !important;
+  box-shadow: 0 10px 32px rgba(0, 188, 212, 0.45), 0 0 20px rgba(34, 211, 238, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.btn-alvo-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 40px rgba(0, 188, 212, 0.65), 0 0 25px rgba(34, 211, 238, 0.5);
+  filter: brightness(1.08);
+}
+
+.btn-alvo-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.btn-alvo-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
   display: flex;
   align-items: center;
-  gap: 28px;
-  padding: 18px 24px;
-  background: rgba(10, 17, 32, 0.75);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
 }
 
-.stat-mini .stat-number {
-  font-family: var(--font-title);
-  font-size: 1.5rem;
+.btn-alvo-circle i,
+.btn-alvo-circle svg {
+  width: 18px;
+  height: 18px;
+  color: #0284c7;
+  stroke-width: 2.8;
+}
+
+.btn-alvo-primary:hover .btn-alvo-circle {
+  transform: translateX(3px);
+}
+
+.btn-alvo-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 0 30px;
+  background: rgba(10, 20, 32, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 9999px;
+  text-decoration: none;
+  color: #ffffff !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
   font-weight: 700;
-  color: var(--text-contrast);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
-.stat-mini .stat-label {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+.btn-alvo-secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px);
+  color: #ffffff !important;
 }
 
-.stat-divider {
-  width: 1px;
-  height: 36px;
-  background: var(--border-subtle);
+/* Coluna Direita: Cards Alvo02 */
+.hero-alvo-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 28px;
+  flex-shrink: 0;
+}
+
+/* Card 1: Modalidades com Avatares */
+.card-alvo-modalities {
+  background: rgba(8, 16, 28, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 22px;
+  padding: 22px 24px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), 0 0 30px rgba(0, 188, 212, 0.08);
+  width: 255px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card-alvo-modalities:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 188, 212, 0.35);
+}
+
+.card-alvo-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.alvo-stat-number {
+  font-family: 'Anton', sans-serif;
+  font-size: 38px;
+  line-height: 1;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.alvo-stat-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.alvo-stat-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 15.5px;
+  color: #ffffff;
+  line-height: 1.15;
+}
+
+.alvo-stat-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.2;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.card-alvo-avatars {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.alvo-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2.5px solid #08101c;
+  object-fit: cover;
+  margin-left: -14px;
+  flex-shrink: 0;
+}
+
+.alvo-avatar:first-child {
+  margin-left: 0;
+}
+
+.alvo-avatar-action {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #00bcd4;
+  border: 2.5px solid #08101c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -14px;
+  flex-shrink: 0;
+  color: #030a16;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.alvo-avatar-action i,
+.alvo-avatar-action svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.8;
+}
+
+.card-alvo-modalities:hover .alvo-avatar-action {
+  transform: scale(1.08) rotate(5deg);
+  background: #22d3ee;
+}
+
+/* Card 2: Rating com Selo Estrela */
+.card-alvo-rating {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rating-badge-glow {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 16px rgba(0, 188, 212, 0.55));
+  transition: transform 0.3s ease;
+}
+
+.card-alvo-rating:hover .rating-badge-glow {
+  transform: scale(1.06) rotate(-4deg);
+}
+
+.rating-badge-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.rating-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.rating-score-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rating-score-val {
+  font-family: 'Anton', sans-serif;
+  font-size: 36px;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.rating-star-svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.rating-label-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 4px 0 0 0;
+  line-height: 1.2;
+}
+
+.rating-label-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 2px 0 0 0;
+  line-height: 1.2;
+}
+
+/* ========================================================
+   02. SEÇÃO MARQUEE DUPLO ANGULADO (ESTILO ALVO02)
+   ======================================================== */
+.section-marque {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 60px 0 70px;
+  z-index: 15;
+}
+
+.marque-block {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.marque-strip {
+  width: 115vw;
+  margin-left: -7.5vw;
+  display: flex;
+  align-items: center;
+  height: 84px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  will-change: transform;
+}
+
+/* Faixa 1: Branco */
+.marque-strip.strip-white {
+  background-color: #ffffff;
+  transform: rotate(3.2deg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  z-index: 2;
+}
+
+/* Faixa 2: Azul/Ciano Primário Castelinho */
+.marque-strip.strip-primary {
+  background: linear-gradient(90deg, #00bcd4 0%, #0284c7 100%);
+  transform: rotate(-3.2deg);
+  margin-top: -26px;
+  box-shadow: 0 12px 36px rgba(0, 188, 212, 0.35);
+  z-index: 3;
+}
+
+.marque-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+}
+
+.marque-track.track-left {
+  animation: marqueeLeft 30s linear infinite;
+}
+
+.marque-track.track-right {
+  animation: marqueeRight 32s linear infinite;
+}
+
+.marque-content-set {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-right: 32px;
+  flex-shrink: 0;
+}
+
+.marque-item-text {
+  font-family: 'Anton', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.strip-white .marque-item-text {
+  color: #0a121e;
+}
+
+.strip-primary .marque-item-text {
+  color: #030b14;
+}
+
+.marque-separator-star {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: block;
+}
+
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Regras Responsivas para o Hero Alvo02 e Marquees */
+@media (max-width: 991px) {
+  .hero-alvo-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 36px;
+  }
+
+  .hero-alvo-right {
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .section-marque {
+    padding: 40px 0 50px;
+  }
+
+  .marque-strip {
+    height: 64px;
+  }
+
+  .marque-item-text {
+    font-size: 22px;
+  }
+
+  .marque-separator-star {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 110px 0 40px;
+    min-height: auto;
+  }
+
+  .hero-alvo-title {
+    font-size: clamp(38px, 10vw, 50px);
+    line-height: 0.95;
+    margin-bottom: 14px;
+  }
+
+  .hero-alvo-sub {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  .hero-alvo-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .btn-alvo-primary,
+  .btn-alvo-secondary {
+    width: 100%;
+    justify-content: center;
+    height: 52px;
+  }
+
+  .hero-alvo-right {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .card-alvo-modalities {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .card-alvo-rating {
+    gap: 14px;
+  }
+
+  .marque-strip {
+    height: 54px;
+  }
+
+  .marque-strip.strip-primary {
+    margin-top: -16px;
+  }
+
+  .marque-item-text {
+    font-size: 18px;
+  }
+
+  .marque-separator-star {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 /* Visual Hero: Floating Cards & Spotlight */
@@ -1032,12 +1496,13 @@ h6 {
   top: 40px;
   left: 20px;
   right: 20px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
+  background: rgba(6, 13, 29, 0.48);
+  border: 1px solid rgba(34, 211, 238, 0.28);
   border-radius: var(--radius-lg);
-  padding: 30px;
-  backdrop-filter: blur(18px);
-  box-shadow: var(--shadow-lg);
+  padding: 26px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55), 0 0 28px rgba(34, 211, 238, 0.12);
   z-index: 2;
   overflow: hidden;
 }
@@ -1189,12 +1654,13 @@ h6 {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 14px 20px;
-  background: rgba(15, 23, 42, 0.92);
-  border: 1px solid var(--border-subtle);
+  padding: 12px 18px;
+  background: rgba(8, 16, 32, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   z-index: 3;
   animation: floatBadge 6s ease-in-out infinite alternate;
 }
@@ -3711,7 +4177,7 @@ h6 {
   }
 
   .btn-header-schedule {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -3724,9 +4190,26 @@ h6 {
     display: flex;
   }
 
+  .header-actions {
+    gap: 10px !important;
+  }
+
+  .btn-header-whatsapp {
+    padding: 7px 10px !important;
+    margin-left: 0 !important;
+  }
+
+  .whatsapp-btn-text {
+    display: none !important;
+  }
+
   .hero-section {
     padding-top: 120px;
     padding-bottom: 60px;
+  }
+
+  .hero-video {
+    object-position: center 12% !important;
   }
 
   .hero-media-controls {
@@ -3745,37 +4228,87 @@ h6 {
     height: 16px;
   }
 
-  .hero-stats-strip {
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
+  .hero-container-reference {
+    min-height: auto;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    justify-content: flex-start;
   }
 
-  .stat-divider {
-    width: 100%;
-    height: 1px;
+  .hero-left-column {
+    max-width: 100%;
+    align-items: flex-start;
+    text-align: left;
   }
 
-  .floating-badge {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    margin-top: 16px;
-    width: 100%;
+  .hero-brand-badge {
+    margin-bottom: 18px;
+    gap: 12px;
   }
 
-  .hero-artboard {
-    height: auto;
+  .hero-brand-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+
+  .hero-brand-icon i,
+  .hero-brand-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .hero-brand-name .brand-title {
+    font-size: 1.55rem;
+  }
+
+  .hero-brand-name .brand-tag {
+    font-size: 0.62rem;
+  }
+
+  .hero-ref-title {
+    font-size: clamp(1.85rem, 6.8vw, 2.45rem) !important;
+    line-height: 1.18 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .hero-ref-desc {
+    font-size: 0.95rem !important;
+    line-height: 1.58 !important;
+    margin-bottom: 24px !important;
     max-width: 100%;
   }
 
-  .hero-main-card {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
+  .hero-ref-action {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .btn-ref-primary {
+    width: 100%;
+    padding: 15px 22px;
+    font-size: 0.92rem;
+  }
+
+  .hero-ref-pills {
+    gap: 8px;
+    width: 100%;
+  }
+
+  .ref-pill {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
+  .stat-mini .stat-label {
+    font-size: 0.66rem !important;
+    line-height: 1.15;
+    margin-top: 2px;
+  }
+
+  /* Na versão Mobile, ocultamos o bloco pesado da direita para deixar a nadadora totalmente limpa e visível! */
+  .hero-visual {
+    display: none !important;
   }
 
   .features-grid,
@@ -3846,5 +4379,102 @@ h6 {
 
   .class-info span {
     font-size: 0.78rem;
+  }
+}
+
+/* ==========================================================================
+   BOTÃO FLUTUANTE DE WHATSAPP (HIGH CONVERSION)
+   ========================================================================== */
+.floating-whatsapp-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.floating-whatsapp-widget:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.floating-whatsapp-btn {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+  animation: pulse-whatsapp-glow 2.5s infinite;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.floating-whatsapp-btn img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+}
+
+.floating-whatsapp-tooltip {
+  background: rgba(13, 23, 46, 0.94);
+  border: 1px solid rgba(37, 211, 102, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.floating-whatsapp-tooltip .status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 0 8px #25d366;
+}
+
+@keyframes pulse-whatsapp-glow {
+  0% {
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45), 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45), 0 0 0 16px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45), 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .floating-whatsapp-widget {
+    bottom: 18px;
+    right: 18px;
+  }
+  .floating-whatsapp-tooltip {
+    display: none;
+  }
+  .floating-whatsapp-btn {
+    width: 50px;
+    height: 50px;
+  }
+  .floating-whatsapp-btn img {
+    width: 26px;
+    height: 26px;
   }
 }

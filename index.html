@@ -11,25 +11,80 @@
     content="academia castelinho, natação são mateus, natação infantil sp, musculação são mateus, hidroginástica são mateus, piscina aquecida sp, av maria cursi">
 
   <!-- Open Graph / Meta Compartilhamento -->
-  <meta property="og:title" content="Academia Castelinho | Natação & Fitness">
+  <meta property="og:title" content="Academia Castelinho | Natação & Fitness em São Mateus - SP">
   <meta property="og:description"
-    content="Mais que treino, um estilo de vida para toda a família em Cidade São Mateus.">
+    content="Mais que treino, um estilo de vida para toda a família em Cidade São Mateus. Piscinas aquecidas a 32°C, natação infantil e adulto, hidroginástica e musculação completa.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/media/modalidade-hero.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Academia Castelinho | Natação & Fitness">
+  <meta name="twitter:description" content="Mais que treino, um estilo de vida para toda a família em Cidade São Mateus.">
+  <meta name="twitter:image" content="assets/media/modalidade-hero.jpg">
+  <meta name="theme-color" content="#060913">
+
+  <!-- Schema.org Dados Estruturados (Google Rich Snippets / Local SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ExerciseGym",
+    "name": "Academia Castelinho - Natação & Fitness",
+    "description": "Academia com piscinas cobertas e aquecidas a 32°C, natação do bebê ao adulto, hidroginástica, musculação e aulas coletivas em Cidade São Mateus, Zona Leste de São Paulo.",
+    "image": "assets/media/modalidade-hero.jpg",
+    "telephone": "+55-11-3569-5312",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. Maria Cursi, 306",
+      "addressLocality": "São Paulo",
+      "addressRegion": "SP",
+      "postalCode": "03962-000",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -23.598502,
+      "longitude": -46.478912
+    },
+    "priceRange": "$$",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "06:00",
+        "closes": "22:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Saturday"
+        ],
+        "opens": "08:00",
+        "closes": "14:00"
+      }
+    ]
+  }
+  </script>
 
   <!-- Favicon / Ícone Oficial -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="assets/media/logo.png">
 
-  <!-- Google Fonts: Space Grotesk (Títulos) & Inter (Corpo) -->
+  <!-- Google Fonts: Anton (Destaques), Inter Tight & Inter (Corpo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
     rel="stylesheet">
 
   <!-- Folha de Estilos Principal -->
-  <link rel="stylesheet" href="assets/css/style.css?v=26">
+  <link rel="stylesheet" href="assets/css/style.css?v=41">
 
   <!-- CDNs Mandatórias -->
   <!-- Lenis Smooth Scroll -->
@@ -76,18 +131,16 @@
       </nav>
 
       <!-- Botões de Ação no Header: Aula Experimental + WhatsApp -->
-      <div class="header-actions" style="display: flex; align-items: center; gap: 24px;">
+      <div class="header-actions">
         <!-- Botão Destaque: Agendar Aula Experimental (Azul Destacado #22d3ee) -->
-        <a href="agendar.html" class="btn-header-schedule" id="header-schedule-btn"
-          style="display: inline-flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; color: #22d3ee; font-weight: 700; white-space: nowrap; border: 1.5px solid rgba(34, 211, 238, 0.55); padding: 8px 18px; border-radius: 9999px; background: rgba(0, 188, 212, 0.12); box-shadow: 0 0 18px rgba(34, 211, 238, 0.25); text-decoration: none;">
-          <i data-lucide="sparkles" style="width: 16px; height: 16px; color: #22d3ee; display: inline-block; flex-shrink: 0;"></i>
-          <span style="color: #22d3ee; white-space: nowrap;">Aula Grátis</span>
+        <a href="agendar.html" class="btn-header-schedule" id="header-schedule-btn">
+          <i data-lucide="sparkles"></i>
+          <span>Aula Grátis</span>
         </a>
 
-        <!-- Botão WhatsApp Fale Conosco (Afastado com margem extra) -->
+        <!-- Botão WhatsApp Fale Conosco -->
         <a href="https://wa.me/5511996441498?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20as%20aulas%20na%20Academia%20Castelinho."
           target="_blank" rel="noopener noreferrer" class="btn-header-whatsapp" id="header-cta-btn"
-          style="margin-left: 10px;"
           aria-label="Fale Conosco pelo WhatsApp">
           <img src="assets/media/whats.png" alt="WhatsApp" class="whatsapp-btn-img" width="28" height="28">
           <div class="whatsapp-btn-text">
@@ -137,8 +190,8 @@
     <section class="hero-section" id="inicio">
       <!-- Background Video Cinematográfico Full HD -->
       <div class="hero-video-wrapper" aria-hidden="true">
-        <video id="hero-video" class="hero-video" autoplay muted loop playsinline preload="auto">
-          <source src="assets/media/hero.mp4" type="video/mp4">
+        <video id="hero-video" class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/media/modalidade-hero.jpg">
+          <source id="hero-video-source" src="assets/media/hero-desktop.mp4" type="video/mp4">
           Seu navegador não suporta vídeos HTML5.
         </video>
         <!-- Camadas de Proteção Visual e Contraste Premium -->
@@ -159,128 +212,163 @@
         </button>
       </div>
 
-      <div class="container hero-container">
-        <div class="hero-content">
-          <!-- Tag de Destaque -->
-          <div class="badge-pill hero-badge">
-            <span class="pulse-indicator"></span>
-            <span class="badge-text">Academia Castelinho • Matrículas Abertas</span>
+      <!-- Conteúdo Hero Estilo Alvo02 Adaptado às Cores da Castelinho -->
+      <div class="container hero-alvo-container">
+        <!-- Coluna Esquerda: Textos de Alto Impacto e Botões -->
+        <div class="hero-alvo-left">
+          <div class="hero-alvo-heading">
+            <h1 class="hero-alvo-title">
+              <span class="alvo-title-white">CHEGA DE PROMESSA.</span>
+              <span class="alvo-title-cyan">ACERTE O ALVO.</span>
+            </h1>
+            <p class="hero-alvo-sub">
+              Chega de adiar. Sua evolução começa aqui.
+            </p>
           </div>
 
-          <!-- Título Principal com Revelação -->
-          <h1 class="hero-title">
-            <span class="title-row"><span class="title-word">Mais</span> <span class="title-word">que</span> <span
-                class="title-word gradient-text">treino,</span></span>
-            <span class="title-row"><span class="title-word">um</span> <span class="title-word">estilo</span> <span
-                class="title-word">de</span> <span class="title-word">vida</span></span>
-            <span class="title-row"><span class="title-word">para</span> <span
-                class="title-word highlight-cyan">toda</span> <span class="title-word">a</span> <span
-                class="title-word">família.</span></span>
-          </h1>
-
-
-          <div class="hero-actions">
-            <a href="agendar.html" class="btn btn-primary btn-glow" id="hero-schedule-btn">
-              <i data-lucide="sparkles"></i>
-              <span>Agendar Aula Experimental</span>
+          <!-- Grupo de Botões Alvo02 Style -->
+          <div class="hero-alvo-actions">
+            <!-- Botão Primário Ciano com Círculo de Ícone -->
+            <a href="agendar.html" class="btn-alvo-primary" id="hero-schedule-btn">
+              <span class="btn-alvo-label">AGENDAR AULA GRÁTIS</span>
+              <span class="btn-alvo-circle">
+                <i data-lucide="arrow-right"></i>
+              </span>
             </a>
-            <a href="#modalidades" class="btn btn-secondary" id="hero-explore-btn">
-              <span>Conhecer Modalidades</span>
-              <i data-lucide="arrow-down-right"></i>
+
+            <!-- Botão Secundário Dark Glassmorphic -->
+            <a href="#planos" class="btn-alvo-secondary">
+              <span>VER PLANOS</span>
             </a>
           </div>
+        </div>
 
-          <!-- Mini Provas Sociais / Métricas -->
-          <div class="hero-stats-strip">
-            <div class="stat-mini">
-              <div class="stat-number">+45 Anos</div>
-              <div class="stat-label">de Tradição na Região</div>
+        <!-- Coluna Direita: Cards Alvo02 (Modalidades e Avaliações) -->
+        <div class="hero-alvo-right">
+          <!-- Card 1: Modalidades com Avatares Sobrepostos -->
+          <div class="card-alvo-modalities">
+            <div class="card-alvo-top">
+              <span class="alvo-stat-number">15+</span>
+              <div class="alvo-stat-text">
+                <span class="alvo-stat-title">Modalidades</span>
+                <span class="alvo-stat-desc">Para todos os objetivos</span>
+              </div>
             </div>
-            <div class="stat-divider"></div>
-            <div class="stat-mini">
-              <div class="stat-number">+10 Modalidades</div>
-              <div class="stat-label">Para Todas as Idades</div>
+            <div class="card-alvo-avatars">
+              <img src="assets/media/avatar-1.webp" alt="Aluno Castelinho" class="alvo-avatar">
+              <img src="assets/media/avatar-2.webp" alt="Aluno Castelinho" class="alvo-avatar">
+              <img src="assets/media/avatar-3.webp" alt="Aluno Castelinho" class="alvo-avatar">
+              <div class="alvo-avatar-action" aria-hidden="true">
+                <i data-lucide="arrow-up-right"></i>
+              </div>
             </div>
-            <div class="stat-divider"></div>
-            <div class="stat-mini">
-              <div class="stat-number">100%</div>
-              <div class="stat-label">Profissionais CREF</div>
+          </div>
+
+          <!-- Card 2: Selo Circular Estrela + Nota dos Alunos -->
+          <div class="card-alvo-rating">
+            <div class="rating-badge-glow">
+              <img src="assets/media/hero-star-badge.svg" alt="Destaque de Avaliação" class="rating-badge-icon">
+            </div>
+            <div class="rating-text-block">
+              <div class="rating-score-row">
+                <span class="rating-score-val">4.8</span>
+                <img src="assets/media/star-icon.svg" alt="Estrela" class="rating-star-svg">
+              </div>
+              <p class="rating-label-title">Avaliação dos alunos</p>
+              <p class="rating-label-sub">467 avaliações</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+     02. FAIXAS DE TRANSIÇÃO (DUPLO MARQUEE ANGULADO ALVO02)
+     ======================================================== -->
+    <section class="section-marque" aria-label="Modalidades em Destaque">
+      <div class="marque-block">
+        <!-- Faixa 1: Fundo Branco Angulado + Rotação 3deg -->
+        <div class="marque-strip strip-white">
+          <div class="marque-track track-left">
+            <div class="marque-content-set">
+              <span class="marque-item-text">AULAS COLETIVAS</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">ALONGAMENTO</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">MUSCULAÇÃO</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">TREINO FUNCIONAL</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">PILATES</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">FITDANCE &amp; RITBOX</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">NATAÇÃO</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">HIDROGINÁSTICA</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+            </div>
+            <!-- Duplicata idêntica para scroll contínuo e uniforme -->
+            <div class="marque-content-set" aria-hidden="true">
+              <span class="marque-item-text">AULAS COLETIVAS</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">ALONGAMENTO</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">MUSCULAÇÃO</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">TREINO FUNCIONAL</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">PILATES</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">FITDANCE &amp; RITBOX</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">NATAÇÃO</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">HIDROGINÁSTICA</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
             </div>
           </div>
         </div>
 
-        <!-- Visual Hero: Floating Glass Cards / Showcase Dinâmico -->
-        <div class="hero-visual">
-          <div class="hero-artboard">
-            <!-- Aura Central Aquática -->
-            <div class="pool-glow-core"></div>
-
-            <!-- Card Central Principal -->
-            <div class="hero-main-card spotlight-card">
-              <div class="card-inner">
-                <div class="water-waves-bg"></div>
-                <div class="main-card-header">
-                  <div class="badge-tag aquatics-tag">
-                    <i data-lucide="waves"></i>
-                    <span>Piscina Aquática Coberta</span>
-                  </div>
-                  <span class="status-live">
-                    <span class="live-dot"></span> Ativo Hoje
-                  </span>
-                </div>
-
-                <div class="main-card-body">
-                  <div class="pool-temp-display">
-                    <div class="temp-val">32<span class="temp-unit">°C</span></div>
-                    <div class="temp-info">
-                      <strong>Temperatura Climatizada</strong>
-                      <span>Conforto absoluto em qualquer estação</span>
-                    </div>
-                  </div>
-
-                  <div class="pool-spec-list">
-                    <div class="spec-item">
-                      <i data-lucide="shield-check"></i>
-                      <span>Tratamento Ozonizado & Clorado Rigoroso</span>
-                    </div>
-                    <div class="spec-item">
-                      <i data-lucide="life-buoy"></i>
-                      <span>Raias Demarcadas e Área Infantil</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="main-card-footer">
-                  <div class="avatars-group">
-                    <span class="avatar-circle">🏊‍♂️</span>
-                    <span class="avatar-circle">👶</span>
-                    <span class="avatar-circle">💪</span>
-                  </div>
-                  <span class="avatars-text">+2.500 alunos desenvolvidos com saúde</span>
-                </div>
-              </div>
+        <!-- Faixa 2: Fundo Azul/Ciano Primário + Rotação -3deg -->
+        <div class="marque-strip strip-primary">
+          <div class="marque-track track-right">
+            <div class="marque-content-set">
+              <span class="marque-item-text">NATAÇÃO</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">PILATES</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">TREINO FUNCIONAL</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">ZUMBA</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">CARDIO</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">AULAS COLETIVAS</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">MUSCULAÇÃO</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
+              <span class="marque-item-text">NATAÇÃO INFANTIL</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star" aria-hidden="true">
             </div>
-
-            <!-- Floating Badge 1: Bebês & Infantil -->
-            <div class="floating-badge badge-top-right">
-              <div class="badge-icon-box cyan">
-                <i data-lucide="baby"></i>
-              </div>
-              <div class="badge-info">
-                <strong>Natação Infantil</strong>
-                <span>Metodologia lúdica & segura</span>
-              </div>
-            </div>
-
-            <!-- Floating Badge 2: Musculação Completa -->
-            <div class="floating-badge badge-bottom-left">
-              <div class="badge-icon-box orange">
-                <i data-lucide="dumbbell"></i>
-              </div>
-              <div class="badge-info">
-                <strong>Musculação & Força</strong>
-                <span>Treino guiado por instrutores</span>
-              </div>
+            <!-- Duplicata idêntica para scroll contínuo e uniforme -->
+            <div class="marque-content-set" aria-hidden="true">
+              <span class="marque-item-text">NATAÇÃO</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">PILATES</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">TREINO FUNCIONAL</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">ZUMBA</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">CARDIO</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">AULAS COLETIVAS</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">MUSCULAÇÃO</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
+              <span class="marque-item-text">NATAÇÃO INFANTIL</span>
+              <img src="assets/media/marquee-star.svg" alt="" class="marque-separator-star">
             </div>
           </div>
         </div>
@@ -1900,8 +1988,20 @@
 
 
 
+  <!-- BOTÃO FLUTUANTE DE WHATSAPP (ATENDIMENTO IMEDIATO) -->
+  <a href="https://wa.me/5511996441498?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Academia%20Castelinho%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+    target="_blank" rel="noopener noreferrer" class="floating-whatsapp-widget" aria-label="Fale conosco no WhatsApp">
+    <div class="floating-whatsapp-tooltip">
+      <span class="status-dot"></span>
+      <span>Dúvidas? Fale na Recepção</span>
+    </div>
+    <div class="floating-whatsapp-btn">
+      <img src="assets/media/whats.png" alt="WhatsApp Castelinho" width="32" height="32">
+    </div>
+  </a>
+
   <!-- Script Principal -->
-  <script src="assets/js/main.js?v=5"></script>
+  <script src="assets/js/main.js?v=6"></script>
 </body>
 
 </html>

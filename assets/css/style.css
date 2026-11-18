@@ -1486,74 +1486,159 @@ h6 {
 
 @media (max-width: 768px) {
   .hero-section {
-    height: auto;
-    min-height: auto;
-    padding: 110px 0 40px;
+    height: 100vh !important;
+    min-height: 620px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 85px 0 0 !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  .hero-alvo-container {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 0 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 15px auto auto auto !important;
+    z-index: 10 !important;
+  }
+
+  .hero-alvo-left {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hero-alvo-heading {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
   }
 
   .hero-alvo-title {
-    font-size: clamp(38px, 10vw, 50px);
-    line-height: 0.95;
-    margin-bottom: 14px;
+    font-size: clamp(28px, 8.2vw, 38px) !important;
+    line-height: 0.96 !important;
+    letter-spacing: 0.01em !important;
+    text-align: center !important;
+    align-items: center !important;
+    margin-bottom: 10px !important;
   }
 
   .hero-alvo-sub {
-    font-size: 15px;
-    margin-bottom: 24px;
+    font-size: 13.5px !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    max-width: 320px !important;
+    margin: 0 auto 16px auto !important;
+    color: rgba(226, 232, 240, 0.9) !important;
   }
 
+  /* Dois Botões Centralizados e Lado a Lado (Estilo Alvo02) */
   .hero-alvo-actions {
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    flex-wrap: nowrap !important;
+    margin-bottom: 0 !important;
   }
 
-  .btn-alvo-primary,
+  .btn-alvo-primary {
+    height: 42px !important;
+    padding: 0 4px 0 14px !important;
+    border-radius: 9999px !important;
+    gap: 8px !important;
+    flex: 0 1 auto !important;
+    box-shadow: 0 8px 24px rgba(0, 188, 212, 0.45) !important;
+    white-space: nowrap !important;
+  }
+
+  .btn-alvo-primary .btn-alvo-label {
+    font-size: 11px !important;
+    letter-spacing: 0.02em !important;
+    font-weight: 800 !important;
+  }
+
+  .btn-alvo-primary .btn-alvo-circle {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .btn-alvo-primary .btn-alvo-circle i,
+  .btn-alvo-primary .btn-alvo-circle svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
   .btn-alvo-secondary {
-    width: 100%;
-    justify-content: center;
-    height: 52px;
+    height: 42px !important;
+    padding: 0 16px !important;
+    border-radius: 9999px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    flex: 0 1 auto !important;
+    white-space: nowrap !important;
   }
 
+  /* Retirar os Cards na Versão Mobile */
   .hero-alvo-cards {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
-    width: 100%;
+    display: none !important;
   }
 
-  .home-hero-left-card {
-    width: 245px;
-    max-width: 100%;
-  }
-
-  .card-alvo-rating {
-    width: 100%;
-  }
-
+  /* Faixas Alinhadas Acima da Divisão com Largura/Altura Aumentada (Estilo Alvo) */
   .hero-marque-divider {
-    position: relative;
-    transform: none;
-    margin-top: 24px;
-    margin-bottom: -20px;
+    position: absolute !important;
+    bottom: 10px !important;
+    left: 0 !important;
+    width: 100% !important;
+    transform: translateY(0) !important;
+    z-index: 25 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    pointer-events: none !important;
   }
 
   .marque-strip {
-    height: 48px;
+    height: 62px !important;
+    width: 120vw !important;
+    margin-left: -10vw !important;
+  }
+
+  .marque-strip.strip-white {
+    transform: rotate(-2.4deg) !important;
+    transform-origin: center center !important;
+    z-index: 2 !important;
   }
 
   .marque-strip.strip-primary {
-    margin-top: -10px;
+    transform: rotate(1.2deg) !important;
+    transform-origin: center center !important;
+    margin-top: -12px !important;
+    z-index: 1 !important;
   }
 
   .marque-item-text {
-    font-size: 16px;
+    font-size: 21px !important;
   }
 
   .marque-separator-star {
-    width: 18px;
-    height: 18px;
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .hero-media-controls {
+    bottom: 125px !important;
+    right: 14px !important;
   }
 }
 
@@ -4310,18 +4395,14 @@ h6 {
     display: none !important;
   }
 
-  .hero-section {
-    padding-top: 120px;
-    padding-bottom: 60px;
-  }
 
   .hero-video {
     object-position: center 12% !important;
   }
 
   .hero-media-controls {
-    bottom: 16px;
-    right: 16px;
+    bottom: 110px !important;
+    right: 14px !important;
     gap: 8px;
   }
 

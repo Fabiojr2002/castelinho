@@ -84,7 +84,7 @@
     rel="stylesheet">
 
   <!-- Folha de Estilos Principal -->
-  <link rel="stylesheet" href="assets/css/style.css?v=46">
+  <link rel="stylesheet" href="assets/css/style.css?v=48">
 
   <!-- CDNs Mandatórias -->
   <!-- Lenis Smooth Scroll -->
@@ -218,11 +218,11 @@
         <div class="hero-alvo-left">
           <div class="hero-alvo-heading">
             <h1 class="hero-alvo-title">
-              <span class="alvo-title-white">CHEGA DE PROMESSA.</span>
-              <span class="alvo-title-cyan">ACERTE O ALVO.</span>
+              <span class="alvo-title-white">MERGULHE NA MUDANÇA.</span>
+              <span class="alvo-title-cyan">SUPERE SEUS LIMITES.</span>
             </h1>
             <p class="hero-alvo-sub">
-              Chega de adiar. Sua evolução começa aqui.
+              Mais força, resistência e qualidade de vida em um só lugar.
             </p>
           </div>
 
@@ -244,34 +244,59 @@
 
           <!-- Cards Alvo02 Alinhados Lado a Lado Abaixo dos Botões -->
           <div class="hero-alvo-cards">
-            <!-- Card 1: Modalidades com Avatares Sobrepostos -->
-            <div class="card-alvo-modalities">
-              <div class="card-alvo-top">
-                <span class="alvo-stat-number">15+</span>
-                <div class="alvo-stat-text">
-                  <span class="alvo-stat-title">Modalidades</span>
-                  <span class="alvo-stat-desc">Para todos os objetivos</span>
+            <!-- Card 1: Modalidades formato Pasta com Avatares -->
+            <div class="home-hero-left-card">
+              <img src="assets/media/card-folder-bg.webp" loading="lazy" alt="Card Modalidades" class="hero-card-bg-image">
+              <div class="home-hero-card-content">
+                <div class="card-content-top">
+                  <div class="_20-text">15+</div>
+                  <div class="card-text-col">
+                    <p class="paragraph">Modalidades</p>
+                    <p class="paragraph-small">Para todos os objetivos</p>
+                  </div>
                 </div>
-              </div>
-              <div class="card-alvo-avatars">
-                <img src="assets/media/avatar-1.webp" alt="Aluno Castelinho" class="alvo-avatar">
-                <img src="assets/media/avatar-2.webp" alt="Aluno Castelinho" class="alvo-avatar">
-                <img src="assets/media/avatar-3.webp" alt="Aluno Castelinho" class="alvo-avatar">
-                <div class="alvo-avatar-action" aria-hidden="true">
-                  <i data-lucide="arrow-up-right"></i>
+                <div class="card-content-bottom">
+                  <img src="assets/media/avatar-1.webp" alt="Aluno Castelinho" class="card-circle-image">
+                  <img src="assets/media/avatar-2.webp" alt="Aluno Castelinho" class="card-circle-image _01">
+                  <img src="assets/media/avatar-3.webp" alt="Aluno Castelinho" class="card-circle-image _01">
+                  <div class="card-circle-image _01 alvo-avatar-action" aria-label="Explorar modalidades">
+                    <i data-lucide="arrow-up-right"></i>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Card 2: Selo Circular Estrela + Nota dos Alunos -->
+            <!-- Card 2: Rating com Meia Esfera e Estrela Giratória (Sem fundo de card) -->
             <div class="card-alvo-rating">
-              <div class="rating-badge-glow">
-                <img src="assets/media/hero-star-badge.svg" alt="Destaque de Avaliação" class="rating-badge-icon">
+              <div class="rating-badge-wrap">
+                <svg class="rating-badge-svg" viewBox="0 0 99 79" width="99" height="79" fill="none">
+                  <defs>
+                    <linearGradient id="badgeDomeGrad" x1="49.5" y1="0" x2="49.5" y2="51" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#0e2a42" stop-opacity="0.95"/>
+                      <stop offset="100%" stop-color="#061320" stop-opacity="0.95"/>
+                    </linearGradient>
+                    <linearGradient id="badgeSphereGrad" x1="17" y1="13.5" x2="82" y2="78.5" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#22d3ee"/>
+                      <stop offset="60%" stop-color="#00bcd4"/>
+                      <stop offset="100%" stop-color="#0284c7"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Meia esfera em volta da esfera onde está a estrela -->
+                  <path class="badge-dome" d="M99 51C99 37.474 93.7848 24.5019 84.5018 14.9376C75.2187 5.3732 62.6282 0 49.5 0C36.3718 0 23.7813 5.3732 14.4982 14.9375C5.21517 24.5019 0 37.4739 0 51L49.5 51H99Z" fill="url(#badgeDomeGrad)" stroke="rgba(0, 188, 212, 0.4)" stroke-width="1.5"/>
+                  <!-- Esfera principal ciano -->
+                  <circle class="badge-sphere" cx="49.5" cy="46" r="32.5" fill="url(#badgeSphereGrad)"/>
+                  <!-- Estrela central que gira e fica branca no hover -->
+                  <g class="badge-star-group">
+                    <path class="badge-star-icon" d="M49.5 33L52.8 41.2L61.6 41.8L54.8 47.5L56.9 56.2L49.5 51.5L42.1 56.2L44.2 47.5L37.4 41.8L46.2 41.2L49.5 33Z" fill="#030a16"/>
+                  </g>
+                </svg>
               </div>
               <div class="rating-text-block">
                 <div class="rating-score-row">
                   <span class="rating-score-val">4.8</span>
-                  <img src="assets/media/star-icon.svg" alt="Estrela" class="rating-star-svg">
+                  <svg class="rating-star-small" viewBox="0 0 24 24" width="18" height="18" fill="#00bcd4">
+                    <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/>
+                  </svg>
                 </div>
                 <p class="rating-label-title">Avaliação dos alunos</p>
                 <p class="rating-label-sub">467 avaliações</p>

@@ -58,6 +58,18 @@
           <i data-lucide="home"></i>
           <span>Site Oficial</span>
         </a>
+
+        <!-- Usuário Logado & Logout -->
+        <div class="user-auth-badge" id="header-user-badge" style="display: none;">
+          <div class="user-auth-info">
+            <i data-lucide="shield-check" class="user-auth-icon"></i>
+            <span class="user-auth-name" id="user-display-tag">adm</span>
+          </div>
+          <button type="button" class="btn-logout-header" id="btn-logout" title="Sair do Sistema">
+            <i data-lucide="log-out"></i>
+            <span>Sair</span>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -168,14 +180,50 @@
             <i data-lucide="list"></i>
             <span>Lista Geral</span>
           </button>
+          <button type="button" class="view-tab-btn" id="tab-view-users" title="Gerenciar Usuários e Senhas">
+            <i data-lucide="shield-check"></i>
+            <span>Usuários & Permissões</span>
+          </button>
         </div>
 
-        <!-- Seletor e Navegador de Data -->
+        <!-- Seletor e Navegador de Data com Mini-Calendário Integrado -->
         <div class="date-navigator">
           <button type="button" class="date-nav-btn" id="btn-prev-date" title="Dia ou Mês Anterior">
             <i data-lucide="chevron-left"></i>
           </button>
-          <input type="date" class="date-current-picker" id="date-current-picker">
+          
+          <div class="date-picker-custom-wrap" id="date-picker-custom-wrap">
+            <button type="button" class="date-picker-box-btn" id="btn-open-mini-calendar" title="Clique para abrir o calendário">
+              <span id="date-picker-display-text">17/11/2026</span>
+              <i data-lucide="calendar" class="calendar-icon-btn"></i>
+            </button>
+            <input type="date" class="date-current-picker" id="date-current-picker" aria-label="Selecionar Data" style="position: absolute; opacity: 0; pointer-events: none; width: 0; height: 0; border: none; padding: 0;">
+            
+            <!-- POPUP DO MINI CALENDÁRIO -->
+            <div class="mini-calendar-popover" id="mini-calendar-popover" style="display: none;">
+              <div class="mini-cal-header">
+                <button type="button" class="mini-cal-nav-btn" id="mini-cal-prev" title="Mês Anterior">
+                  <i data-lucide="chevron-left"></i>
+                </button>
+                <span class="mini-cal-month-title" id="mini-cal-month-title">Novembro 2026</span>
+                <button type="button" class="mini-cal-nav-btn" id="mini-cal-next" title="Próximo Mês">
+                  <i data-lucide="chevron-right"></i>
+                </button>
+              </div>
+              <div class="mini-cal-weekdays">
+                <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+              </div>
+              <div class="mini-cal-days-grid" id="mini-cal-days-grid">
+                <!-- Preenchido dinamicamente via JS -->
+              </div>
+              <div class="mini-cal-footer">
+                <button type="button" class="mini-cal-today-btn" id="mini-cal-btn-today">
+                  <i data-lucide="clock"></i> Ir para Hoje
+                </button>
+              </div>
+            </div>
+          </div>
+
           <button type="button" class="date-nav-btn" id="btn-next-date" title="Próximo Dia ou Mês">
             <i data-lucide="chevron-right"></i>
           </button>
@@ -211,6 +259,9 @@
           <option value="cancelled">Cancelados</option>
         </select>
       </div>
+
+      <!-- Banner de Busca Ativa -->
+      <div id="search-active-notice" class="search-active-notice" style="display: none;"></div>
     </section>
 
     <!-- VISÃO 1: DIÁRIA COM TURNOS (MANHÃ / TARDE / NOITE) -->
@@ -295,6 +346,154 @@
       </table>
     </div>
 
+    <!-- VISÃO 4: USUÁRIOS & PERMISSÕES DO SISTEMA -->
+    <div class="users-view-container" id="container-users-view" style="display: none;">
+      <div class="users-view-grid">
+        <!-- Card 1: Meu Perfil & Alterar Senha do Administrador -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-card-title-box">
+              <i data-lucide="key-round"></i>
+              <h3>Minha Senha & Credenciais</h3>
+            </div>
+            <span class="badge-role admin" id="current-user-role-badge">Administrador</span>
+          </div>
+          <div class="admin-card-body">
+            <div class="current-user-summary">
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 12px;">
+                Conectado como: <strong id="current-user-display-name" style="color: var(--cyan-glow);">adm</strong> (<span id="current-user-fullname">Administrador Master</span>)
+              </p>
+              
+              <div class="form-field-group">
+                <label class="form-label-staff">Sua Senha Atual Registrada:</label>
+                <div class="password-input-wrap">
+                  <input type="password" id="input-view-current-password" readonly class="form-control-staff" value="adm123">
+                  <button type="button" class="btn-toggle-pw" id="btn-toggle-view-current-pw" title="Mostrar/Ocultar Senha Atual">
+                    <i data-lucide="eye" id="icon-view-current-pw"></i>
+                  </button>
+                </div>
+                <small style="color: var(--text-muted); font-size: 0.75rem;">Clique no olho para visualizar sua senha salva no navegador.</small>
+              </div>
+            </div>
+
+            <hr class="divider-subtle">
+
+            <form id="form-change-admin-password">
+              <h4 style="font-size: 0.95rem; margin-bottom: 12px; color: var(--text-contrast); display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="shield-alert" style="width: 16px; height: 16px; color: var(--cyan-glow);"></i>
+                Alterar Senha do Administrador
+              </h4>
+              
+              <div class="form-field-group">
+                <label for="input-new-password" class="form-label-staff">Nova Senha:</label>
+                <div class="password-input-wrap">
+                  <input type="password" id="input-new-password" class="form-control-staff" placeholder="Mínimo 4 caracteres" required>
+                  <button type="button" class="btn-toggle-pw" data-target="input-new-password" title="Mostrar/Ocultar Senha">
+                    <i data-lucide="eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-field-group">
+                <label for="input-confirm-password" class="form-label-staff">Confirmar Nova Senha:</label>
+                <div class="password-input-wrap">
+                  <input type="password" id="input-confirm-password" class="form-control-staff" placeholder="Repita a nova senha" required>
+                  <button type="button" class="btn-toggle-pw" data-target="input-confirm-password" title="Mostrar/Ocultar Senha">
+                    <i data-lucide="eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-glow" style="width: 100%; margin-top: 10px;">
+                <i data-lucide="save"></i>
+                <span>Atualizar Minha Senha</span>
+              </button>
+              <div id="feedback-change-password" class="form-feedback-msg" style="display: none;"></div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Card 2: Adicionar Novo Usuário -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-card-title-box">
+              <i data-lucide="user-plus"></i>
+              <h3>Cadastrar Novo Usuário</h3>
+            </div>
+            <span class="shift-counter-badge">Acesso Seguro</span>
+          </div>
+          <div class="admin-card-body">
+            <form id="form-add-new-user">
+              <div class="form-field-group">
+                <label for="new-user-fullname" class="form-label-staff">Nome Completo / Identificação:</label>
+                <input type="text" id="new-user-fullname" class="form-control-staff" placeholder="Ex: Patrícia Recepção" required>
+              </div>
+
+              <div class="form-field-group">
+                <label for="new-user-username" class="form-label-staff">Nome de Usuário (Login):</label>
+                <input type="text" id="new-user-username" class="form-control-staff" placeholder="Ex: recepcao01 (sem espaços)" required autocomplete="off">
+              </div>
+
+              <div class="form-field-group">
+                <label for="new-user-password" class="form-label-staff">Senha de Acesso:</label>
+                <div class="password-input-wrap">
+                  <input type="password" id="new-user-password" class="form-control-staff" placeholder="Crie uma senha de acesso" required>
+                  <button type="button" class="btn-toggle-pw" data-target="new-user-password" title="Mostrar/Ocultar Senha">
+                    <i data-lucide="eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-field-group">
+                <label for="new-user-role" class="form-label-staff">Nível de Permissão:</label>
+                <select id="new-user-role" class="form-control-staff select-staff-role" required>
+                  <option value="admin">Administrador Completo (Acesso total, cadastrar usuários, excluir agendamentos, alterar senhas)</option>
+                  <option value="reception">Recepção / Visualizador (Visualizar e dar check-in em aulas, sem acesso a gerenciar usuários ou excluir)</option>
+                </select>
+                <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 4px; display: block;">
+                  Usuários de recepção têm acesso somente de leitura e check-in na agenda.
+                </small>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-glow" style="width: 100%; margin-top: 14px;">
+                <i data-lucide="user-plus"></i>
+                <span>Adicionar Usuário ao Sistema</span>
+              </button>
+              <div id="feedback-add-user" class="form-feedback-msg" style="display: none;"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Lista de Usuários Cadastrados -->
+      <div class="admin-card" style="margin-top: 24px;">
+        <div class="admin-card-header">
+          <div class="admin-card-title-box">
+            <i data-lucide="users"></i>
+            <h3>Usuários com Acesso ao Painel</h3>
+          </div>
+          <span class="shift-counter-badge" id="total-users-badge">1 usuário ativo</span>
+        </div>
+        <div class="table-responsive">
+          <table class="staff-table" style="margin-top: 0;">
+            <thead>
+              <tr>
+                <th>Login de Acesso</th>
+                <th>Nome</th>
+                <th>Permissão</th>
+                <th>Senha Cadastrada</th>
+                <th>Criado Em</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="users-table-body">
+              <!-- Preenchido via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-- MODAL PARA ADICIONAR NOVO AGENDAMENTO MANUAL (RECEPÇÃO) -->
@@ -374,6 +573,53 @@
       </div>
     </form>
   </dialog>
+
+  <!-- TELA DE LOGIN BLOQUEANTE DO PAINEL ADM -->
+  <div id="admin-login-overlay" class="login-overlay-backdrop">
+    <div class="login-modal-box">
+      <div class="login-modal-header">
+        <img src="assets/media/logo.png" alt="Academia Castelinho" class="login-modal-logo">
+        <h2 class="login-modal-title">Painel Administrativo</h2>
+        <p class="login-modal-subtitle">Acesso restrito para administradores e recepcionistas da Academia Castelinho.</p>
+      </div>
+      
+      <form id="form-admin-login" class="login-form">
+        <div class="form-field-group">
+          <label for="login-input-username" class="form-label-staff">Usuário de Acesso:</label>
+          <div class="login-input-wrap">
+            <i data-lucide="user" class="login-input-icon"></i>
+            <input type="text" id="login-input-username" class="form-control-staff login-field" placeholder="Digite seu usuário (ex: adm)" required autocomplete="username">
+          </div>
+        </div>
+
+        <div class="form-field-group">
+          <label for="login-input-password" class="form-label-staff">Senha:</label>
+          <div class="login-input-wrap">
+            <i data-lucide="lock" class="login-input-icon"></i>
+            <input type="password" id="login-input-password" class="form-control-staff login-field" placeholder="Digite sua senha" required autocomplete="current-password">
+            <button type="button" class="btn-toggle-pw" data-target="login-input-password" title="Mostrar/Ocultar Senha">
+              <i data-lucide="eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="login-error-msg" class="login-error-alert" style="display: none;">
+          <i data-lucide="alert-circle"></i>
+          <span id="login-error-text">Usuário ou senha incorretos.</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-glow login-submit-btn" id="btn-submit-login">
+          <i data-lucide="log-in"></i>
+          <span>Entrar no Painel</span>
+        </button>
+
+        <div class="login-credentials-hint">
+          <i data-lucide="key" style="width: 14px; height: 14px;"></i>
+          <span>Acesso padrão: Usuário <strong>adm</strong> | Senha <strong>adm123</strong></span>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- Script do Painel -->
   <script src="assets/js/painel.js?v=3"></script>

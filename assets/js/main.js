@@ -233,6 +233,21 @@ document.addEventListener('DOMContentLoaded', () => {
         '-=0.4'
       );
 
+    // Efeito Curtain Reveal / Section Stacking: Hero fixa até a Seção de Modalidades cobri-la
+    const heroSection = document.getElementById('inicio');
+    const modalitiesSection = document.getElementById('modalidades');
+    if (heroSection && modalitiesSection) {
+      ScrollTrigger.create({
+        trigger: heroSection,
+        start: 'top top',
+        endTrigger: modalitiesSection,
+        end: 'top top',
+        pin: true,
+        pinSpacing: false,
+        anticipatePin: 1
+      });
+    }
+
     // ScrollTriggers para Seções
     // Modalidades - Banner Unificado
     gsap.from('.modalities-hero-banner', {

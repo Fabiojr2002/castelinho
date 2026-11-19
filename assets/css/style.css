@@ -856,15 +856,9 @@ h6 {
   z-index: 3;
 }
 
-/* Controles Elegantes de Áudio e Pausa */
+/* Controles Elegantes de Áudio e Pausa (Removidos conforme solicitação) */
 .hero-media-controls {
-  position: absolute;
-  bottom: 32px;
-  right: 36px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  z-index: 15;
+  display: none !important;
 }
 
 .media-btn {
@@ -1333,8 +1327,8 @@ h6 {
   z-index: 25;
   pointer-events: none;
   overflow: visible; /* Garante que o formato retangular não seja cortado */
-  /* Faixas assentadas na base da Hero, exatamente sobre a linha divisória com a próxima seção */
-  transform: translateY(0);
+  /* Faixas assentadas na base da Hero, cobrindo perfeitamente a linha divisória com a próxima seção */
+  transform: translateY(22px);
 }
 
 .marque-block {
@@ -1492,10 +1486,22 @@ h6 {
     flex-direction: column !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 85px 0 0 !important;
+    padding: 125px 0 0 !important;
     box-sizing: border-box !important;
     position: relative !important;
     overflow: visible !important;
+  }
+
+  /* Posicionamento da nadadora mais para baixo no mobile para não ser tampada */
+  .hero-video {
+    width: 120% !important;
+    height: 120% !important;
+    max-width: none !important;
+    top: 58% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    object-fit: cover !important;
+    object-position: center center !important;
   }
 
   .hero-alvo-container {
@@ -1506,7 +1512,7 @@ h6 {
     padding: 0 16px !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    margin: 15px auto auto auto !important;
+    margin: 25px auto auto auto !important;
     z-index: 10 !important;
   }
 
@@ -1595,13 +1601,13 @@ h6 {
     display: none !important;
   }
 
-  /* Faixas Alinhadas Acima da Divisão com Largura/Altura Aumentada (Estilo Alvo) */
+  /* Faixas Alinhadas Sobre a Divisão Cobrindo o Início da Próxima Seção (Estilo Alvo) */
   .hero-marque-divider {
     position: absolute !important;
-    bottom: 10px !important;
+    bottom: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    transform: translateY(0) !important;
+    transform: translateY(22px) !important;
     z-index: 25 !important;
     margin: 0 !important;
     overflow: visible !important;
@@ -1637,8 +1643,7 @@ h6 {
   }
 
   .hero-media-controls {
-    bottom: 125px !important;
-    right: 14px !important;
+    display: none !important;
   }
 }
 
@@ -4397,13 +4402,18 @@ h6 {
 
 
   .hero-video {
-    object-position: center 12% !important;
+    width: 120% !important;
+    height: 120% !important;
+    max-width: none !important;
+    top: 58% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    object-fit: cover !important;
+    object-position: center center !important;
   }
 
   .hero-media-controls {
-    bottom: 110px !important;
-    right: 14px !important;
-    gap: 8px;
+    display: none !important;
   }
 
   .media-btn {

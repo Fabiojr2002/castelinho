@@ -1481,7 +1481,6 @@ h6 {
 
 @media (max-width: 768px) {
   .hero-section {
-    position: relative !important;
     height: 100vh !important;
     min-height: 620px !important;
     display: flex !important;
@@ -1491,7 +1490,6 @@ h6 {
     padding: 125px 0 0 !important;
     box-sizing: border-box !important;
     overflow: visible !important;
-    z-index: 1 !important;
   }
 
   /* Posicionamento da nadadora mais para baixo no mobile para não ser tampada */

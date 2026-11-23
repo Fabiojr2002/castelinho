@@ -123,8 +123,8 @@
         <ul class="nav-list">
           <li><a href="#inicio" class="nav-link active">Início</a></li>
           <li><a href="#modalidades" class="nav-link">Modalidades</a></li>
-          <li><a href="#grade" class="nav-link">Grade & Horários</a></li>
           <li><a href="#planos" class="nav-link">Planos</a></li>
+          <li><a href="#grade" class="nav-link">Grade & Horários</a></li>
           <li><a href="#estrutura" class="nav-link">Estrutura</a></li>
           <li><a href="#localizacao" class="nav-link">Localização</a></li>
         </ul>
@@ -162,8 +162,8 @@
       <nav class="mobile-nav">
         <a href="#inicio" class="mobile-nav-link">Início</a>
         <a href="#modalidades" class="mobile-nav-link">Modalidades</a>
-        <a href="#grade" class="mobile-nav-link">Grade & Horários</a>
         <a href="#planos" class="mobile-nav-link">Planos</a>
+        <a href="#grade" class="mobile-nav-link">Grade & Horários</a>
         <a href="#estrutura" class="mobile-nav-link">Estrutura</a>
         <a href="#localizacao" class="mobile-nav-link">Localização</a>
         
@@ -802,7 +802,344 @@
       </div>
     </section>
 
-    <!-- 3. GRADE DE HORÁRIOS & AULAS (Tabs Interativas em JS Puro) -->
+    <!-- 3. PLANOS & VALORES (Planos Transparentes e Flexíveis) -->
+    <section class="section pricing-section" id="planos">
+      <div class="container">
+        <!-- Cabeçalho da Seção -->
+        <div class="section-header text-center">
+          <div class="badge-pill">
+            <i data-lucide="tag"></i>
+            <span>Planos & Investimento</span>
+          </div>
+          <h2 class="section-title">Escolha o plano ideal para a sua evolução</h2>
+          <p class="section-description">
+            Sem taxas ocultas ou pegadinhas contratuais. Valores acessíveis com acompanhamento profissional
+            CREF, piscinas aquecidas e a estrutura mais acolhedora de São Mateus.
+          </p>
+
+          <!-- Seletor de Ciclo: Mensal vs Anual com Desconto -->
+          <div class="pricing-billing-wrapper">
+            <div class="pricing-billing-switch" role="group" aria-label="Ciclo de cobrança">
+              <button class="pricing-billing-btn active" data-cycle="monthly" type="button">
+                <span>Mensal</span>
+              </button>
+              <button class="pricing-billing-btn" data-cycle="annual" type="button">
+                <span>Plano Anual</span>
+                <span class="pricing-discount-badge">-25% OFF</span>
+              </button>
+            </div>
+            <span class="pricing-switch-hint">
+              <i data-lucide="sparkles"></i> Economize até R$ 720/ano no plano anual
+            </span>
+          </div>
+        </div>
+
+        <!-- Grade de Planos (4 Cards Balanceados) -->
+        <div class="pricing-cards-grid">
+          <!-- PLANO 1: MUSCULAÇÃO & FITNESS -->
+          <article class="pricing-card spotlight-card" data-tilt>
+            <div class="pricing-card-header">
+              <span class="pricing-card-kicker">
+                <i data-lucide="dumbbell"></i> Musculação
+              </span>
+              <h3 class="pricing-plan-name">Musculação & Força</h3>
+              <p class="pricing-plan-summary">Treinos de força, hipertrofia e emagrecimento com supervisão contínua no salão.</p>
+            </div>
+
+            <div class="pricing-price-box">
+              <div class="pricing-amount-row">
+                <span class="pricing-currency">R$</span>
+                <span class="pricing-value-amount" data-monthly="119,90" data-annual="89,90">119,90</span>
+              </div>
+              <span class="pricing-period-label">/mês no plano mensal</span>
+              <span class="pricing-savings-note" style="opacity: 0; visibility: hidden;">Economia de R$ 360 no ano</span>
+            </div>
+
+            <ul class="pricing-features-list">
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>Acesso total ao salão de musculação e pesos livres</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>Treinadores credenciados CREF para suporte contínuo</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>Ficha de treino personalizada atualizada a cada 60 dias</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>Vestiários confortáveis com chuveiros aquecidos</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>Zero taxa de matrícula na adesão online</span>
+              </li>
+              <li class="feat-disabled">
+                <i data-lucide="x" class="feat-x"></i>
+                <span>Acesso a piscinas aquecidas e hidroginástica</span>
+              </li>
+            </ul>
+
+            <div class="pricing-card-cta">
+              <button class="pricing-action-btn open-modal-btn" data-modal="modal-start-choice" data-preselect="Musculação" aria-label="Escolher Plano Musculação">
+                <span>Escolher Musculação</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <!-- PLANO 2: NATAÇÃO & HIDRO -->
+          <article class="pricing-card spotlight-card" data-tilt>
+            <div class="pricing-card-header">
+              <span class="pricing-card-kicker aquatic">
+                <i data-lucide="waves"></i> Aquático
+              </span>
+              <h3 class="pricing-plan-name">Natação & Hidro</h3>
+              <p class="pricing-plan-summary">Duas piscinas cobertas e aquecidas a 32°C com metodologia lúdica e saúde cardiovascular.</p>
+            </div>
+
+            <div class="pricing-price-box">
+              <div class="pricing-amount-row">
+                <span class="pricing-currency">R$</span>
+                <span class="pricing-value-amount" data-monthly="189,90" data-annual="149,90">189,90</span>
+              </div>
+              <span class="pricing-period-label">/mês no plano mensal</span>
+              <span class="pricing-savings-note" style="opacity: 0; visibility: hidden;">Economia de R$ 480 no ano</span>
+            </div>
+
+            <ul class="pricing-features-list">
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>2x a 3x por semana em piscina aquecida climatizada</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>Natação Infantil (a partir de 6m) ou Natação Adulto</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>Aulas de Hidroginástica de baixo impacto articular</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>Tratamento ozonizado que protege olhos e pele sensível</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>Professores especializados em salvamento aquático</span>
+              </li>
+              <li class="feat-disabled">
+                <i data-lucide="x" class="feat-x"></i>
+                <span>Acesso à sala de musculação</span>
+              </li>
+            </ul>
+
+            <div class="pricing-card-cta">
+              <button class="pricing-action-btn open-modal-btn" data-modal="modal-start-choice" data-preselect="Natação & Hidro" aria-label="Escolher Plano Natação & Hidro">
+                <span>Escolher Natação</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <!-- PLANO 3: COMBO TOTAL VIP (DESTAQUE MÁXIMO) -->
+          <article class="pricing-card pricing-card-featured spotlight-card" data-tilt>
+            <div class="featured-ribbon">
+              <i data-lucide="sparkles"></i>
+              <span>MAIS ESCOLHIDO • VIP</span>
+            </div>
+
+            <div class="pricing-card-header">
+              <span class="pricing-card-kicker featured-kicker">
+                <i data-lucide="crown"></i> TUDO LIBERADO
+              </span>
+              <h3 class="pricing-plan-name text-gradient">Combo Total Castelinho</h3>
+              <p class="pricing-plan-summary">A experiência completa definitiva: musculação, natação, hidro e todas as aulas coletivas sem limite.</p>
+            </div>
+
+            <div class="pricing-price-box">
+              <div class="pricing-amount-row">
+                <span class="pricing-currency">R$</span>
+                <span class="pricing-value-amount" data-monthly="239,90" data-annual="179,90">239,90</span>
+              </div>
+              <span class="pricing-period-label">/mês no plano mensal</span>
+              <span class="pricing-savings-note highlight-save" style="opacity: 0; visibility: hidden;">Economia de R$ 720 no ano</span>
+            </div>
+
+            <ul class="pricing-features-list">
+              <li>
+                <i data-lucide="check" class="feat-check-highlight"></i>
+                <strong>Musculação livre + Piscinas aquecidas sem restrição</strong>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check-highlight"></i>
+                <strong>Todas as aulas coletivas liberadas (Funcional e Ritmos)</strong>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check-highlight"></i>
+                <span>Horário 100% flexível (Manhã, Tarde, Noite e Sábados)</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check-highlight"></i>
+                <span>Avaliação física & bioimpedância periódica inclusa</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check-highlight"></i>
+                <span>1 convidado gratuito por mês para treinar com você</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check-highlight"></i>
+                <span>Armário rotativo exclusivo e prioridade nas turmas</span>
+              </li>
+            </ul>
+
+            <div class="pricing-card-cta">
+              <button class="pricing-action-btn pricing-action-btn-featured open-modal-btn" data-modal="modal-start-choice" data-preselect="Combo Total VIP" aria-label="Garantir Plano Combo Total VIP">
+                <span>Garantir Combo Total</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </article>
+
+          <!-- PLANO 4: PLANO FAMÍLIA & BEBÊS -->
+          <article class="pricing-card spotlight-card" data-tilt>
+            <div class="pricing-card-header">
+              <span class="pricing-card-kicker family">
+                <i data-lucide="heart-handshake"></i> Família
+              </span>
+              <h3 class="pricing-plan-name">Plano Família</h3>
+              <p class="pricing-plan-summary">Pensado para pais, mães e filhos praticarem saúde juntos com benefícios compartilhados.</p>
+            </div>
+
+            <div class="pricing-price-box">
+              <div class="pricing-amount-row">
+                <span class="pricing-currency">R$</span>
+                <span class="pricing-value-amount" data-monthly="349,90" data-annual="269,90">349,90</span>
+              </div>
+              <span class="pricing-period-label">/mês (valor para 2 integrantes)</span>
+              <span class="pricing-savings-note" style="opacity: 0; visibility: hidden;">Economia de R$ 960 no ano</span>
+            </div>
+
+            <ul class="pricing-features-list">
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>2 planos combinados (Ex: 1 Musculação + 1 Natação Infantil)</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>Aulas simultâneas para otimizar o tempo da família</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>Acesso especial ao Sábado em Família na piscina</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>Desconto especial de 20% para cada filho adicional</span>
+              </li>
+              <li>
+                <i data-lucide="check" class="feat-check"></i>
+                <span>Avaliação postural e física inclusa para a família</span>
+              </li>
+            </ul>
+
+            <div class="pricing-card-cta">
+              <button class="pricing-action-btn open-modal-btn" data-modal="modal-start-choice" data-preselect="Plano Família" aria-label="Consultar Plano Família">
+                <span>Consultar Família</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Faixa de Garantias e Vantagens (Trust Strip) -->
+        <div class="pricing-trust-strip">
+          <div class="trust-item">
+            <div class="trust-icon cyan"><i data-lucide="shield-check"></i></div>
+            <div class="trust-text">
+              <strong>Sem Taxa de Matrícula</strong>
+              <span>Adesão 100% transparente</span>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon green"><i data-lucide="refresh-cw"></i></div>
+            <div class="trust-text">
+              <strong>Sem Prender Limite</strong>
+              <span>Cobrança recorrente mês a mês</span>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon orange"><i data-lucide="pause-circle"></i></div>
+            <div class="trust-text">
+              <strong>Trancamento Flexível</strong>
+              <span>Viaje sem perder suas aulas</span>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon purple"><i data-lucide="gift"></i></div>
+            <div class="trust-text">
+              <strong>Aula Experimental Grátis</strong>
+              <span>Teste antes de contratar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dúvidas Frequentes sobre Planos (FAQ Accordion) -->
+        <div class="pricing-faq-wrapper">
+          <div class="pricing-faq-header text-center">
+            <h3 class="faq-section-title">Perguntas Frequentes sobre os Planos</h3>
+            <p class="faq-section-sub">Tudo o que você precisa saber para começar a treinar hoje mesmo</p>
+          </div>
+
+          <div class="pricing-faq-grid">
+            <details class="faq-item spotlight-card">
+              <summary class="faq-question">
+                <span>Como funciona a cobrança recorrente no cartão?</span>
+                <i data-lucide="chevron-down" class="faq-chevron"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>Nossa cobrança recorrente funciona exatamente como a Netflix ou Spotify: debita mensalmente o valor da mensalidade sem comprometer o limite total do seu cartão de crédito.</p>
+              </div>
+            </details>
+
+            <details class="faq-item spotlight-card">
+              <summary class="faq-question">
+                <span>A aula experimental é realmente gratuita?</span>
+                <i data-lucide="chevron-down" class="faq-chevron"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>Sim! Você pode agendar uma aula experimental 100% gratuita na natação, hidroginástica ou musculação para conhecer nossos professores, água aquecida e equipamentos sem qualquer compromisso financeiro.</p>
+              </div>
+            </details>
+
+            <details class="faq-item spotlight-card">
+              <summary class="faq-question">
+                <span>Posso trancar o plano durante férias ou imprevistos?</span>
+                <i data-lucide="chevron-down" class="faq-chevron"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>Sim! Planos trimestrais, semestrais e anuais contam com período de trancamento garantido em contrato para que você viaje com a família ou descanse sem pagar pelos dias pausados.</p>
+              </div>
+            </details>
+
+            <details class="faq-item spotlight-card">
+              <summary class="faq-question">
+                <span>Quais são as formas de pagamento disponíveis?</span>
+                <i data-lucide="chevron-down" class="faq-chevron"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>Aceitamos Pix, cartão de crédito (à vista ou recorrente sem consumir limite), cartão de débito e boleto bancário diretamente na recepção.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. GRADE DE HORÁRIOS & AULAS (Tabs Interativas em JS Puro) -->
+
     <section class="section schedule-section" id="grade">
       <div class="container">
         <div class="section-header text-center">
@@ -1194,342 +1531,6 @@
       </div>
     </section>
 
-    <!-- 3.1 PLANOS & VALORES (Planos Transparentes e Flexíveis) -->
-    <section class="section pricing-section" id="planos">
-      <div class="container">
-        <!-- Cabeçalho da Seção -->
-        <div class="section-header text-center">
-          <div class="badge-pill">
-            <i data-lucide="tag"></i>
-            <span>Planos & Investimento</span>
-          </div>
-          <h2 class="section-title">Escolha o plano ideal para a sua evolução</h2>
-          <p class="section-description">
-            Sem taxas ocultas ou pegadinhas contratuais. Valores acessíveis com acompanhamento profissional
-            CREF, piscinas aquecidas e a estrutura mais acolhedora de São Mateus.
-          </p>
-
-          <!-- Seletor de Ciclo: Mensal vs Anual com Desconto -->
-          <div class="pricing-billing-wrapper">
-            <div class="pricing-billing-switch" role="group" aria-label="Ciclo de cobrança">
-              <button class="pricing-billing-btn active" data-cycle="monthly" type="button">
-                <span>Mensal</span>
-              </button>
-              <button class="pricing-billing-btn" data-cycle="annual" type="button">
-                <span>Plano Anual</span>
-                <span class="pricing-discount-badge">-25% OFF</span>
-              </button>
-            </div>
-            <span class="pricing-switch-hint">
-              <i data-lucide="sparkles"></i> Economize até R$ 720/ano no plano anual
-            </span>
-          </div>
-        </div>
-
-        <!-- Grade de Planos (4 Cards Balanceados) -->
-        <div class="pricing-cards-grid">
-          <!-- PLANO 1: MUSCULAÇÃO & FITNESS -->
-          <article class="pricing-card spotlight-card" data-tilt>
-            <div class="pricing-card-header">
-              <span class="pricing-card-kicker">
-                <i data-lucide="dumbbell"></i> Musculação
-              </span>
-              <h3 class="pricing-plan-name">Musculação & Força</h3>
-              <p class="pricing-plan-summary">Treinos de força, hipertrofia e emagrecimento com supervisão contínua no salão.</p>
-            </div>
-
-            <div class="pricing-price-box">
-              <div class="pricing-amount-row">
-                <span class="pricing-currency">R$</span>
-                <span class="pricing-value-amount" data-monthly="119,90" data-annual="89,90">119,90</span>
-              </div>
-              <span class="pricing-period-label">/mês no plano mensal</span>
-              <span class="pricing-savings-note" style="opacity: 0; visibility: hidden;">Economia de R$ 360 no ano</span>
-            </div>
-
-            <ul class="pricing-features-list">
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>Acesso total ao salão de musculação e pesos livres</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>Treinadores credenciados CREF para suporte contínuo</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>Ficha de treino personalizada atualizada a cada 60 dias</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>Vestiários confortáveis com chuveiros aquecidos</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>Zero taxa de matrícula na adesão online</span>
-              </li>
-              <li class="feat-disabled">
-                <i data-lucide="x" class="feat-x"></i>
-                <span>Acesso a piscinas aquecidas e hidroginástica</span>
-              </li>
-            </ul>
-
-            <div class="pricing-card-cta">
-              <button class="pricing-action-btn open-modal-btn" data-modal="modal-start-choice" data-preselect="Musculação" aria-label="Escolher Plano Musculação">
-                <span>Escolher Musculação</span>
-                <i data-lucide="arrow-right"></i>
-              </button>
-            </div>
-          </article>
-
-          <!-- PLANO 2: NATAÇÃO & HIDRO -->
-          <article class="pricing-card spotlight-card" data-tilt>
-            <div class="pricing-card-header">
-              <span class="pricing-card-kicker aquatic">
-                <i data-lucide="waves"></i> Aquático
-              </span>
-              <h3 class="pricing-plan-name">Natação & Hidro</h3>
-              <p class="pricing-plan-summary">Duas piscinas cobertas e aquecidas a 32°C com metodologia lúdica e saúde cardiovascular.</p>
-            </div>
-
-            <div class="pricing-price-box">
-              <div class="pricing-amount-row">
-                <span class="pricing-currency">R$</span>
-                <span class="pricing-value-amount" data-monthly="189,90" data-annual="149,90">189,90</span>
-              </div>
-              <span class="pricing-period-label">/mês no plano mensal</span>
-              <span class="pricing-savings-note" style="opacity: 0; visibility: hidden;">Economia de R$ 480 no ano</span>
-            </div>
-
-            <ul class="pricing-features-list">
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>2x a 3x por semana em piscina aquecida climatizada</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>Natação Infantil (a partir de 6m) ou Natação Adulto</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>Aulas de Hidroginástica de baixo impacto articular</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>Tratamento ozonizado que protege olhos e pele sensível</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>Professores especializados em salvamento aquático</span>
-              </li>
-              <li class="feat-disabled">
-                <i data-lucide="x" class="feat-x"></i>
-                <span>Acesso à sala de musculação</span>
-              </li>
-            </ul>
-
-            <div class="pricing-card-cta">
-              <button class="pricing-action-btn open-modal-btn" data-modal="modal-start-choice" data-preselect="Natação & Hidro" aria-label="Escolher Plano Natação & Hidro">
-                <span>Escolher Natação</span>
-                <i data-lucide="arrow-right"></i>
-              </button>
-            </div>
-          </article>
-
-          <!-- PLANO 3: COMBO TOTAL VIP (DESTAQUE MÁXIMO) -->
-          <article class="pricing-card pricing-card-featured spotlight-card" data-tilt>
-            <div class="featured-ribbon">
-              <i data-lucide="sparkles"></i>
-              <span>MAIS ESCOLHIDO • VIP</span>
-            </div>
-
-            <div class="pricing-card-header">
-              <span class="pricing-card-kicker featured-kicker">
-                <i data-lucide="crown"></i> TUDO LIBERADO
-              </span>
-              <h3 class="pricing-plan-name text-gradient">Combo Total Castelinho</h3>
-              <p class="pricing-plan-summary">A experiência completa definitiva: musculação, natação, hidro e todas as aulas coletivas sem limite.</p>
-            </div>
-
-            <div class="pricing-price-box">
-              <div class="pricing-amount-row">
-                <span class="pricing-currency">R$</span>
-                <span class="pricing-value-amount" data-monthly="239,90" data-annual="179,90">239,90</span>
-              </div>
-              <span class="pricing-period-label">/mês no plano mensal</span>
-              <span class="pricing-savings-note highlight-save" style="opacity: 0; visibility: hidden;">Economia de R$ 720 no ano</span>
-            </div>
-
-            <ul class="pricing-features-list">
-              <li>
-                <i data-lucide="check" class="feat-check-highlight"></i>
-                <strong>Musculação livre + Piscinas aquecidas sem restrição</strong>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check-highlight"></i>
-                <strong>Todas as aulas coletivas liberadas (Funcional e Ritmos)</strong>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check-highlight"></i>
-                <span>Horário 100% flexível (Manhã, Tarde, Noite e Sábados)</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check-highlight"></i>
-                <span>Avaliação física & bioimpedância periódica inclusa</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check-highlight"></i>
-                <span>1 convidado gratuito por mês para treinar com você</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check-highlight"></i>
-                <span>Armário rotativo exclusivo e prioridade nas turmas</span>
-              </li>
-            </ul>
-
-            <div class="pricing-card-cta">
-              <button class="pricing-action-btn pricing-action-btn-featured open-modal-btn" data-modal="modal-start-choice" data-preselect="Combo Total VIP" aria-label="Garantir Plano Combo Total VIP">
-                <span>Garantir Combo Total</span>
-                <i data-lucide="arrow-right"></i>
-              </button>
-            </div>
-          </article>
-
-          <!-- PLANO 4: PLANO FAMÍLIA & BEBÊS -->
-          <article class="pricing-card spotlight-card" data-tilt>
-            <div class="pricing-card-header">
-              <span class="pricing-card-kicker family">
-                <i data-lucide="heart-handshake"></i> Família
-              </span>
-              <h3 class="pricing-plan-name">Plano Família</h3>
-              <p class="pricing-plan-summary">Pensado para pais, mães e filhos praticarem saúde juntos com benefícios compartilhados.</p>
-            </div>
-
-            <div class="pricing-price-box">
-              <div class="pricing-amount-row">
-                <span class="pricing-currency">R$</span>
-                <span class="pricing-value-amount" data-monthly="349,90" data-annual="269,90">349,90</span>
-              </div>
-              <span class="pricing-period-label">/mês (valor para 2 integrantes)</span>
-              <span class="pricing-savings-note" style="opacity: 0; visibility: hidden;">Economia de R$ 960 no ano</span>
-            </div>
-
-            <ul class="pricing-features-list">
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>2 planos combinados (Ex: 1 Musculação + 1 Natação Infantil)</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>Aulas simultâneas para otimizar o tempo da família</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>Acesso especial ao Sábado em Família na piscina</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>Desconto especial de 20% para cada filho adicional</span>
-              </li>
-              <li>
-                <i data-lucide="check" class="feat-check"></i>
-                <span>Avaliação postural e física inclusa para a família</span>
-              </li>
-            </ul>
-
-            <div class="pricing-card-cta">
-              <button class="pricing-action-btn open-modal-btn" data-modal="modal-start-choice" data-preselect="Plano Família" aria-label="Consultar Plano Família">
-                <span>Consultar Família</span>
-                <i data-lucide="arrow-right"></i>
-              </button>
-            </div>
-          </article>
-        </div>
-
-        <!-- Faixa de Garantias e Vantagens (Trust Strip) -->
-        <div class="pricing-trust-strip">
-          <div class="trust-item">
-            <div class="trust-icon cyan"><i data-lucide="shield-check"></i></div>
-            <div class="trust-text">
-              <strong>Sem Taxa de Matrícula</strong>
-              <span>Adesão 100% transparente</span>
-            </div>
-          </div>
-          <div class="trust-item">
-            <div class="trust-icon green"><i data-lucide="refresh-cw"></i></div>
-            <div class="trust-text">
-              <strong>Sem Prender Limite</strong>
-              <span>Cobrança recorrente mês a mês</span>
-            </div>
-          </div>
-          <div class="trust-item">
-            <div class="trust-icon orange"><i data-lucide="pause-circle"></i></div>
-            <div class="trust-text">
-              <strong>Trancamento Flexível</strong>
-              <span>Viaje sem perder suas aulas</span>
-            </div>
-          </div>
-          <div class="trust-item">
-            <div class="trust-icon purple"><i data-lucide="gift"></i></div>
-            <div class="trust-text">
-              <strong>Aula Experimental Grátis</strong>
-              <span>Teste antes de contratar</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dúvidas Frequentes sobre Planos (FAQ Accordion) -->
-        <div class="pricing-faq-wrapper">
-          <div class="pricing-faq-header text-center">
-            <h3 class="faq-section-title">Perguntas Frequentes sobre os Planos</h3>
-            <p class="faq-section-sub">Tudo o que você precisa saber para começar a treinar hoje mesmo</p>
-          </div>
-
-          <div class="pricing-faq-grid">
-            <details class="faq-item spotlight-card">
-              <summary class="faq-question">
-                <span>Como funciona a cobrança recorrente no cartão?</span>
-                <i data-lucide="chevron-down" class="faq-chevron"></i>
-              </summary>
-              <div class="faq-answer">
-                <p>Nossa cobrança recorrente funciona exatamente como a Netflix ou Spotify: debita mensalmente o valor da mensalidade sem comprometer o limite total do seu cartão de crédito.</p>
-              </div>
-            </details>
-
-            <details class="faq-item spotlight-card">
-              <summary class="faq-question">
-                <span>A aula experimental é realmente gratuita?</span>
-                <i data-lucide="chevron-down" class="faq-chevron"></i>
-              </summary>
-              <div class="faq-answer">
-                <p>Sim! Você pode agendar uma aula experimental 100% gratuita na natação, hidroginástica ou musculação para conhecer nossos professores, água aquecida e equipamentos sem qualquer compromisso financeiro.</p>
-              </div>
-            </details>
-
-            <details class="faq-item spotlight-card">
-              <summary class="faq-question">
-                <span>Posso trancar o plano durante férias ou imprevistos?</span>
-                <i data-lucide="chevron-down" class="faq-chevron"></i>
-              </summary>
-              <div class="faq-answer">
-                <p>Sim! Planos trimestrais, semestrais e anuais contam com período de trancamento garantido em contrato para que você viaje com a família ou descanse sem pagar pelos dias pausados.</p>
-              </div>
-            </details>
-
-            <details class="faq-item spotlight-card">
-              <summary class="faq-question">
-                <span>Quais são as formas de pagamento disponíveis?</span>
-                <i data-lucide="chevron-down" class="faq-chevron"></i>
-              </summary>
-              <div class="faq-answer">
-                <p>Aceitamos Pix, cartão de crédito (à vista ou recorrente sem consumir limite), cartão de débito e boleto bancário diretamente na recepção.</p>
-              </div>
-            </details>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- 4. DIFERENCIAIS & ESTRUTURA (Visual Excellence) -->
     <section class="section structure-section" id="estrutura">
       <div class="container">
@@ -1791,6 +1792,7 @@
           <ul class="footer-links">
             <li><a href="#inicio">Início</a></li>
             <li><a href="#modalidades">Modalidades</a></li>
+            <li><a href="#planos">Planos</a></li>
             <li><a href="#grade">Grade & Horários</a></li>
             <li><a href="#estrutura">Estrutura & Piscinas</a></li>
             <li><a href="#localizacao">Como Chegar</a></li>

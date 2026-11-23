@@ -1511,7 +1511,61 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // 20. RELÓGIO DIGITAL EM TEMPO REAL COM DATA FORMATADA
+  function initLiveClock() {
+    const timeEl = document.getElementById('live-clock-time');
+    const dateEl = document.getElementById('live-clock-date');
+    if (!timeEl && !dateEl) return;
+
+    const days = [
+      'Domingo',
+      'Segunda-feira',
+      'Terça-feira',
+      'Quarta-feira',
+      'Quinta-feira',
+      'Sexta-feira',
+      'Sábado'
+    ];
+    const months = [
+      'Janeiro',
+      'Fevereiro',
+      'Março',
+      'Abril',
+      'Maio',
+      'Junho',
+      'Julho',
+      'Agosto',
+      'Setembro',
+      'Outubro',
+      'Novembro',
+      'Dezembro'
+    ];
+
+    function update() {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const ss = String(now.getSeconds()).padStart(2, '0');
+
+      if (timeEl) {
+        timeEl.textContent = `${hh}:${mm}:${ss}`;
+      }
+
+      if (dateEl) {
+        const dayName = days[now.getDay()];
+        const day = now.getDate();
+        const monthName = months[now.getMonth()];
+        const year = now.getFullYear();
+        dateEl.textContent = `${dayName}, ${day} de ${monthName} de ${year}`;
+      }
+    }
+
+    update();
+    setInterval(update, 1000);
+  }
+
   // Inicializa autenticação e views
   initAuth();
+  initLiveClock();
   updateDatePickerDisplay();
 });

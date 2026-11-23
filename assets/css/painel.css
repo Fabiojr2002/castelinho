@@ -1591,3 +1591,98 @@
 .login-credentials-hint strong {
   color: var(--cyan-glow);
 }
+
+/* ==========================================================================
+   21. RELÓGIO DIGITAL EM TEMPO REAL NO CABEÇALHO DO DASHBOARD
+   ========================================================================== */
+.dashboard-live-clock-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  background: rgba(14, 27, 49, 0.75);
+  border: 1px solid rgba(0, 188, 212, 0.3);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 0 15px rgba(0, 188, 212, 0.05);
+  backdrop-filter: blur(10px);
+  min-width: 210px;
+  transition: var(--transition-smooth);
+}
+
+.dashboard-live-clock-card:hover {
+  border-color: rgba(0, 188, 212, 0.6);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 188, 212, 0.2);
+}
+
+.live-clock-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--cyan-glow);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.live-clock-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--emerald-safe);
+  box-shadow: 0 0 8px var(--emerald-safe);
+  animation: pulseDotLive 2s infinite ease-in-out;
+}
+
+@keyframes pulseDotLive {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+}
+
+.live-clock-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.live-clock-main svg,
+.live-clock-main i {
+  width: 18px;
+  height: 18px;
+  color: var(--cyan-glow);
+}
+
+.live-clock-time {
+  font-family: var(--font-title);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--text-contrast);
+  letter-spacing: 1.5px;
+  line-height: 1.15;
+  text-shadow: 0 0 12px rgba(0, 188, 212, 0.45);
+}
+
+.live-clock-date {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-top: 3px;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .dashboard-live-clock-card {
+    order: 3;
+    width: 100%;
+    margin-top: 6px;
+  }
+}

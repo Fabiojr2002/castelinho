@@ -82,7 +82,7 @@ html {
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
   min-height: 100vh;
   background-color: var(--bg-darkest);
@@ -900,7 +900,8 @@ h6 {
    01. HERO STYLE: EXATO ALVO02 ADAPTADO ÀS CORES CASTELINHO
    ========================================================================== */
 .hero-section {
-  position: relative;
+  position: sticky;
+  top: 0;
   height: 100vh;
   min-height: 700px;
   display: flex;
@@ -1480,7 +1481,14 @@ h6 {
 }
 
 @media (max-width: 768px) {
+  /* Desativa ambient-mesh pesado no mobile para eliminar travamentos e poupar GPU */
+  .ambient-mesh {
+    display: none !important;
+  }
+
   .hero-section {
+    position: sticky !important;
+    top: 0 !important;
     height: 100vh !important;
     min-height: 620px !important;
     display: flex !important;
@@ -1490,6 +1498,7 @@ h6 {
     padding: 125px 0 0 !important;
     box-sizing: border-box !important;
     overflow: visible !important;
+    z-index: 1 !important;
   }
 
   /* Posicionamento da nadadora mais para baixo no mobile para não ser tampada */
@@ -1985,6 +1994,7 @@ h6 {
   padding: 80px 0 90px;
   z-index: 10;
   background-color: var(--bg-darkest);
+  transform: translateZ(0);
 }
 
 /* Card Único que envolve toda a seção de modalidades */

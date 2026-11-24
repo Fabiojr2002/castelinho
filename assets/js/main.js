@@ -11,9 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.lucide.createIcons();
   }
 
-  // 2. CONFIGURAÇÃO & SINCRONIZAÇÃO LENIS (SMOOTH SCROLL) + GSAP SCROLLTRIGGER
+  // 2. CONFIGURAÇÃO & SINCRONIZAÇÃO LENIS (SMOOTH SCROLL APENAS EM DESKTOP)
+  // No mobile/touch, a rolagem nativa por hardware a 120Hz/60Hz é muito superior e evita travamentos
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth <= 991;
   let lenis = null;
-  if (typeof Lenis !== 'undefined') {
+
+  if (!isTouchDevice && typeof Lenis !== 'undefined') {
     lenis = new Lenis({
       duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -21,11 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1.0,
-      touchMultiplier: 1.5,
       infinite: false
     });
 
-    // Sincroniza Lenis com o ticker do GSAP para evitar conflito de taxas de quadros
+    // Sincroniza Lenis com o ticker do GSAP
     lenis.on('scroll', (e) => {
       if (window.ScrollTrigger) {
         ScrollTrigger.update();
@@ -39,13 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
       lenis.raf(time * 1000);
     });
 
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
   } else {
-    // Fallback nativo
-    function raf(time) {
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    // Dispositivos móveis / Touch: Rolagem nativa suave e responsiva sem interceptação de toque
+    window.addEventListener('scroll', () => {
+      if (window.ScrollTrigger) {
+        ScrollTrigger.update();
+      }
+      if (typeof handleHeaderScroll === 'function') {
+        handleHeaderScroll(window.scrollY);
+      }
+    }, { passive: true });
   }
 
   // Suporte a âncoras suaves via Lenis
@@ -155,6 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Registrar plugin ScrollTrigger
     if (window.ScrollTrigger) {
       gsap.registerPlugin(ScrollTrigger);
+      // Evita travamentos e recálculos desnecessários causados pela barra de endereço no mobile
+      ScrollTrigger.config({ ignoreMobileResize: true });
     }
 
     // Timeline do Hero
@@ -233,20 +241,8 @@ document.addEventListener('DOMContentLoaded', () => {
         '-=0.4'
       );
 
-    // Efeito Curtain Reveal / Section Stacking: Hero fixa até a Seção de Modalidades cobri-la
-    const heroSection = document.getElementById('inicio');
-    const modalitiesSection = document.getElementById('modalidades');
-    if (heroSection && modalitiesSection) {
-      ScrollTrigger.create({
-        trigger: heroSection,
-        start: 'top top',
-        endTrigger: modalitiesSection,
-        end: 'top top',
-        pin: true,
-        pinSpacing: false,
-        anticipatePin: 1
-      });
-    }
+    // Efeito Curtain Reveal / Section Stacking: 100% nativo via CSS position: sticky
+    // Elimina pin-spacers e conflitos de toque no mobile
 
     // ScrollTriggers para Seções
     // Modalidades - Banner Unificado
@@ -645,6 +641,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!video) return;
 
+    // Garante atributos de reprodução inline nativa no mobile
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
     // Seleção de vídeo por viewport: Original no Desktop, Nadadora no Mobile
     const updateVideoSource = () => {
       const isMobile = window.innerWidth <= 768;
@@ -716,22 +716,45 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    // Otimização crucial de Performance (Scroll & Visibilidade):
+    // Pausa o vídeo assim que o hero for encoberto pelas modalidades, liberando GPU e CPU no mobile
+    const checkVideoVisibility = () => {
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      const heroHeight = heroSection ? heroSection.offsetHeight : 700;
+      if (scrollY >= heroHeight - 40) {
+        if (!video.paused) {
+          video.pause();
+        }
+      } else {
+        if (video.paused && video.dataset.userPaused !== 'true') {
+          video.play().catch(() => {});
+        }
+      }
+    };
+
+    window.addEventListener('scroll', checkVideoVisibility, { passive: true });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (!video.paused) video.pause();
+      } else {
+        checkVideoVisibility();
+      }
+    });
+
     // Otimização de Performance (IntersectionObserver):
     // Pausa o vídeo quando sair do campo de visão da tela para economizar CPU e GPU
     if ('IntersectionObserver' in window && heroSection) {
       const videoObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (video.paused && video.dataset.userPaused !== 'true') {
-              video.play().catch(() => {});
-            }
+            checkVideoVisibility();
           } else {
             if (!video.paused) {
               video.pause();
             }
           }
         });
-      }, { threshold: 0.1 });
+      }, { threshold: 0.05 });
 
       videoObserver.observe(heroSection);
     }

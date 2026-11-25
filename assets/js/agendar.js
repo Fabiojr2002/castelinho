@@ -11,9 +11,22 @@ document.addEventListener('DOMContentLoaded', () => {
     window.lucide.createIcons();
   }
 
-  // 2. INICIALIZAÇÃO DO LENIS SMOOTH SCROLL
+  // 2. INICIALIZAÇÃO DO LENIS SMOOTH SCROLL (APENAS DESKTOP) + HEADER SCROLL
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth <= 991;
   let lenis = null;
-  if (typeof Lenis !== 'undefined') {
+
+  const updateHeaderOnScroll = () => {
+    const header = document.getElementById('site-header');
+    if (header) {
+      if (window.scrollY > 30) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+  };
+
+  if (!isTouchDevice && typeof Lenis !== 'undefined') {
     lenis = new Lenis({
       duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -21,22 +34,70 @@ document.addEventListener('DOMContentLoaded', () => {
       smoothWheel: true
     });
 
-    lenis.on('scroll', () => {
-      const header = document.getElementById('site-header');
-      if (header) {
-        if (window.scrollY > 30) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-      }
-    });
+    lenis.on('scroll', updateHeaderOnScroll);
 
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
+  } else {
+    window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
+  }
+  updateHeaderOnScroll();
+
+  // 2.1 MENU MOBILE INTERATIVO (HAMBÚRGUER / GAVETA DE NAVEGAÇÃO)
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  const openMobileMenu = () => {
+    if (!mobileToggle || !mobileDrawer) return;
+    mobileToggle.classList.add('active');
+    mobileToggle.setAttribute('aria-expanded', 'true');
+    mobileDrawer.classList.add('open');
+    mobileDrawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeMobileMenu = () => {
+    if (!mobileToggle || !mobileDrawer) return;
+    mobileToggle.classList.remove('active');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    mobileDrawer.classList.remove('open');
+    mobileDrawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  if (mobileToggle && mobileDrawer) {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (mobileDrawer.classList.contains('open')) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (
+        mobileDrawer.classList.contains('open') &&
+        !mobileDrawer.contains(e.target) &&
+        !mobileToggle.contains(e.target)
+      ) {
+        closeMobileMenu();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
+        closeMobileMenu();
+      }
+    });
   }
 
   // 3. ESTADO DO AGENDAMENTO (REACTIVE STATE OBJECT)

@@ -781,6 +781,10 @@ h6 {
   padding-left: 6px;
 }
 
+.mobile-drawer .whatsapp-btn-text {
+  display: flex !important;
+}
+
 /* 7. HERO SECTION */
 .hero-section {
   position: relative;
@@ -818,6 +822,18 @@ h6 {
   object-position: center 20%;
   filter: contrast(1.06) saturate(1.08) brightness(0.85);
   will-change: transform;
+  pointer-events: none;
+}
+
+.hero-video::-webkit-media-controls,
+.hero-video::-webkit-media-controls-panel,
+.hero-video::-webkit-media-controls-play-button,
+.hero-video::-webkit-media-controls-start-playback-button,
+.hero-video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* Camada 1: Escurecimento lateral focado no lado esquerdo (estilo da referência) */
@@ -2014,11 +2030,11 @@ h6 {
   position: absolute;
   top: 0;
   right: 0;
-  width: 60%;
+  width: 62%;
   height: 480px;
   background-image: url('../media/modalidade-hero.jpg');
   background-size: cover;
-  background-position: center right;
+  background-position: 48% 18%;
   z-index: 1;
   pointer-events: none;
 }
@@ -2293,7 +2309,7 @@ h6 {
   animation: pulseLight 1.8s infinite ease-in-out;
 }
 
-/* Container com máscara de degradê nas bordas esquerda e direita */
+/* Container com máscara de degradê nas bordas esquerda e direita + suporte a drag/touch */
 .modalities-marquee-wrapper {
   position: relative;
   width: 100%;
@@ -2301,32 +2317,29 @@ h6 {
   display: flex;
   gap: 22px;
   user-select: none;
+  -webkit-user-select: none;
   padding: 14px 0 20px;
+  cursor: grab;
+  touch-action: pan-y;
   mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
 }
 
-/* Pista que desliza para a esquerda continuamente */
+.modalities-marquee-wrapper.is-dragging {
+  cursor: grabbing;
+}
+
+/* Pista controlada via rAF para permitir auto-scroll contínuo + arraste com dedo/mouse sem saltos */
 .modalities-marquee-track {
   display: flex;
   gap: 22px;
   flex-shrink: 0;
-  animation: marqueeScrollLeft 38s linear infinite;
   will-change: transform;
 }
 
-@keyframes marqueeScrollLeft {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-100% - 22px));
-  }
-}
-
-/* Pausa suave ao passar o mouse */
-.modalities-marquee-wrapper:hover .modalities-marquee-track {
-  animation-play-state: paused;
+.modalities-marquee-wrapper img {
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 /* Card Individual da Faixa */
@@ -2519,9 +2532,10 @@ h6 {
 /* 11. GRADE DE HORÁRIOS & TABS */
 .schedule-section {
   position: relative;
+  background: linear-gradient(180deg, #050811 0%, #090f1e 50%, #050811 100%), #050811;
   background-color: #050811;
-  background: linear-gradient(180deg, #050811 0%, #090f1e 50%, #050811 100%);
   z-index: 10;
+  transform: translateZ(0);
 }
 
 .tabs-control-wrapper {
@@ -2883,10 +2897,11 @@ h6 {
 /* 11.1 SEÇÃO DE PLANOS & VALORES (PRICING) */
 .pricing-section {
   position: relative;
+  background: radial-gradient(circle at 50% 0%, rgba(0, 188, 212, 0.14) 0%, #050811 70%), #050811;
   background-color: #050811;
-  background: radial-gradient(circle at 50% 0%, rgba(0, 188, 212, 0.12) 0%, #050811 70%);
   padding: 110px 0;
   z-index: 10;
+  transform: translateZ(0);
 }
 
 /* Seletor Mensal / Anual */
@@ -4543,11 +4558,20 @@ h6 {
 
   .modalities-banner-bg {
     width: 100%;
-    opacity: 0.35;
+    height: 440px;
+    background-position: 52% 15%;
+    background-size: cover;
+    opacity: 0.72;
   }
 
   .modalities-banner-overlay {
-    background: linear-gradient(180deg, rgba(6, 9, 19, 0.75) 0%, #060913 100%);
+    height: 440px;
+    background: linear-gradient(180deg, rgba(5, 8, 17, 0.35) 0%, rgba(5, 8, 17, 0.68) 55%, #050811 100%);
+  }
+
+  .modality-hero-desc {
+    color: #cbd5e1;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
   }
 
   .modalities-banner-content {

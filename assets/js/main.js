@@ -54,18 +54,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // Suporte a âncoras suaves via Lenis
+  // Suporte a âncoras suaves (inclui tratamento correto para #inicio com position: sticky)
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
       if (!targetId || targetId === '#') return;
 
       const targetElement = document.querySelector(targetId);
-      if (targetElement) {
+      if (targetElement || targetId === '#inicio') {
         e.preventDefault();
 
-        // Se o menu mobile estiver aberto, fecha
+        // Se o menu mobile estiver aberto, fecha e libera o scroll imediatamente
         closeMobileMenu();
+
+        if (targetId === '#inicio') {
+          if (lenis) {
+            lenis.scrollTo(0, {
+              duration: 1.1,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+            });
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+          return;
+        }
 
         if (lenis) {
           lenis.scrollTo(targetElement, {
@@ -74,7 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
           });
         } else {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
+          const targetTop = targetElement.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - 70;
+          window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
         }
       }
     });
@@ -98,15 +111,24 @@ document.addEventListener('DOMContentLoaded', () => {
       header.classList.remove('scrolled');
     }
 
-    // Identifica seção ativa para destaque na navegação
-    let currentSection = '';
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 120;
-      const sectionHeight = section.offsetHeight;
-      if (currentScroll >= sectionTop && currentScroll < sectionTop + sectionHeight) {
-        currentSection = section.getAttribute('id');
-      }
-    });
+    // Identifica seção ativa para destaque na navegação (respeitando #inicio com position: sticky)
+    let currentSection = 'inicio';
+    const modalidadesEl = document.getElementById('modalidades');
+    const heroCutoff = modalidadesEl ? modalidadesEl.offsetTop - 130 : 400;
+
+    if (currentScroll < heroCutoff) {
+      currentSection = 'inicio';
+    } else {
+      sections.forEach((section) => {
+        const id = section.getAttribute('id');
+        if (id === 'inicio') return;
+        const sectionTop = section.offsetTop - 130;
+        const sectionHeight = section.offsetHeight;
+        if (currentScroll >= sectionTop && currentScroll < sectionTop + sectionHeight) {
+          currentSection = id;
+        }
+      });
+    }
 
     navLinks.forEach((link) => {
       link.classList.remove('active');
@@ -632,7 +654,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 9. VÍDEO DE FUNDO HERO: CONTROLES & PERFORMANCE
+  // 9. VÍDEO DE FUNDO HERO: CONTROLES & PERFORMANCE (CARREGAMENTO INSTANTÂNEO NO MOBILE)
   const initHeroVideo = () => {
     const video = document.getElementById('hero-video');
     const playBtn = document.getElementById('hero-video-play-toggle');
@@ -641,36 +663,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!video) return;
 
-    // Garante atributos de reprodução inline nativa no mobile
+    // Garante atributos e propriedades de reprodução inline silenciosa nativa no mobile
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
+
+    const isHeroVisibleByScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      const heroHeight = heroSection ? heroSection.offsetHeight : 700;
+      return scrollY < heroHeight - 40;
+    };
+
+    // Garante reprodução automática suave e trata políticas de autoplay dos navegadores móveis
+    const startPlay = () => {
+      if (video.dataset.userPaused === 'true') return;
+      if (!isHeroVisibleByScroll()) return;
+      video.muted = true;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          video.muted = true;
+          video.defaultMuted = true;
+          video.play().catch(() => {});
+        });
+      }
+    };
 
     // Seleção de vídeo por viewport: Original no Desktop, Nadadora no Mobile
     const updateVideoSource = () => {
       const isMobile = window.innerWidth <= 768;
       const targetSrc = isMobile ? 'assets/media/hero-mobile.mp4' : 'assets/media/hero-desktop.mp4';
+      const targetPoster = isMobile ? 'assets/media/hero-poster-mobile.jpg' : 'assets/media/hero-poster-desktop.jpg';
       const sourceEl = document.getElementById('hero-video-source');
-      const currentSrc = video.currentSrc || (sourceEl ? sourceEl.getAttribute('src') : '');
+      const currentSrc = video.currentSrc || video.getAttribute('src') || (sourceEl ? sourceEl.getAttribute('src') : '');
+
+      if (video.getAttribute('poster') !== targetPoster) {
+        video.setAttribute('poster', targetPoster);
+      }
 
       if (!currentSrc || !currentSrc.includes(targetSrc)) {
         if (sourceEl) sourceEl.setAttribute('src', targetSrc);
         video.src = targetSrc;
         video.load();
-        startPlay();
       }
+      startPlay();
     };
 
-    // Garante reprodução automática suave e trata políticas de autoplay dos navegadores
-    const startPlay = () => {
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Garante mudo e reproduz se o navegador exigir interação para áudio
-          video.muted = true;
-          video.play().catch(() => {});
-        });
+    // Garante disparo do play assim que os primeiros frames estiverem prontos
+    video.addEventListener('loadeddata', startPlay);
+    video.addEventListener('canplay', startPlay);
+
+    // Fallback para modos restritos de economia de bateria em iOS/Android: inicia no 1º toque/rolagem
+    const unlockAutoplay = () => {
+      if (video.paused && video.dataset.userPaused !== 'true' && isHeroVisibleByScroll()) {
+        startPlay();
+      }
+      if (!video.paused) {
+        document.removeEventListener('touchstart', unlockAutoplay);
+        document.removeEventListener('pointerdown', unlockAutoplay);
+        window.removeEventListener('scroll', unlockAutoplay);
       }
     };
+    document.addEventListener('touchstart', unlockAutoplay, { passive: true });
+    document.addEventListener('pointerdown', unlockAutoplay, { passive: true });
+    window.addEventListener('scroll', unlockAutoplay, { passive: true });
 
     updateVideoSource();
     window.addEventListener('resize', () => {
@@ -719,15 +778,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Otimização crucial de Performance (Scroll & Visibilidade):
     // Pausa o vídeo assim que o hero for encoberto pelas modalidades, liberando GPU e CPU no mobile
     const checkVideoVisibility = () => {
-      const scrollY = window.scrollY || window.pageYOffset || 0;
-      const heroHeight = heroSection ? heroSection.offsetHeight : 700;
-      if (scrollY >= heroHeight - 40) {
+      if (!isHeroVisibleByScroll()) {
         if (!video.paused) {
           video.pause();
         }
       } else {
         if (video.paused && video.dataset.userPaused !== 'true') {
-          video.play().catch(() => {});
+          startPlay();
         }
       }
     };
@@ -741,8 +798,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Otimização de Performance (IntersectionObserver):
-    // Pausa o vídeo quando sair do campo de visão da tela para economizar CPU e GPU
     if ('IntersectionObserver' in window && heroSection) {
       const videoObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -761,6 +816,208 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   initHeroVideo();
+
+  // 9.1 CARROSSEL INTERATIVO DE MODALIDADES (AUTO-SCROLL CONTÍNUO + TOUCH SWIPE & MOUSE DRAG)
+  const initModalitiesCarousel = () => {
+    const wrapper = document.querySelector('.modalities-marquee-wrapper');
+    if (!wrapper) return;
+    const tracks = Array.from(wrapper.querySelectorAll('.modalities-marquee-track'));
+    if (tracks.length < 2) return;
+
+    let offset = 0;
+    let loopWidth = 0;
+    let isDragging = false;
+    let isHovered = false;
+    let isVisible = true;
+    let dragDirectionLocked = null; // 'horizontal' | 'vertical' | null
+    let startX = 0;
+    let startY = 0;
+    let lastX = 0;
+    let lastTime = 0;
+    let velocity = 0; // px/frame momentum
+    let totalMoved = 0;
+    let blockNextClick = false;
+    let prevFrameTime = performance.now();
+
+    const measureLoopWidth = () => {
+      const style = window.getComputedStyle(wrapper);
+      const gap = parseFloat(style.columnGap || style.gap || '22') || 22;
+      loopWidth = tracks[0].offsetWidth + gap;
+    };
+
+    const applyTransform = () => {
+      if (loopWidth <= 0) return;
+      // Envolve suavemente em ambos os sentidos (arraste para esquerda OU direita sem fim)
+      offset = ((offset % loopWidth) + loopWidth) % loopWidth;
+      const tx = -offset;
+      for (let i = 0; i < tracks.length; i++) {
+        tracks[i].style.transform = `translate3d(${tx}px, 0, 0)`;
+      }
+    };
+
+    measureLoopWidth();
+    window.addEventListener('resize', () => {
+      measureLoopWidth();
+      applyTransform();
+    });
+
+    // Pausa cálculos quando o carrossel está fora da tela para economizar bateria
+    if ('IntersectionObserver' in window) {
+      const visObserver = new IntersectionObserver((entries) => {
+        isVisible = entries[0]?.isIntersecting ?? true;
+        if (isVisible) prevFrameTime = performance.now();
+      }, { rootMargin: '120px' });
+      visObserver.observe(wrapper);
+    }
+
+    // Loop contínuo suave via rAF (velocidade constante independente de 60Hz/120Hz)
+    const tick = (now) => {
+      const dt = Math.min((now - prevFrameTime) / 1000, 0.05);
+      prevFrameTime = now;
+
+      if (isVisible && loopWidth > 0) {
+        if (!isDragging) {
+          if (Math.abs(velocity) > 0.15) {
+            offset += velocity;
+            velocity *= 0.93;
+          } else {
+            velocity = 0;
+            if (!isHovered) {
+              const autoSpeedPxPerSec = window.innerWidth <= 768 ? 48 : 54;
+              offset += autoSpeedPxPerSec * dt;
+            }
+          }
+          applyTransform();
+        }
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+
+    // Desktop Hover Pause
+    wrapper.addEventListener('mouseenter', () => {
+      isHovered = true;
+    });
+    wrapper.addEventListener('mouseleave', () => {
+      isHovered = false;
+      if (isDragging) {
+        isDragging = false;
+        wrapper.classList.remove('is-dragging');
+      }
+    });
+
+    // Touch Events (Celular / Tablet) com detecção de direção para não travar o scroll vertical
+    wrapper.addEventListener('touchstart', (e) => {
+      if (e.touches.length !== 1) return;
+      const touch = e.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+      lastX = touch.clientX;
+      lastTime = performance.now();
+      velocity = 0;
+      totalMoved = 0;
+      dragDirectionLocked = null;
+      isDragging = false;
+    }, { passive: true });
+
+    wrapper.addEventListener('touchmove', (e) => {
+      if (e.touches.length !== 1) return;
+      const touch = e.touches[0];
+      const dxFromStart = touch.clientX - startX;
+      const dyFromStart = touch.clientY - startY;
+
+      if (dragDirectionLocked === null) {
+        if (Math.abs(dxFromStart) > 6 || Math.abs(dyFromStart) > 6) {
+          dragDirectionLocked = Math.abs(dxFromStart) > Math.abs(dyFromStart) ? 'horizontal' : 'vertical';
+          if (dragDirectionLocked === 'horizontal') {
+            isDragging = true;
+            wrapper.classList.add('is-dragging');
+          }
+        }
+      }
+
+      if (dragDirectionLocked === 'horizontal') {
+        e.preventDefault();
+        const now = performance.now();
+        const deltaX = touch.clientX - lastX;
+        const dtMs = Math.max(now - lastTime, 8);
+        totalMoved += Math.abs(deltaX);
+
+        offset -= deltaX;
+        // Calcula inércia proporcional para deslize suave ao soltar o dedo
+        const rawVel = (-deltaX / dtMs) * 16.6;
+        velocity = Math.max(-32, Math.min(32, rawVel * 0.75 + velocity * 0.25));
+
+        lastX = touch.clientX;
+        lastTime = now;
+        applyTransform();
+      }
+    }, { passive: false });
+
+    const endTouch = () => {
+      if (isDragging) {
+        if (totalMoved > 8) {
+          blockNextClick = true;
+          setTimeout(() => { blockNextClick = false; }, 120);
+        }
+        isDragging = false;
+        wrapper.classList.remove('is-dragging');
+      }
+      dragDirectionLocked = null;
+    };
+
+    wrapper.addEventListener('touchend', endTouch, { passive: true });
+    wrapper.addEventListener('touchcancel', endTouch, { passive: true });
+
+    // Mouse Drag (Desktop)
+    wrapper.addEventListener('mousedown', (e) => {
+      if (e.button !== 0) return;
+      isDragging = true;
+      wrapper.classList.add('is-dragging');
+      startX = e.clientX;
+      lastX = e.clientX;
+      lastTime = performance.now();
+      velocity = 0;
+      totalMoved = 0;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const now = performance.now();
+      const deltaX = e.clientX - lastX;
+      const dtMs = Math.max(now - lastTime, 8);
+      totalMoved += Math.abs(deltaX);
+
+      offset -= deltaX;
+      const rawVel = (-deltaX / dtMs) * 16.6;
+      velocity = Math.max(-28, Math.min(28, rawVel * 0.7 + velocity * 0.3));
+
+      lastX = e.clientX;
+      lastTime = now;
+      applyTransform();
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+      if (totalMoved > 8) {
+        blockNextClick = true;
+        setTimeout(() => { blockNextClick = false; }, 120);
+      }
+      isDragging = false;
+      wrapper.classList.remove('is-dragging');
+    });
+
+    // Evita abrir o link do card acidentalmente quando o usuário apenas arrastou o carrossel
+    wrapper.addEventListener('click', (e) => {
+      if (blockNextClick) {
+        e.preventDefault();
+        e.stopPropagation();
+        blockNextClick = false;
+      }
+    }, true);
+  };
+
+  initModalitiesCarousel();
 
   // 10. ANO ATUAL AUTOMÁTICO NO FOOTER
   const yearSpan = document.getElementById('current-year');
